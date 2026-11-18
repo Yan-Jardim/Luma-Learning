@@ -195,7 +195,9 @@ Not confirmed yet (Estimate):
 | --- | --- | --- |
 | Section heading | ≈48 px, line ≈56 px | Pending |
 | Card title | ≈20 px | Pending |
-| Overline and button label | See the desktop styles | Pending |
+| Overline and hero button labels | Confirmed styles above | Desktop styles, inferred ([D-28](decisions.md#header-and-hero)) |
+
+The inference for mobile rests on equal pixel boxes in both references (Image, 2x PNG px): the eyebrow 381 × 17, "Explore courses" 217 × 25, "See how it works" 229 × 21, and the bold "Trusted by 24,000+" 270 × 25. Equal boxes do not prove every typographic property. The other small texts of the header and hero (nav links, "Log in", the "Start learning" label, the social proof and the floating cards) are estimated from the references during T-04 and marked as estimates.
 
 ## Layout
 
@@ -204,14 +206,35 @@ Not confirmed yet (Estimate):
 - **Figma:** mobile content width 362 px: the hero heading, paragraph and primary button fill 362 px. With the inferred 402 px frame, that leaves 20 px per side, symmetric in the image.
 - **Estimate, accepted provisionally ([D-22](decisions.md#visual-foundation)):** desktop content width 1120 px with 80 px side margins at the 1280 px reference. The margins are not fixed for every width; the responsive behavior must be checked.
 - **Figma:** primary button "Explore courses": radius 8 px, padding 14 px vertical and 28 px horizontal, fill `primary-blue`. Desktop: 167 × 54 (width hugs the label, height fills its row). Mobile: 362 × 52 (full width, height hugs the content).
-- **Estimate:** the header button is about 44 px high.
-- **Image:** cards, images, inputs and other buttons have rounded corners; their radii are pending.
+- **Image:** cards, images, inputs and other buttons have rounded corners; their radii are pending, except the ones measured for the header and hero below.
+
+### Header and hero measurements (Estimate)
+
+Measured on the references at 2x and used in T-04 ([D-28](decisions.md#header-and-hero)). The implementation was compared with the references by overlay at 402 and 1280 px.
+
+| Item | Desktop | Mobile |
+| --- | --- | --- |
+| Header bar | 69 px plus a 1 px bottom border; logo at the content edge; nav centered on the page, 32 px between links; "Log in" 24 px before the button | 68 px plus the border; menu button 36 × 36 at the content edge, icon 24 × 24 |
+| "Start learning" (header) | 134 × 44, padding 10 / 20, radius 8, `Desktop/body 1` label | In the menu panel |
+| Nav links, "Log in", "learners" | Inter 400, 14 / 24 px, `text-secondary` | Same |
+| "Trusted by 24,000+" | Inter 700, 14 / 24 px, `text-primary` | Same |
+| Hero padding | 100 px top and bottom | 60 px top and bottom |
+| Vertical rhythm | Overline, 16, heading, 24, paragraph, 32, buttons, 32, social proof | Same, but 30 px before the social proof; 40 px from the photo to the overline |
+| Buttons | Side by side, 12 px apart; the row is 54 px high | Full width, stacked, 12 px apart |
+| Columns | Text 560, gap 60, photo 500 | Photo 346 × 380, inset 8 px inside the content |
+| Photo | Radius 20 | Radius 20 |
+| Peach shape | 24 px below the photo top, 39 px past its right edge | 24 px below the top, 18 px past the right edge, ends 14 px above the bottom |
+| Light circle | 104 px, 44 px past the photo's left edge, 12 px above its bottom | 63 px, 18 px past the left edge, 12 px above the bottom |
+| "120+" card | 213 × 56, 22 px left of the photo, 16 px below its top; radius 12; badge 32 px high, 10 px before the text | 8 px left of the photo, 6 px below its top |
+| Rating card | 208.5 × 48, 57 px past the photo's right edge, 36 px above its bottom; left padding 18, right 16; stars 10 px, 6 px apart, 10 px before the text | 209 × 48, 19 px past the right edge, 36 px above the bottom |
+| Card text | Inter 400, 14 / 24 px, `text-primary`; "120+" in Inter 700, `primary-blue` | Same |
 
 ## Interactions and states
 
 - **Image:** only default states appear. Neither reference shows hover, focus, active, disabled, validation, success, error or open-menu states.
 - **Image:** visible interactive elements: nav links, "Log in", "Start learning", the menu button (mobile), hero buttons, category "Explore" links, "View course", "Browse all courses", "Explore teachers and students", the contact email, the three form fields and "Send message", the final call to action buttons, and the footer links.
-- **Pending:** how the header behaves on scroll ([Q-19](decisions.md#open-questions)); any animation (static images cannot show it).
+- **Decided:** the header scrolls with the page, and the mobile menu behavior is defined in [D-25](decisions.md#header-and-hero).
+- **Pending:** any animation (static images cannot show it).
 
 ## Divergences between the references
 
@@ -222,6 +245,7 @@ Not confirmed yet (Estimate):
 | 3 | Step 02 description | "…professionals who use these skills." | "…professionals who actually use these skills." | Pending ([Q-13](decisions.md#open-questions)) |
 | 4 | Step 02 square color | `#FFCB9F` | `#FAE4DB` | Pending ([Q-14](decisions.md#open-questions)) |
 | 5 | Community paragraph color | `#656770` | `#171B2C` | Pending ([Q-15](decisions.md#open-questions)) |
+| 6 | Hero photo framing | Matches `hero-student-photo.png` exactly (mean pixel difference 4.7 of 765) | Different framing of the same photo: the person is smaller and the hair is cut at the top. No crop of the exported file matches it (best mean difference about 32) | Pending ([Q-21](decisions.md#open-questions)). The implementation uses a centered crop of the exported file |
 
 The composition differences listed in [Page structure](#page-structure) follow from the layout and are not treated as divergences.
 
@@ -232,6 +256,8 @@ The owner exported the assets from Figma on 2026-11-18 into a local folder. The 
 ### Inventory
 
 27 files: 13 PNG and 14 SVG. No file is empty, no two files are byte-identical, and every real format matches its extension. Pixel sizes compared with the display sizes are in [Raster resolution](#raster-resolution).
+
+On 2026-11-18, for T-04, the owner added three files and replaced `icon-star.png`. Those four files are listed at the end of the table, and the folder now has 30 files.
 
 | File | Real format and size | Content (Image) | Status |
 | --- | --- | --- | --- |
@@ -248,8 +274,12 @@ The owner exported the assets from Figma on 2026-11-18 into a local folder. The 
 | `icon-message.png` | PNG, 40 × 40 | Speech bubble icon on its light blue tile | OK, tile included |
 | `icon-clock.png` | PNG, 40 × 40 | Clock icon on its light blue tile | OK, tile included |
 | `icon-arrow-right.png` | PNG, 14 × 12, transparent | White arrow | Partial: white variant only |
-| `icon-star.png` | PNG, 256 × 96, transparent | Not a star: the whole rating card, with the stars, the "4.9 avg rating" text and the shadow | Wrong content; text baked in |
 | `cta-decorations/` | 13 SVG | Final call to action decorations, all `#FFCB9F` | Generic names, see below |
+| `hero-student-photo.png` (new) | PNG, 500 × 520, transparent rounded corners (radius about 20) | Hero photo alone | OK; copied to `public/images/` |
+| `hero-avatars.png` (new) | PNG, 80 × 32 | The three hero avatars, overlapping, with cream rings | OK; copied to `public/images/` |
+| `icon-menu.png` (new) | PNG, 24 × 24, transparent | Three bars, 20 × 2 px, `#171B2C` at 75% opacity | OK; copied to `public/icons/`. The bars look lighter than in the reference: the opacity comes from the file ([Q-22](decisions.md#open-questions)) |
+| `icon-star.png` (replaced) | PNG, 10 × 10, transparent | Star alone, `#FFEE7E` | OK; copied to `public/icons/`. The earlier file was the whole rating card |
+| `logo-dark.svg` (reused) | SVG, 54 × 17 | See above | Copied to `public/brand/` |
 
 ### Final call to action decorations
 
@@ -277,14 +307,10 @@ Equivalence of `Container-5.svg` and `Container-6.svg`, checked on 2026-11-18:
 
 ### Missing or to re-export
 
-The owner will provide the two photos and the missing assets ([Q-18](decisions.md#open-questions)). Each item is needed before the task that builds its section.
+The owner will provide the remaining assets ([Q-18](decisions.md#open-questions)). Each item is needed before the task that builds its section. The four T-04 items arrived on 2026-11-18 (see [Inventory](#inventory)).
 
 | Item | Reason | Suggested file | Needed before |
 | --- | --- | --- | --- |
-| Hero photo alone | `hero-student.png` includes the cards, their texts and the shapes, which must be built in HTML and CSS | `hero-student-photo.jpg` | T-04 |
-| Star icon | `icon-star.png` is the whole rating card | `icon-star.svg` | T-04 |
-| Hero social proof avatars | Not in the folder. `cta-avatars.png` has four avatars with yellow rings, while the hero shows three | `hero-avatars.png` | T-04 |
-| Menu icon | Not in the folder | `icon-menu.svg` | T-04 |
 | Featured photo alone | `featured-course.png` includes the badge text | `featured-course-photo.jpg` | T-05 |
 | Arrow for dark text | Only a white arrow exists, and the category "Explore" links use a dark arrow | `icon-arrow-right.svg`, one SVG for both colors | T-05 |
 | Quote mark | Not in the folder | `icon-quote.svg` | T-06 |
@@ -309,11 +335,14 @@ Display sizes are estimates read from the references at the confirmed 2x scale. 
 | `step-02.png` | 67 × 67, of which 64 × 64 visible | ≈64 × 64 | ≈64 × 64 | ≈1.0 / ≈1.0 |
 | `icon-message.png`, `icon-clock.png` | 40 × 40 | ≈40 × 40 | ≈40 × 40 | ≈1.0 / ≈1.0 |
 | `icon-arrow-right.png` | 14 × 12 | ≈14 × 12 | ≈14 × 12 | ≈1.0 / ≈1.0 |
-| `icon-star.png` (rating card) | 256 × 96, shadow included | ≈208 wide card | ≈208 wide card | ≈1.0 / ≈1.0 |
+| `hero-student-photo.png` | 500 × 520 | 500 × 520 | 346 × 380, cropped | 1.0 / ≈1.45 |
+| `hero-avatars.png` | 80 × 32 | 80 × 32 | 80 × 32 | 1.0 / 1.0 |
+| `icon-star.png` (replaced) | 10 × 10 | 10 × 10 | 10 × 10 | 1.0 / 1.0 |
+| `icon-menu.png` | 24 × 24 | Not shown | 24 × 24 | — / 1.0 |
 
 - **Risk:** at a density near 1.0, screens with a device pixel ratio of 2 or more may show these images softer than the reference. The risk is highest for the large photos and for the hard edges of small icons.
-- **Observed:** no loss of sharpness has been observed. At their own size the files look sharp, and nothing has been rendered in the browser yet.
-- **Next step:** check each image in the visual comparison, and ask for a higher-resolution export only for those that look soft. The hero and featured photos will be exported again anyway, so a 2x export of those two can be considered then.
+- **Observed in T-04:** in Chrome at a device pixel ratio of 2, the hero photo, the stars, the hero avatars and the menu icon look softer than the same areas of the 2x references. At a device pixel ratio of 1 they match. The other images have not been rendered yet.
+- **Next step:** for these four files, a 2x export (or SVG for the star and the menu icon) would remove the observed softness ([Q-18](decisions.md#open-questions)). The other images are checked when their sections are built.
 
 ### Not in the references
 
@@ -322,8 +351,18 @@ Display sizes are estimates read from the references at the confirmed 2x scale. 
 
 ### Not needed
 
-- Mobile-specific exports: the mobile reference uses the same images, and its final call to action has no decorations.
+- Mobile-specific exports: the mobile reference uses the same images, and its final call to action has no decorations. The one exception found so far is the hero photo framing (divergence 6, [Q-21](decisions.md#open-questions)).
 - The hero background shapes (peach rounded rectangle and light circle): flat colors.
+
+## Text alternatives
+
+| Image | Text alternative | Source |
+| --- | --- | --- |
+| Hero photo | Smiling person with glasses and a denim shirt working at a laptop, with sticky notes on the wall behind. | Draft by the agent from the visible content ([D-29](decisions.md#header-and-hero)), pending review. Used in T-04 |
+| Logo | Luma | The wordmark text |
+| Hero avatars, rating stars, menu icon, peach shape, light circle | Empty (decorative) | The adjacent text or the button name carries the meaning |
+
+Other images: pending.
 
 ## Checklist
 
@@ -352,10 +391,10 @@ Display sizes are estimates read from the references at the confirmed 2x scale. 
 ### Images, icons and exports
 
 - [x] Logo exported (SVG, dark and light)
-- [ ] Images exported: collage, testimonial avatar and final call to action avatars received; hero and featured photos need clean re-exports; hero avatars missing
-- [ ] Icons and illustrations exported: steps, contact icons and final call to action decorations received; star, dark arrow, menu and quote missing
+- [ ] Images exported: collage, testimonial avatar, final call to action avatars, hero photo and hero avatars received; the featured photo needs a clean re-export
+- [ ] Icons and illustrations exported: steps, contact icons, final call to action decorations, star and menu icon received; the dark arrow and the quote are missing
 - [ ] Favicon and social preview image: not in the references
-- [ ] Text alternatives for images (source to be agreed)
+- [ ] Text alternatives for images: hero photo drafted ([Text alternatives](#text-alternatives)); the others pending
 
 ### Interactive states and menu
 
@@ -380,3 +419,4 @@ Display sizes are estimates read from the references at the confirmed 2x scale. 
 | 2026-11-18 | Asset exports from the Figma file, from a local folder authorized by the owner | Received and inventoried ([Assets to export](#assets-to-export)). |
 | 2026-11-18 | Four screenshots of the Figma file in view mode, shared by the owner in the conversation | Examined. They give the `Desktop/H1` text style, the `text-primary` color, and the dimensions that confirm the 2x scale. One canvas label (560 × 226) belongs to an unidentified selection and was not used. |
 | 2026-11-18 | Eight more screenshots of the Figma inspect panel, shared by the owner in the conversation | Examined. They give five more text styles, the `text-secondary` and `primary-blue` colors, the mobile content width and the primary button. |
+| 2026-11-18 | T-04 assets in the authorized asset folder: hero photo, hero avatars, menu icon and the replaced star icon | Checked and copied to `public/` with `logo-dark.svg`; the originals are unchanged ([Inventory](#inventory)). |

@@ -74,7 +74,7 @@ The criteria apply at the desktop and mobile references and at intermediate widt
 ### All sections
 
 - Texts match [design.md](design.md#copy-image), except where an approved decision says otherwise.
-- No horizontal scrolling between the narrowest supported width and the desktop reference width.
+- No horizontal scrolling from 320 px ([D-26](decisions.md#header-and-hero)) up to and beyond the desktop reference width.
 - Every link, button and form field can be reached and used with the keyboard, with a visible focus indicator.
 - Informative images have text alternatives. Decorative images and shapes are hidden from assistive technology.
 - The page has one `h1`, the hero heading, and the section headings follow a logical order.
@@ -83,16 +83,20 @@ The criteria apply at the desktop and mobile references and at intermediate widt
 
 - Desktop: logo, the four nav links, "Log in" and "Start learning" as in the reference, with the bottom border.
 - Mobile: logo and a menu button. The nav links stay hidden until the menu is opened.
-- The menu button is a `button` with an accessible name and exposes its expanded state (`aria-expanded`).
-- The navigation links are inside a `nav` landmark.
-- Open-menu behavior and link destinations follow Q-06 and Q-02.
+- The menu button is a `button` named "Menu" that exposes its state with `aria-expanded` and points to the panel with `aria-controls`.
+- The panel closes with the button, with Escape (focus returns to the button) and when a link is chosen (focus moves to the link's target, or to the menu button while the target does not exist yet). When the layout switches to desktop, the panel closes and focus is not left on a hidden element ([D-25](decisions.md#header-and-hero)).
+- The "Log in" message starts hidden every time the panel opens.
+- The navigation links are inside a `nav` landmark, and their destinations follow [D-23](decisions.md#header-and-hero).
+- "Log in" is a button that presents the accessible message "This is a demo. Sign-in is not available." without a network request or a new page ([D-24](decisions.md#header-and-hero)).
+- The header scrolls with the page.
 
 ### Hero
 
 - Eyebrow, heading, paragraph, both buttons, social proof, image and both floating cards are present.
 - Desktop: text left, image right. Mobile: image above the text, buttons full width and stacked, social proof centered.
 - The rating card exposes "4.9 avg rating" as text. The stars are decorative.
-- The hero image has a text alternative and is not lazy-loaded.
+- The hero image uses `next/image`, has a text alternative and is not lazy-loaded.
+- "Explore courses" and "See how it works" go to the destinations in [D-23](decisions.md#header-and-hero).
 
 ### Learning categories
 
