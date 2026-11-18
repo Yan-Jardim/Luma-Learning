@@ -34,7 +34,10 @@ Then open [http://localhost:3000](http://localhost:3000).
 | `npm run build` | Create a production build |
 | `npm run start` | Serve the production build |
 | `npm run lint` | Run ESLint |
+| `npx next typegen` | Generate the Next.js route types without a build or a server |
 | `npx tsc --noEmit` | Type-check the project |
+
+On a fresh checkout, run `npx next typegen` before `npx tsc --noEmit`. The route types (for example `LayoutProps`) are generated in `.next/types` and are not committed.
 
 ## Known security issue
 

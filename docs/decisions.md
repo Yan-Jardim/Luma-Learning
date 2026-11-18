@@ -52,9 +52,9 @@ These were approved by the owner on 2026-11-18, at the end of T-02.
 
 | ID | Decision | In repository |
 | --- | --- | --- |
-| D-20 | Fonts are loaded with `next/font/google`: Plus Jakarta Sans 800 and Inter 400, 600 and 700. Each confirmed text style ([design.md](design.md#type-styles)) is used on its own element. Other weights and uses stay pending verification. This consolidates the font part of P-02 and P-08, limited to the confirmed weights and styles. | Not yet. |
-| D-21 | The remaining colors sampled from the references are the initial color tokens, with their origin documented in [design.md](design.md#colors). Values confirmed in Figma take priority. This consolidates P-10. | Not yet. |
-| D-22 | Desktop container: 1120 px of content with 80 px side margins at the 1280 px reference. Accepted provisionally, and still an estimate. The margins are not fixed for every width, and the responsive behavior must be checked. | Not yet. |
+| D-20 | Fonts are loaded with `next/font/google`: Plus Jakarta Sans 800 and Inter 400, 600 and 700. Each confirmed text style ([design.md](design.md#type-styles)) is used on its own element. Other weights and uses stay pending verification. This consolidates the font part of P-02 and P-08, limited to the confirmed weights and styles. | Yes. Fonts in `src/app/layout.tsx`; Inter is the default family, and the six `type-*` utilities are in `src/app/globals.css`. |
+| D-21 | The remaining colors sampled from the references are the initial color tokens, with their origin documented in [design.md](design.md#colors). Values confirmed in Figma take priority. This consolidates P-10. | Yes. Color tokens in `src/app/globals.css`; names in [design.md](design.md#colors). |
+| D-22 | Desktop container: 1120 px of content with 80 px side margins at the 1280 px reference. Accepted provisionally, and still an estimate. The margins are not fixed for every width, and the responsive behavior must be checked. | Yes. `page-container` utility in `src/app/globals.css`. The side gutters grow linearly from 20 px at 402 px to 80 px at 1280 px and stay at 20 or 80 px outside that range. |
 
 ## Proposals
 
