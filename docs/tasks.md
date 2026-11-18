@@ -1,0 +1,32 @@
+# Tasks
+
+Last updated: 2026-11-18.
+
+## Status
+
+Planned → In progress → Ready for review → Validated
+
+- **Planned:** not started.
+- **In progress:** being worked on as an approved task.
+- **Ready for review:** done and checked by the agent, waiting for the owner's review.
+- **Validated:** reviewed and accepted by the owner. The agent records this status only after an explicit instruction from the owner.
+
+## List
+
+| ID | Task | Status | Depends on |
+| --- | --- | --- | --- |
+| T-01 | Planning and documentation review | Validated | |
+| T-02 | Check the Figma file and the assets | Planned | Q-01, [design.md](design.md) |
+| T-03 | Visual foundation | Planned | T-02 |
+| T-04 | Header and hero | Planned | T-03, Q-02, Q-03, Q-06 |
+| T-05 | Learning categories, featured course and "How it works" | Planned | T-03, Q-04 |
+| T-06 | Testimonial and community | Planned | T-03 |
+| T-07 | Contact, final call to action and footer | Planned | T-03, Q-02, Q-05 |
+| T-08 | Integrated review of interactions and accessibility | Planned | T-04 to T-07 |
+| T-09 | Visual check on desktop, mobile and intermediate widths | Planned | T-08 |
+| T-10 | Re-evaluate the security issue (README, "Known security issue") | Planned | |
+| T-11 | Final README (including D-07), publishing and demo video, as listed in [Delivery requirements](spec.md#delivery-requirements) | Planned | T-09, T-10, Q-07, Q-09 |
+
+Question IDs (Q-xx) and decision IDs (D-xx) refer to [decisions.md](decisions.md).
+
+T-01 was validated by the owner's explicit approval on 2026-11-18. The approval covers the initial documentation only, not the pending proposals or any implementation.
