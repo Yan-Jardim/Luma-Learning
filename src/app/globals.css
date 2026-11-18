@@ -45,6 +45,12 @@
   body {
     color: var(--color-text-primary);
   }
+
+  /* Visible focus for keyboard users (docs/spec.md). Sections on a blue background may override it. */
+  :focus-visible {
+    outline: 2px solid var(--color-primary-blue);
+    outline-offset: 2px;
+  }
 }
 
 /*
