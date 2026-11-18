@@ -147,25 +147,27 @@ The texts below are identical on desktop and mobile unless a note says otherwise
 
 Sampled from PNG pixels (Image), except where a Figma variable is named. Sampled values can be shifted by color profiles and antialiasing. All of them are the initial color tokens, and values confirmed in Figma take priority ([D-21](decisions.md#visual-foundation)).
 
-| Color | Observed use |
-| --- | --- |
-| `#F9F8F3` | Cream background (header, hero, how it works, community), info cards, form inputs |
-| `#FFFFFF` | White background (categories, testimonial, contact), cards, secondary buttons, floating cards |
-| `#171B2C` | Headings and strong text; footer background. **Figma:** variable `text-primary`, seen on the desktop H1 |
-| `#656770` | Body paragraphs. **Figma:** variable `text-secondary`, seen on the mobile hero paragraph |
-| `#6D7384` | Step labels |
-| `#3157F6` | Primary buttons, eyebrows, links, featured background, metrics, quote mark, icons. **Figma:** variable `primary-blue`, seen on the primary button and the overline |
-| `#E2E8FF` | Number badges, icon tiles, light circles (hero, step 01, community collage) |
-| `#DBDFEB` | Borders and dividers (header, cards, secondary buttons, step connectors, metrics divider) |
-| `#FFEE7E` | "FEATURED COURSE" badge, "View course" button, rating stars |
-| `#FFF1C2` | Final call to action background, step 03 square |
-| `#FFCB9F` | Peach shapes (hero, step 02 on desktop, final call to action) |
-| `#FF704D` | Step 02 circle |
-| `#E9D659` | Step 03 circle |
-| `#9E9FAA` | Footer links |
-| `#E7E7EC` | Footer headings |
-| `#5B5D68` | Footer divider |
-| `#FAE4DB` | Step 02 square, mobile only (divergence 4) |
+The token column gives the Tailwind color name defined in `src/app/globals.css` (for example `bg-cream`). Names of Figma variables are kept; the other names are project names, not Figma names.
+
+| Color | Token | Observed use |
+| --- | --- | --- |
+| `#F9F8F3` | `cream` | Cream background (header, hero, how it works, community), info cards, form inputs |
+| `#FFFFFF` | `white` (Tailwind default) | White background (categories, testimonial, contact), cards, secondary buttons, floating cards |
+| `#171B2C` | `text-primary` | Headings and strong text; footer background. **Figma:** variable `text-primary`, seen on the desktop H1 |
+| `#656770` | `text-secondary` | Body paragraphs. **Figma:** variable `text-secondary`, seen on the mobile hero paragraph |
+| `#6D7384` | `label-gray` | Step labels |
+| `#3157F6` | `primary-blue` | Primary buttons, eyebrows, links, featured background, metrics, quote mark, icons. **Figma:** variable `primary-blue`, seen on the primary button and the overline |
+| `#E2E8FF` | `blue-tint` | Number badges, icon tiles, light circles (hero, step 01, community collage) |
+| `#DBDFEB` | `line` | Borders and dividers (header, cards, secondary buttons, step connectors, metrics divider) |
+| `#FFEE7E` | `yellow` | "FEATURED COURSE" badge, "View course" button, rating stars |
+| `#FFF1C2` | `yellow-tint` | Final call to action background, step 03 square |
+| `#FFCB9F` | `peach` | Peach shapes (hero, step 02 on desktop, final call to action) |
+| `#FF704D` | `coral` | Step 02 circle |
+| `#E9D659` | `mustard` | Step 03 circle |
+| `#9E9FAA` | `footer-link` | Footer links |
+| `#E7E7EC` | `footer-heading` | Footer headings |
+| `#5B5D68` | `footer-divider` | Footer divider |
+| `#FAE4DB` | `peach-tint` | Step 02 square, mobile only (divergence 4) |
 
 ## Type styles
 
@@ -174,14 +176,16 @@ Sampled from PNG pixels (Image), except where a Figma variable is named. Sampled
 
 Confirmed styles (Figma):
 
-| Style | Family | Weight | Size / line height | Letter spacing | Seen on |
-| --- | --- | --- | --- | --- | --- |
-| `Desktop/H1` | Plus Jakarta Sans | 800 | 64 / 70 px | -1.6 px | Hero heading (layer 560 × 210) |
-| `Mobile/H1` | Plus Jakarta Sans | 800 | 40 / 44 px | -1 px | Hero heading (layer 362 × 132) |
-| `Desktop/subtitle 1` | Inter | 400 | 18 / 28 px | 0 | Hero paragraph (layer 480 × 84) |
-| `Mobile/subtitle 1` | Inter | 400 | 16 / 26 px | 0 | Hero paragraph (layer 362 × 104) |
-| `Desktop/body 1` | Inter | 700 | 14 / 24 px | 0 | "See how it works" button label, centered |
-| `Desktop/Overline` | Inter | 600 | 12 / 16 px | 1.44 px, uppercase | Eyebrow (layer 193 × 16) |
+| Style | Family | Weight | Size / line height | Letter spacing | Seen on | Utility |
+| --- | --- | --- | --- | --- | --- | --- |
+| `Desktop/H1` | Plus Jakarta Sans | 800 | 64 / 70 px | -1.6 px | Hero heading (layer 560 × 210) | `type-desktop-h1` |
+| `Mobile/H1` | Plus Jakarta Sans | 800 | 40 / 44 px | -1 px | Hero heading (layer 362 × 132) | `type-mobile-h1` |
+| `Desktop/subtitle 1` | Inter | 400 | 18 / 28 px | 0 | Hero paragraph (layer 480 × 84) | `type-desktop-subtitle-1` |
+| `Mobile/subtitle 1` | Inter | 400 | 16 / 26 px | 0 | Hero paragraph (layer 362 × 104) | `type-mobile-subtitle-1` |
+| `Desktop/body 1` | Inter | 700 | 14 / 24 px | 0 | "See how it works" button label, centered | `type-desktop-body-1` |
+| `Desktop/Overline` | Inter | 600 | 12 / 16 px | 1.44 px, uppercase | Eyebrow (layer 193 × 16) | `type-desktop-overline` |
+
+The utilities are defined in `src/app/globals.css`. They set family, weight, size, line height and letter spacing; color is set separately.
 
 The eyebrow text is stored as "Learn at your own pace". The style turns it into uppercase.
 

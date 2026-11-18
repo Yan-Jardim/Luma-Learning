@@ -17,7 +17,7 @@ Planned → In progress → Ready for review → Validated
 | --- | --- | --- | --- |
 | T-01 | Planning and documentation review | Validated | |
 | T-02 | Check the Figma file and the assets | Validated | [design.md](design.md) |
-| T-03 | Visual foundation | Planned | T-02 (inputs decided in D-20, D-21 and D-22) |
+| T-03 | Visual foundation | Validated | T-02 (inputs decided in D-20, D-21 and D-22) |
 | T-04 | Header and hero | Planned | T-03, Q-02, Q-03, Q-06, Q-10, Q-11, Q-18, Q-19 |
 | T-05 | Learning categories, featured course and "How it works" | Planned | T-03, Q-04, Q-10, Q-13, Q-14, Q-18 |
 | T-06 | Testimonial and community | Planned | T-03, Q-10, Q-15, Q-16, Q-18 |
@@ -32,6 +32,8 @@ Question IDs (Q-xx) and decision IDs (D-xx) refer to [decisions.md](decisions.md
 T-01 was validated by the owner's explicit approval on 2026-11-18. The approval covers the initial documentation only, not the pending proposals or any implementation.
 
 T-02 was validated by the owner's explicit approval on 2026-11-18.
+
+T-03 was validated by the owner's explicit approval on 2026-11-18.
 
 ## Blockers
 
