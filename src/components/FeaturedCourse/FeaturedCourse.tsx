@@ -1,20 +1,20 @@
 import Image from "next/image";
+import { DemoMessageButton } from "@/components/DemoMessageButton/DemoMessageButton";
 import { courseMessage } from "@/content/messages";
 import { sectionIds } from "@/content/navigation";
-import { accentButton, demoMessage } from "./button-styles";
-import { DemoMessageButton } from "./DemoMessageButton";
+import { accentButton } from "@/styles/buttons.styles";
+import { sectionContainer } from "@/styles/section.styles";
+import { browseLink, featuredBadge, viewCourseMessage } from "./FeaturedCourse.styles";
 
 const pills = ["8 lessons", "2h 40min", "Intermediate"];
 
 export function FeaturedCourse() {
   return (
     <section aria-labelledby="featured-heading" className="bg-primary-blue text-white wrap-break-word">
-      <div className="page-container py-[60px] lg:py-[100px]">
+      <div className={sectionContainer}>
         <div className="mx-auto max-w-[560px] lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-[minmax(0,538fr)_minmax(0,522fr)] lg:items-center lg:gap-x-[60px]">
           <div className="relative">
-            <p className="absolute -top-[12px] -left-[12px] z-10 rounded-md bg-yellow px-3 py-1.5 type-desktop-overline text-text-primary">
-              Featured course
-            </p>
+            <p className={featuredBadge}>Featured course</p>
             <Image
               src="/images/featured-course-photo@2x.png"
               alt="Person working at a table with papers, tools and trays of colored material samples."
@@ -51,14 +51,11 @@ export function FeaturedCourse() {
               <DemoMessageButton
                 message={courseMessage}
                 className={`${accentButton} w-full focus-visible:outline-white lg:w-auto`}
-                messageClassName={`${demoMessage} pointer-events-none absolute bottom-full left-0 z-10 mb-2 max-w-[min(15rem,100cqw)]`}
+                messageClassName={viewCourseMessage}
               >
                 View course
               </DemoMessageButton>
-              <a
-                href={`#${sectionIds.categories}`}
-                className="inline-flex items-center gap-3 self-center pt-[15px] pb-[9px] type-desktop-body-1 text-white focus-visible:outline-white lg:self-auto lg:py-3"
-              >
+              <a href={`#${sectionIds.categories}`} className={browseLink}>
                 Browse all courses
                 <span aria-hidden="true" className="icon-arrow-right -translate-y-[2px]" />
               </a>

@@ -10,5 +10,3 @@ export const accentButton = `${base} bg-yellow px-7 py-3.5 text-text-primary`;
 export const primaryButtonWrapping = `${wrapping} ${primaryLook}`;
 export const secondaryButtonWrapping = `${wrapping} ${secondaryLook} px-[29px]`;
 export const secondaryButtonWrappingCompact = `${wrapping} ${secondaryLook} px-7`;
-
-export const demoMessage = "w-max rounded-lg bg-text-primary px-3 py-2 text-sm leading-5 text-white";

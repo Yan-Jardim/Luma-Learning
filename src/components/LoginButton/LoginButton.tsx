@@ -1,11 +1,7 @@
-import { DemoMessageButton } from "./DemoMessageButton";
+import { DemoMessageButton } from "@/components/DemoMessageButton/DemoMessageButton";
+import type { LoginButtonProps } from "./LoginButton.types";
 
 const message = "This is a demo. Sign-in is not available.";
-
-type LoginButtonProps = {
-  className: string;
-  messageClassName: string;
-};
 
 export function LoginButton({ className, messageClassName }: LoginButtonProps) {
   return (

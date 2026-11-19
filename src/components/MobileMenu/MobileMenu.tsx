@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { LoginButton } from "@/components/LoginButton/LoginButton";
 import { navItems, startLearning } from "@/content/navigation";
-import { primaryButton } from "./button-styles";
-import { LoginButton } from "./LoginButton";
+import { primaryButton } from "@/styles/buttons.styles";
+import { focusLinkTarget } from "./MobileMenu.utils";
 
 const desktopQuery = "(min-width: 64rem)";
 const panelId = "mobile-menu";
@@ -42,13 +43,7 @@ export function MobileMenu() {
 
   const selectLink = (href: string) => {
     setOpen(false);
-    const target = href.startsWith("#") ? document.getElementById(href.slice(1)) : null;
-    if (!target) {
-      buttonRef.current?.focus();
-      return;
-    }
-    if (!target.hasAttribute("tabindex")) target.setAttribute("tabindex", "-1");
-    target.focus();
+    if (!focusLinkTarget(href)) buttonRef.current?.focus();
   };
 
   return (

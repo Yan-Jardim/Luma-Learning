@@ -1,6 +1,8 @@
 import Image, { getImageProps } from "next/image";
 import { sectionIds } from "@/content/navigation";
-import { primaryButtonWrapping, secondaryButtonWrappingCompact } from "./button-styles";
+import { primaryButtonWrapping, secondaryButtonWrappingCompact } from "@/styles/buttons.styles";
+import { sectionContainer, sectionOverline } from "@/styles/section.styles";
+import { floatingCard } from "./Hero.styles";
 
 const photoAlt =
   "Smiling person with glasses and a denim shirt working at a laptop, with sticky notes on the wall behind.";
@@ -24,10 +26,10 @@ const stars = [1, 2, 3, 4, 5];
 export function Hero() {
   return (
     <section aria-labelledby="hero-heading" className="overflow-x-clip bg-cream wrap-break-word">
-      <div className="page-container py-[60px] lg:py-[100px]">
+      <div className={sectionContainer}>
         <div className="mx-auto flex max-w-[560px] flex-col lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-[minmax(0,560fr)_minmax(0,500fr)] lg:items-start lg:gap-x-[60px]">
           <div className="mt-10 lg:mt-0">
-            <p className="type-desktop-overline text-primary-blue">Learn at your own pace</p>
+            <p className={sectionOverline}>Learn at your own pace</p>
             <h1
               id="hero-heading"
               className="mt-4 type-mobile-h1 text-text-primary lg:type-desktop-h1"
@@ -78,14 +80,14 @@ export function Hero() {
               </picture>
             </div>
 
-            <div className="absolute top-1.5 left-[-8px] flex items-center gap-2.5 rounded-xl bg-white px-4 py-3 shadow-card lg:top-4 lg:left-[-22px] @max-[11em]:static @max-[11em]:mt-3 @max-[11em]:flex-wrap">
+            <div className={`${floatingCard} top-1.5 left-[-8px] px-4 lg:top-4 lg:left-[-22px]`}>
               <span className="rounded-md bg-blue-tint px-1.5 py-1 text-sm leading-6 font-bold text-primary-blue">
                 120+
               </span>
               <span className="text-sm leading-6 text-text-primary">expert-led courses</span>
             </div>
 
-            <div className="absolute right-[-19px] bottom-9 flex items-center gap-2.5 rounded-xl bg-white py-3 pr-4 pl-[18px] shadow-card lg:right-[-57px] @max-[11em]:static @max-[11em]:mt-3 @max-[11em]:flex-wrap">
+            <div className={`${floatingCard} right-[-19px] bottom-9 pr-4 pl-[18px] lg:right-[-57px]`}>
               <span aria-hidden="true" className="flex shrink-0 gap-1.5">
                 {stars.map((star) => (
                   <Image key={star} src="/icons/icon-star.svg" alt="" width={14} height={14} className="-mx-[2px] -mt-[1px] -mb-[3px] max-w-none" />

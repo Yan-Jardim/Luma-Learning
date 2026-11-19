@@ -1,31 +1,9 @@
 import Image from "next/image";
-import { sectionIds } from "@/content/navigation";
-import { DemoMessageButton } from "./DemoMessageButton";
+import { DemoMessageButton } from "@/components/DemoMessageButton/DemoMessageButton";
+import { footerGroups } from "./Footer.data";
+import { footerItem, footerMessage } from "./Footer.styles";
 
 const pageMessage = "This is a demo. This page is not available.";
-const itemClass = "text-left text-sm leading-6 text-footer-link focus-visible:outline-white";
-
-type Item = { label: string; href?: string };
-
-const groups: { heading: string; items: Item[] }[] = [
-  {
-    heading: "Explore",
-    items: [
-      { label: "Courses", href: `#${sectionIds.categories}` },
-      { label: "Categories", href: `#${sectionIds.categories}` },
-      { label: "Instructors" },
-      { label: "For Teams", href: `#${sectionIds.contact}` },
-    ],
-  },
-  {
-    heading: "Company",
-    items: [{ label: "About", href: `#${sectionIds.howItWorks}` }, { label: "Careers" }, { label: "Journal" }],
-  },
-  {
-    heading: "Support",
-    items: [{ label: "Help Center" }, { label: "Contact", href: `#${sectionIds.contact}` }, { label: "Terms" }, { label: "Privacy" }],
-  },
-];
 
 export function Footer() {
   return (
@@ -43,14 +21,14 @@ export function Footer() {
             aria-label="Footer"
             className="mt-10 grid grid-cols-1 gap-x-10 gap-y-10 max-lg:@min-[17.5rem]:grid-cols-2 lg:mt-0 lg:grid-cols-[repeat(3,minmax(min-content,192px))] lg:gap-x-12"
           >
-            {groups.map((group) => (
+            {footerGroups.map((group) => (
               <div key={group.heading} className="@container">
                 <h2 className="type-desktop-overline text-footer-heading">{group.heading}</h2>
                 <ul className="mt-4 space-y-3">
                   {group.items.map((item) => (
                     <li key={item.label} className="flex">
                       {item.href ? (
-                        <a href={item.href} className={itemClass}>
+                        <a href={item.href} className={footerItem}>
                           {item.label}
                         </a>
                       ) : (
@@ -58,8 +36,8 @@ export function Footer() {
                           message={pageMessage}
                           closeOnFocusOut
                           wrapperClassName="flex"
-                          className={itemClass}
-                          messageClassName="pointer-events-none absolute bottom-full left-0 z-10 mb-2 w-max max-w-[min(15rem,100cqw)] rounded-lg bg-white px-3 py-2 text-sm leading-5 text-text-primary"
+                          className={footerItem}
+                          messageClassName={footerMessage}
                         >
                           {item.label}
                         </DemoMessageButton>

@@ -60,8 +60,9 @@ On a fresh checkout, run `npx next typegen` before `npx tsc --noEmit`. The route
 ## Project structure
 
 - `src/app/`: root layout (fonts, metadata), the page, `globals.css` (design tokens and text styles), and the icons and sharing image (`icon.svg`, `favicon.ico`, `apple-icon.png`, `opengraph-image.png`).
-- `src/components/`: one component per section, plus the shared pieces (`DemoMessageButton`, `MobileMenu`, button styles).
-- `src/content/`: shared data (navigation items and section IDs, demo messages).
+- `src/components/`: one folder per component, named after it (for example `Header/Header.tsx`): the page sections and the shared pieces (`DemoMessageButton`, `LoginButton`, `MobileMenu`, `ContactForm`). Next to a component, when it needs them: `.data.ts` for static lists, `.styles.ts` for long or repeated Tailwind class sets, `.types.ts` for its own types, and `.utils.ts` for helpers that do not depend on React. Only `DemoMessageButton`, `MobileMenu` and `ContactForm` are client components.
+- `src/styles/`: Tailwind class sets shared by several components (buttons, demo messages, section container and headings).
+- `src/content/`: shared data (navigation items and section IDs, the demo message of the course actions).
 - `public/`: logos, icons and images, as exported from the design file (2x images and SVG files).
 - `docs/`: specification, design inputs, decisions and the task list with the verification records.
 

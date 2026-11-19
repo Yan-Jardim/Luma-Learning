@@ -1,18 +1,17 @@
 import Image from "next/image";
+import { ContactForm } from "@/components/ContactForm/ContactForm";
 import { sectionIds } from "@/content/navigation";
-import { ContactForm } from "./ContactForm";
+import { sectionContainer, sectionHeading, sectionOverline } from "@/styles/section.styles";
+import { formCard, infoItem } from "./Contact.styles";
 
 export function Contact() {
   return (
     <section id={sectionIds.contact} aria-labelledby="contact-heading" className="bg-white wrap-break-word">
-      <div className="page-container py-[60px] lg:py-[100px]">
+      <div className={sectionContainer}>
         <div className="mx-auto max-w-[560px] lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-[minmax(0,480fr)_minmax(0,540fr)] lg:items-center lg:gap-x-[100px]">
           <div>
-            <p className="type-desktop-overline text-primary-blue">Contact</p>
-            <h2
-              id="contact-heading"
-              className="mt-4 type-section-heading-mobile text-text-primary lg:type-section-heading-desktop"
-            >
+            <p className={sectionOverline}>Contact</p>
+            <h2 id="contact-heading" className={`mt-4 ${sectionHeading}`}>
               Get in touch
             </h2>
             <p className="mt-4 type-body-sm text-text-secondary lg:type-desktop-subtitle-1">
@@ -21,14 +20,14 @@ export function Contact() {
             </p>
 
             <ul className="mt-8 space-y-4 lg:mt-10">
-              <li className="flex items-center gap-4 rounded-xl bg-cream p-4 lg:p-5">
+              <li className={infoItem}>
                 <Image src="/icons/icon-message.svg" alt="" width={40} height={40} className="shrink-0" />
                 <div className="min-w-0">
                   <p className="type-body-sm text-text-primary">Email</p>
                   <p className="mt-0.5 type-body-sm text-primary-blue lg:mt-1">contact@luma.com</p>
                 </div>
               </li>
-              <li className="flex items-center gap-4 rounded-xl bg-cream p-4 lg:p-5">
+              <li className={infoItem}>
                 <span className="flex size-[40px] shrink-0 items-center justify-center rounded-[8px] bg-blue-tint">
                   <Image src="/icons/icon-clock.svg" alt="" width={20} height={20} />
                 </span>
@@ -40,7 +39,7 @@ export function Contact() {
             </ul>
           </div>
 
-          <div className="mt-10 rounded-2xl border border-line bg-white px-[19px] pt-[25px] pb-[23px] shadow-card lg:mt-0 lg:px-[39px] lg:pt-[41px] lg:pb-[39px]">
+          <div className={formCard}>
             <h3 className="type-card-title text-text-primary">Contact us</h3>
             <p className="mt-2.5 type-body-sm text-text-secondary">
               Fill out the fields and we will get in touch.
