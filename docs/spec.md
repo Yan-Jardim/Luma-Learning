@@ -125,14 +125,16 @@ The criteria apply at the desktop and mobile references and at intermediate widt
 ### Testimonial and metrics
 
 - Quote, author avatar, name and role, and the three metrics with their captions.
-- The quote is marked up as a quotation with its attribution.
-- Desktop: quote left, metrics stacked on the right after a vertical divider. Mobile: quote, then the metrics in one row without a divider.
+- The quote is marked up as a quotation with its attribution. The quote mark is decorative ([D-49](decisions.md#testimonial-and-community)).
+- Desktop: quote left, metrics stacked on the right after a vertical divider. Mobile: quote, then the metrics in one row without a divider; they stack when there is no room for three columns ([D-47](decisions.md#testimonial-and-community)).
+- The metric numbers are not headings ([D-46](decisions.md#testimonial-and-community)).
 
 ### Community
 
 - Eyebrow, heading, paragraph, button and the photo collage over the light circle.
 - Desktop: text left, collage right. Mobile: text and button above the collage.
-- The paragraph text and color follow Q-16 and Q-15.
+- The paragraph text and color follow [D-43](decisions.md#testimonial-and-community); the collage is one image that includes the light circle ([D-44](decisions.md#testimonial-and-community)).
+- "Explore teachers and students" presents the demo message of [D-45](decisions.md#testimonial-and-community) and is the target of the next Tab after `#community`.
 
 ### Contact
 

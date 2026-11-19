@@ -1,5 +1,5 @@
 // Shared navigation data (D-27). Destinations approved in D-23 (docs/decisions.md).
-// `#categories` and `#how-it-works` exist since T-05; `#community` and `#contact` come in T-06 and T-07.
+// `#categories` and `#how-it-works` exist since T-05 and `#community` since T-06; `#contact` comes in T-07.
 
 export const sectionIds = {
   categories: "categories",

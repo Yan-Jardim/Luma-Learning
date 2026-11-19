@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-// Families and weights approved in D-20 and D-32 (docs/decisions.md).
+// Families and weights approved in D-20, D-32 and D-46 (docs/decisions.md).
 const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
@@ -11,7 +11,7 @@ const inter = Inter({
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["700", "800"],
+  weight: ["600", "700", "800"],
   variable: "--font-plus-jakarta-sans",
 });
 

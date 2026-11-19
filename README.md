@@ -39,6 +39,10 @@ Then open [http://localhost:3000](http://localhost:3000).
 
 On a fresh checkout, run `npx next typegen` before `npx tsc --noEmit`. The route types (for example `LayoutProps`) are generated in `.next/types` and are not committed.
 
+## Known limitations
+
+- **Community paragraph:** the "Meet international students & teachers" section shows placeholder Latin text ("Morbi sit egestas dignissim pharetra…"). It is kept exactly as in both design references, because no final copy was provided and copy is not invented for this project.
+
 ## Known security issue
 
 Audit date: 2026-11-18.
