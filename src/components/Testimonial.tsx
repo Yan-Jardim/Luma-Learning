@@ -1,14 +1,5 @@
 import Image from "next/image";
 
-// Testimonial and metrics (T-06). Copy from docs/design.md. The quote, name and role styles are
-// estimates (D-46); the metric numbers reuse the H1 values as an inference, and they are not
-// headings. Sizes and spacing are estimates from the references.
-// The quote mark is decorative (D-49): empty alt, so assistive technologies read the quote once.
-// Below 1024 px the section is one centered column, at most 560 px wide, as the hero, the featured
-// course and the community are (D-37, D-40). The metrics form one row of three on mobile. When
-// their container is narrower than 19em (a 320 px screen, or enlarged text), they stack in one
-// column, so no number is cut (D-47).
-
 const metrics = [
   { value: "24K+", caption: "active learners" },
   { value: "120+", caption: "expert-led courses" },
@@ -36,7 +27,6 @@ export function Testimonial() {
                 height={48}
                 className="size-12 shrink-0 rounded-full"
               />
-              {/* min-w-0: with very large text the name and role wrap instead of leaving the window (D-58). */}
               <span className="min-w-0">
                 <span className="block text-base leading-6 font-bold text-text-primary">Alex Morgan</span>{" "}
                 <span className="mt-0.5 block type-body-sm text-text-secondary">Product Manager</span>

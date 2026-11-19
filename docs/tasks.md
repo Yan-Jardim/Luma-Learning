@@ -25,7 +25,7 @@ Planned → In progress → Ready for review → Validated
 | T-08 | Integrated review of interactions and accessibility | Validated | T-04 to T-07 (decisions D-57 to D-60) |
 | T-09 | Visual check on desktop, mobile and intermediate widths | Validated | T-08; Q-18, Q-21, Q-22 and Q-26 resolved by D-61 and D-62 |
 | T-10 | Re-evaluate the security issue (README, now "Security audit") | Validated | |
-| T-11 | Final README (including D-07), publishing and demo video, as listed in [Delivery requirements](spec.md#delivery-requirements) | Planned | T-09, T-10, Q-07, Q-09 |
+| T-11 | Final README (including D-07), publishing and demo video, as listed in [Delivery requirements](spec.md#delivery-requirements) | In progress | T-09, T-10; Q-07, Q-08 and Q-09 resolved by D-63 to D-65 |
 
 Question IDs (Q-xx) and decision IDs (D-xx) refer to [decisions.md](decisions.md).
 
@@ -49,15 +49,25 @@ T-09 was validated by the owner's explicit approval on 2026-11-19. The approval 
 
 T-10 was validated by the owner's explicit approval on 2026-11-19: the advisory recorded in the README was withdrawn (not fixed), both audits report 0 vulnerabilities, and no dependency was changed ([verification record](#t-10-security-re-evaluation-2026-11-19)). The approval keeps the limits recorded there. `npm audit` must be run again before publishing (T-11).
 
+T-11 is in progress since 2026-11-19 ([preparation record](#t-11-preparation-2026-11-19)). The README is drafted, and the metadata, icons and sharing image are in place (D-63 to D-65 resolve Q-08, Q-07 and Q-09); the deployment, the final URL, the demo video and the time spent are pending. The delivery is not complete until the page is published and the final checks are run on it.
+
 ## Open items
 
-No item of T-01 to T-10 remains open. The items below belong to the next tasks, and validating a task does not resolve them.
+No item of T-01 to T-10 remains open. T-11 is in progress. The items below belong to the next tasks, and validating a task does not resolve them.
 
 ### Next tasks
 
-- [Q-07](decisions.md#open-questions): metadata content (description, social preview image and favicon; the page has no favicon yet, so `/favicon.ico` returns 404). Needed before T-11.
-- [Q-09](decisions.md#open-questions): publishing target. Needed before T-11.
-- [Q-08](decisions.md#open-questions): test tooling. Needed before any test is written.
+Pending for T-11, before it can be reviewed:
+
+- Create the Vercel project in the owner's account, connected to the repository, with production from `main` and the name `luma-learning-yan-jardim` if available (D-65); no paid domain.
+- Record the final URL, then decide whether to set `metadataBase` to it (Vercel already builds the image URLs from its own variables).
+- Confirm that the GitHub repository is public.
+- Run `npm audit` and `npm audit --omit=dev` again before publishing (T-10).
+- Check the published page: a manual check on real desktop and mobile browsers, the favicon, and the sharing preview with the final URL.
+- Add the live project and video links and the time spent to the README, provided by the owner.
+
+Other open item:
+
 - [Q-01](decisions.md#open-questions): exact values from the Figma file. Not blocking (owner decision, 2026-11-18).
 
 ### Limits of the checks
@@ -97,7 +107,7 @@ Checks run by the agent. They are not a human review.
 
 ### T-04, 2026-11-18
 
-- `npm run lint`, `npx next typegen`, `npx tsc --noEmit` and `npm run build`: passed.
+- `npm run lint`, `npx next typegen`, `npx tsc --noEmit` and `npm run build`: passed, also after the configuration comments were removed. The visual comparison was not repeated for that step, which changed no setting.
 - Chrome headless, production build: no horizontal scrolling at 320, 402, 768, 1024, 1280 and 1440 px. One `h1`, all images loaded, and the fonts loaded in Inter 400, 600 and 700 and Plus Jakarta Sans 800.
 - Comparison with the references at 402 and 1280 px (2x), by element boxes and by overlay. Layout boxes within about 1 px. The rating card was about 4 px narrower; after the adjustment it measures 1048.1–1257 px (reference 1048.5–1257) on desktop and 184.1–393 px (reference 184–393) on mobile. Line ends of some texts drift 1 to 2 px from font rendering.
 - Mobile menu, keyboard and mouse: Enter opens the panel and Tab reaches the first link. Escape closes it and returns focus to "Menu". A link without a target closes the panel and moves focus to "Menu". A link with a target (a temporary element injected in the browser for the test) moves focus to the target. Switching to 1280 px closes the panel without leaving focus on a hidden element.
@@ -336,3 +346,39 @@ Agent checks; not a human review.
 - Fix: none. The advisory was withdrawn, not fixed (no patched `picomatch` release exists), and no vulnerability is reported; no update, `npm audit fix`, downgrade or override was applied, and `package.json` and `package-lock.json` are unchanged (D-16).
 - `npm run lint`, `npx next typegen`, `npx tsc --noEmit` and `npm run build`: passed, on the unchanged dependencies.
 - Limits: the audit covers advisories known to the npm registry on 2026-11-19 for the installed packages; it does not inspect code bundled inside packages, and it cannot report unknown issues. The project is not declared free of vulnerabilities. Tools that read the NVD may still report CVE-2026-112366.
+
+### T-11 preparation, 2026-11-19
+
+Agent work; not a human review. No commit, push or deploy.
+
+- README rewritten in English: live project and video (placeholders until they exist), tech stack, requirements, installation, running, build and production, scripts, project structure, decisions, accessibility, the checks actually run and those not run, known limitations, the security audit approved in T-10 (unchanged), AI usage (D-07) and time spent (placeholder for the author). No URL, time or test was invented.
+- Proposal for Q-07 presented to the owner: title and description from the existing copy, a favicon built from the logo's own "l" and "." shapes, and a 1200 × 630 sharing image taken from the hero of the page; previews made outside the project. Nothing added to the project.
+- Checked in the installed Next.js 16.4.6: without `metadataBase`, social image URLs fall back to the Vercel system variables on Vercel, and to `localhost` (with a build warning) elsewhere.
+- Publishing and video requirements read from [Delivery requirements](spec.md#delivery-requirements); a short script for the demo video presented to the owner. The repository visibility was not queried (no GitHub CLI installed); the owner confirms it.
+- Not run in this step: the quality gates, because no code changed.
+
+### T-11 metadata and preparation for publishing, 2026-11-19
+
+Agent checks on the production build; not a human review. No commit, push or deploy.
+
+- Favicon legibility: the "l." drawn at the proposal's scale (1.2 times the logo) blurs at 16 px, because its edges fall between pixels; rounded to the pixel grid (the "l" 4 × 20 and the dot 4 × 4 in a 32 px box), the "l" is 2 px wide and the dot 2 × 2 px at 16 px, sharp on white and in light and dark tab mock-ups. The rounded version is used (D-64).
+- Files in `src/app/`: `icon.svg`; `favicon.ico` with PNG images of 16, 32 and 48 px (transparent outside the rounded square); `apple-icon.png` 180 × 180 (square); `opengraph-image.png` 1200 × 630 (296,821 bytes), captured from the hero of the production build without the header; `opengraph-image.alt.txt`.
+- Head of the page: the approved title and description; `og:title`, `og:description`, `og:site_name`, `og:type` and `og:image` with its size, type and alt text; `twitter:card` `summary_large_image` with the same title, description and image (inherited from Open Graph); icon links for `/favicon.ico`, `/icon.svg` and `/apple-icon.png`. `og:image` uses `http://localhost:3000` until `metadataBase` is set, and the build prints the matching warning; in the installed Next.js 16.4.6, a Vercel build uses the deployment's system variables instead.
+- `/favicon.ico`, `/icon.svg`, `/apple-icon.png` and `/opengraph-image.png` answer 200 with the right content types. No request fails on page load at 1280 and 402 px; the earlier `/favicon.ico` 404 is resolved.
+- Layout: the section boxes at 1280 and 402 px are identical to those of the T-09 full-page comparison.
+- Development server (the owner's, port 3000), clean loads only, 10 of 10: no console warning, error, exception or failed request.
+- `npm run lint`, `npx next typegen`, `npx tsc --noEmit` and `npm run build`: passed (with the `metadataBase` warning above).
+
+### T-11 cursor and code cleanup, 2026-11-19
+
+Requested by the owner after the local review, in which the rest of the visuals and behavior was approved. Agent checks; not a human review. No commit, push or deploy.
+
+- Cursor (D-66): `button:not(:disabled) { cursor: pointer; }` in the base layer of `globals.css`. Tailwind CSS 4 gives buttons the default cursor; links already had the pointer.
+- Comments: the explanatory comments were removed from the application code (`src/app/layout.tsx`, `globals.css` and `icon.svg`, `src/components/` and `src/content/`). The `"use client"` directives stay. There was no tool directive or license notice in `src/`. At the owner's request, the template comments of `next.config.ts` and `eslint.config.mjs` were removed too, with their settings unchanged. The generated `next-env.d.ts` was not changed. The reasons the comments gave are in docs/decisions.md and docs/design.md.
+- Removed as unused, after searching `src/` and the SVG files: the color tokens `peach-tint`, `coral` and `mustard` (the step circles are drawn by the SVG files, D-61); the `export` of the `NavItem` type; and the empty default values of `className` and `messageClassName` in `DemoMessageButton` and `LoginButton`: both props are now declared required, and the 8 callers set them (`tsc` checks it). `wrapperClassName` stays optional with an empty default, so no class list receives `undefined`.
+- Consolidated: the floating card shadow, repeated in `Hero` and `Contact`, became the `shadow-card` token; the look of the dark demo messages, repeated in `Header`, `Categories`, `FeaturedCourse`, `Community` and `FinalCta`, became `demoMessage` in `button-styles.ts`, next to the button styles. Positions stay in each component. The footer messages keep their own light colors.
+- Checked and kept: every file in `public/` is referenced, including the call to action and step files built from names in the code; the files in `src/app/` follow Next.js conventions (`icon.svg`, `favicon.ico`, `apple-icon.png`, `opengraph-image.png` and its alt text). In `MobileMenu`, the branch that focuses the menu button when a link has no target is not reached with the current links, but TypeScript requires the case, and it keeps focus visible; it was kept.
+- Regression check, production build, Chrome headless, same session before and after: 7 configurations (1280, 1024, 768, 402 and 320 px, and text at 200% at 402 and 1280 px), every element of the page, with its attributes, position, size and every computed style, plus the open state of each demo message, the mobile menu and its "Log in" message, and the form after a submission with fictitious values. Differences: `cursor` on the 16 buttons and the 5 elements inside them (and on "Log in" in the open menu); the class of the 3 card elements (`shadow-card`), with the same computed `box-shadow`; and the content hash in the `/icon.svg` link. Nothing else changed. Full-page captures at 1280 and 402 px are identical, byte for byte.
+- Cursor after the change, at 1280 and 402 px: pointer on the 16 buttons and the 5 elements inside them, and on the 15 links and the 2 elements inside them (as before); `auto` on the other 213 elements (text and containers) and on the other 31 images; `default` on the 3 labels; `text` on the 3 form fields.
+- Development server (the owner's, port 3000), clean loads only, 10 of 10: no console warning, error, exception or failed request; the served page has the pointer on all 16 buttons.
+- `npm run lint`, `npx next typegen`, `npx tsc --noEmit` and `npm run build`: passed.

@@ -1,11 +1,6 @@
 import Image from "next/image";
 import { sectionIds } from "@/content/navigation";
 
-// "How it works" (T-05). Text styles: confirmed (`type-desktop-*`) or estimated (D-31).
-// Spacing and the connector lines are estimates from the references (D-33).
-// Step 02 uses the desktop text and colors on every breakpoint (D-36).
-// `wrap-break-word` only breaks a word that does not fit its line (very large text on narrow screens).
-
 const steps = [
   {
     number: "01",
@@ -41,7 +36,6 @@ export function HowItWorks() {
           </h2>
         </div>
 
-        {/* --steps-gap also sizes the desktop connector, which runs from one icon center to the next. */}
         <ol className="mx-auto mt-10 max-w-[560px] lg:mt-[105px] lg:grid lg:max-w-none lg:grid-cols-3 lg:gap-x-(--steps-gap) lg:[--steps-gap:3rem] xl:[--steps-gap:5rem]">
           {steps.map((step, index) => (
             <li key={step.number} className={`relative ${index > 0 ? "pt-[76px] lg:pt-0" : ""}`}>

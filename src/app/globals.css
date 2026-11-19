@@ -1,45 +1,31 @@
 @import "tailwindcss";
 
-/*
- * Design tokens. Sources and evidence levels are documented in docs/design.md.
- */
-
-/* Fonts loaded in src/app/layout.tsx (D-20). Inter is the default family. */
 @theme inline {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-plus-jakarta-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 @theme {
-  /* Colors confirmed in Figma. The names match the Figma variables. */
   --color-text-primary: #171b2c;
   --color-text-secondary: #656770;
   --color-primary-blue: #3157f6;
 
-  /*
-   * Colors sampled from the reference PNGs (D-21). Not confirmed in Figma:
-   * a confirmed Figma value replaces the sampled one. White uses Tailwind's
-   * default `--color-white`.
-   */
   --color-cream: #f9f8f3;
   --color-line: #dbdfeb;
   --color-blue-tint: #e2e8ff;
   --color-yellow: #ffee7e;
   --color-yellow-tint: #fff1c2;
   --color-peach: #ffcb9f;
-  --color-peach-tint: #fae4db; /* Step 02 square in the mobile reference only; not used (D-36 keeps peach). */
-  --color-coral: #ff704d;
-  --color-mustard: #e9d659;
-  /* Sampled #6d7384, one level darker per channel for 4.5:1 on cream (D-59): 4.52:1 on cream, 4.80:1 on white. */
   --color-label-gray: #6c7283;
   --color-footer-link: #9e9faa;
   --color-footer-heading: #e7e7ec;
   --color-footer-divider: #5b5d68;
+
+  --shadow-card: 0 8px 24px rgba(23, 27, 44, 0.08);
 }
 
 @layer base {
   html {
-    /* Light design only: no automatic dark theme. */
     color-scheme: light;
   }
 
@@ -47,164 +33,138 @@
     color: var(--color-text-primary);
   }
 
-  /* Visible focus for keyboard users (docs/spec.md). Sections on a blue background may override it. */
   :focus-visible {
     outline: 2px solid var(--color-primary-blue);
     outline-offset: 2px;
   }
 
-  /*
-   * Sections focused only by script (the mobile menu moves focus to the chosen section, D-25)
-   * are not controls, so they get no outline. No control uses tabindex="-1": every control
-   * keeps the :focus-visible outline above.
-   */
   [tabindex="-1"]:focus {
     outline: none;
   }
+
+  button:not(:disabled) {
+    cursor: pointer;
+  }
 }
 
-/*
- * Text styles confirmed in Figma (docs/design.md, "Type styles").
- * Sizes use rem on a 16 px root; the Figma values are in the comments.
- * Styles that are not confirmed yet are intentionally missing.
- */
 @utility type-desktop-h1 {
   @apply font-display;
   font-weight: 800;
-  font-size: 4rem; /* 64px */
-  line-height: 4.375rem; /* 70px */
-  letter-spacing: -0.1rem; /* -1.6px */
+  font-size: 4rem;
+  line-height: 4.375rem;
+  letter-spacing: -0.1rem;
 }
 
 @utility type-mobile-h1 {
   @apply font-display;
   font-weight: 800;
-  font-size: 2.5rem; /* 40px */
-  line-height: 2.75rem; /* 44px */
-  letter-spacing: -0.0625rem; /* -1px */
+  font-size: 2.5rem;
+  line-height: 2.75rem;
+  letter-spacing: -0.0625rem;
 }
 
 @utility type-desktop-subtitle-1 {
   @apply font-sans;
   font-weight: 400;
-  font-size: 1.125rem; /* 18px */
-  line-height: 1.75rem; /* 28px */
+  font-size: 1.125rem;
+  line-height: 1.75rem;
   letter-spacing: 0;
 }
 
 @utility type-mobile-subtitle-1 {
   @apply font-sans;
   font-weight: 400;
-  font-size: 1rem; /* 16px */
-  line-height: 1.625rem; /* 26px */
+  font-size: 1rem;
+  line-height: 1.625rem;
   letter-spacing: 0;
 }
 
 @utility type-desktop-body-1 {
   @apply font-sans;
   font-weight: 700;
-  font-size: 0.875rem; /* 14px */
-  line-height: 1.5rem; /* 24px */
+  font-size: 0.875rem;
+  line-height: 1.5rem;
   letter-spacing: 0;
 }
 
 @utility type-desktop-overline {
   @apply font-sans;
   font-weight: 600;
-  font-size: 0.75rem; /* 12px */
-  line-height: 1rem; /* 16px */
-  letter-spacing: 0.09rem; /* 1.44px */
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: 0.09rem;
   text-transform: uppercase;
 }
 
-/*
- * Estimated text styles (D-31): measured on the references, not confirmed in Figma.
- * Values are listed in docs/design.md, "Estimated styles (T-05)", and refined visually.
- */
 @utility type-section-heading-mobile {
   @apply font-display;
   font-weight: 800;
-  font-size: 2rem; /* 32px */
-  line-height: 2.25rem; /* 36px */
-  letter-spacing: -0.05rem; /* -0.8px */
+  font-size: 2rem;
+  line-height: 2.25rem;
+  letter-spacing: -0.05rem;
 }
 
 @utility type-section-heading-desktop {
   @apply font-display;
   font-weight: 800;
-  font-size: 3rem; /* 48px */
-  line-height: 3.5rem; /* 56px */
-  letter-spacing: -0.075rem; /* -1.2px */
+  font-size: 3rem;
+  line-height: 3.5rem;
+  letter-spacing: -0.075rem;
 }
 
 @utility type-card-title {
   @apply font-display;
   font-weight: 700;
-  font-size: 1.25rem; /* 20px */
-  line-height: 1.75rem; /* 28px */
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 @utility type-body-sm {
   @apply font-sans;
   font-weight: 400;
-  font-size: 0.875rem; /* 14px */
-  line-height: 1.5rem; /* 24px */
+  font-size: 0.875rem;
+  line-height: 1.5rem;
 }
 
 @utility type-body-md {
   @apply font-sans;
   font-weight: 400;
-  font-size: 1rem; /* 16px */
-  line-height: 1.75rem; /* 28px */
+  font-size: 1rem;
+  line-height: 1.75rem;
 }
 
-/*
- * Estimated text styles for T-06 (D-46): measured on the references, not confirmed in Figma.
- * The weight 600 was chosen in the visual comparison: at 20 px it reproduces the mobile line
- * widths, and 500 and 700 do not. The desktop size, line height and tracking (-0.025em, the
- * ratio of the section headings) reproduce the three reference lines and their ink height.
- */
 @utility type-quote-mobile {
   @apply font-display;
   font-weight: 600;
-  font-size: 1.25rem; /* 20px */
-  line-height: 2rem; /* 32px */
+  font-size: 1.25rem;
+  line-height: 2rem;
   letter-spacing: 0;
 }
 
 @utility type-quote-desktop {
   @apply font-display;
   font-weight: 600;
-  font-size: 1.875rem; /* 30px */
-  line-height: 2.75rem; /* 44px */
-  letter-spacing: -0.046875rem; /* -0.75px */
+  font-size: 1.875rem;
+  line-height: 2.75rem;
+  letter-spacing: -0.046875rem;
 }
 
-/*
- * Estimated text styles for T-07 (D-54): measured on the references, not confirmed in Figma.
- * The final call to action heading is smaller than the H1 styles; the size and tracking were
- * chosen by matching the reference line widths (tracking -0.025em, as the section headings).
- */
 @utility type-cta-heading-mobile {
   @apply font-display;
   font-weight: 800;
-  font-size: 2.25rem; /* 36px */
-  line-height: 2.5rem; /* 40px */
-  letter-spacing: -0.05625rem; /* -0.9px */
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  letter-spacing: -0.05625rem;
 }
 
 @utility type-cta-heading-desktop {
   @apply font-display;
   font-weight: 800;
-  font-size: 3.5rem; /* 56px */
-  line-height: 4rem; /* 64px */
-  letter-spacing: -0.0875rem; /* -1.4px */
+  font-size: 3.5rem;
+  line-height: 4rem;
+  letter-spacing: -0.0875rem;
 }
 
-/* Right arrow drawn with the exported arrow as a mask, so it follows the text color (D-34). The SVG (T-09)
-   has a 20 px box with the arrow 3 px from the left and 4 px from the top: positioned so, the arrow keeps
-   the 14 × 12 px place of the former image. It is drawn 1 px further left (relative position, so the
-   layout and the translate of "Browse all courses" are unchanged), where the references have it. */
 @utility icon-arrow-right {
   display: inline-block;
   flex-shrink: 0;
@@ -217,12 +177,6 @@
   mask: url("/icons/icon-arrow-right.svg") -3px -4px / 20px 20px no-repeat;
 }
 
-/*
- * Page container (D-22). Content is at most 1120 px wide. The side gutters grow
- * linearly from 20 px at the 402 px mobile reference to 80 px at the 1280 px
- * desktop reference, and stay at 20 px or 80 px outside that range.
- * Percentages refer to the parent's width, so a vertical scrollbar is not counted.
- */
 @utility page-container {
   --page-gutter: clamp(20px, calc(20px + (100% - 402px) * 60 / 878), 80px);
   width: 100%;

@@ -1,13 +1,7 @@
 import { courseMessage } from "@/content/messages";
 import { sectionIds } from "@/content/navigation";
+import { demoMessage } from "./button-styles";
 import { DemoMessageButton } from "./DemoMessageButton";
-
-// Learning categories (T-05). Text styles: confirmed (`type-desktop-*`, `type-mobile-*`) or
-// estimated (D-31). Card sizes and spacing are estimates from the references (D-33).
-// Card padding is in px, so enlarged text keeps the space it needs; heights follow the content.
-// `wrap-break-word` only breaks a word that does not fit its line (very large text on narrow screens).
-// The "Explore" message (D-38) is at most as wide as the card, so it stays in the window, and it
-// lets pointer events through, so it never blocks the controls under it; a click there closes it.
 
 const categories = [
   {
@@ -65,7 +59,7 @@ export function Categories() {
                 ariaLabel={`Explore ${category.title}`}
                 wrapperClassName="mt-auto flex pt-[22px]"
                 className="inline-flex items-center gap-3 type-desktop-body-1 text-text-primary"
-                messageClassName="pointer-events-none absolute top-full left-0 z-10 mt-2 w-max max-w-[min(15rem,100%)] rounded-lg bg-text-primary px-3 py-2 text-sm leading-5 text-white"
+                messageClassName={`${demoMessage} pointer-events-none absolute top-full left-0 z-10 mt-2 max-w-[min(15rem,100%)]`}
               >
                 Explore
                 <span aria-hidden="true" className="icon-arrow-right" />

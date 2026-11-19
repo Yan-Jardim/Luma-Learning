@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-// Families and weights approved in D-20, D-32 and D-46 (docs/decisions.md).
 const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
@@ -15,8 +14,15 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
 });
 
+const title = "Luma Learning — Build skills that actually move you forward";
+const description =
+  "Practical courses taught by people who do the work every day. Learn design, technology, business and more — one focused lesson at a time.";
+
 export const metadata: Metadata = {
-  title: "Luma Learning",
+  title,
+  description,
+  openGraph: { title, description, siteName: "Luma Learning", type: "website" },
+  twitter: { card: "summary_large_image", title, description },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

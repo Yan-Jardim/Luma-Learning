@@ -5,25 +5,19 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 type DemoMessageButtonProps = {
   message: string;
   children: ReactNode;
-  // Accessible name when the visible label is not enough (it must contain the visible text).
   ariaLabel?: string;
-  className?: string;
-  messageClassName?: string;
+  className: string;
+  messageClassName: string;
   wrapperClassName?: string;
-  // Also hide the message when focus leaves the button (T-07, footer links): with controls packed
-  // around it, the message could otherwise cover the next focused control. Off by default, so the
-  // approved behavior of the other buttons does not change.
   closeOnFocusOut?: boolean;
 };
 
-// Button that presents an accessible demo message instead of an action that does not exist
-// (D-24, D-35). No authentication, network request or new page.
 export function DemoMessageButton({
   message,
   children,
   ariaLabel,
-  className = "",
-  messageClassName = "",
+  className,
+  messageClassName,
   wrapperClassName = "",
   closeOnFocusOut = false,
 }: DemoMessageButtonProps) {
@@ -31,8 +25,6 @@ export function DemoMessageButton({
   const wrapperRef = useRef<HTMLDivElement>(null);
   const messageRef = useRef<HTMLParagraphElement>(null);
 
-  // The message stays until Escape or a click outside, so it is never removed before it can be read.
-  // When it appears partly outside the window, the page scrolls just enough to show it (D-38).
   useEffect(() => {
     if (!visible) return;
     messageRef.current?.scrollIntoView({ block: "nearest", inline: "nearest" });
@@ -65,7 +57,6 @@ export function DemoMessageButton({
       <button type="button" aria-label={ariaLabel} className={className} onClick={() => setVisible(true)}>
         {children}
       </button>
-      {/* The live region is always rendered, so screen readers announce the text when it appears. */}
       <p ref={messageRef} role="status" className={visible ? messageClassName : "sr-only"}>
         {visible ? message : ""}
       </p>

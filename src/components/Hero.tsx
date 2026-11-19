@@ -2,19 +2,6 @@ import Image, { getImageProps } from "next/image";
 import { sectionIds } from "@/content/navigation";
 import { primaryButtonWrapping, secondaryButtonWrappingCompact } from "./button-styles";
 
-// Sources (docs/design.md): heading 560 px and paragraph 480 px wide, the text styles, the
-// primary button and the 500 × 520 photo come from Figma. The mobile overline and button
-// labels use the desktop styles (inference, D-28). Spacing, shapes, cards and small texts are
-// estimates measured on the references and checked against them visually.
-// Enlarged text (D-39): words break only when they do not fit their line, and the card texts may
-// wrap. When the photo column is narrower than 11em, which only happens with enlarged text, the
-// cards stack below the photo instead of floating over it. At the normal text size the column
-// is at least 16.5em wide, so the composition does not change. The button labels may wrap
-// inside their buttons, which only happens with very large text on narrow screens (D-57).
-// Images (T-09): the photo is the 2x desktop export from 1024 px and the 2x export with the mobile
-// framing below it (D-62), chosen by the browser through <picture> with the srcSet of getImageProps.
-// The avatars are a 2x export and the stars an SVG file, at the same display sizes as before.
-
 const photoAlt =
   "Smiling person with glasses and a denim shirt working at a laptop, with sticky notes on the wall behind.";
 const {
@@ -32,7 +19,6 @@ const {
   sizes: "(min-width: 616px) 544px, calc(100vw - 56px)",
 });
 
-const cardShadow = "shadow-[0_8px_24px_rgba(23,27,44,0.08)]";
 const stars = [1, 2, 3, 4, 5];
 
 export function Hero() {
@@ -70,10 +56,8 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Query container for the card fallback; the shapes stay attached to the photo box. */}
           <div className="@container relative order-first mx-2 lg:order-none lg:mx-0">
             <div className="relative">
-              {/* Decorative shapes behind the photo. */}
               <div
                 aria-hidden="true"
                 className="absolute top-6 right-[-18px] bottom-[14px] w-1/2 rounded-[20px] bg-peach lg:right-[-39px] lg:bottom-[60px]"
@@ -94,18 +78,14 @@ export function Hero() {
               </picture>
             </div>
 
-            <div
-              className={`absolute top-1.5 left-[-8px] flex items-center gap-2.5 rounded-xl bg-white px-4 py-3 ${cardShadow} lg:top-4 lg:left-[-22px] @max-[11em]:static @max-[11em]:mt-3 @max-[11em]:flex-wrap`}
-            >
+            <div className="absolute top-1.5 left-[-8px] flex items-center gap-2.5 rounded-xl bg-white px-4 py-3 shadow-card lg:top-4 lg:left-[-22px] @max-[11em]:static @max-[11em]:mt-3 @max-[11em]:flex-wrap">
               <span className="rounded-md bg-blue-tint px-1.5 py-1 text-sm leading-6 font-bold text-primary-blue">
                 120+
               </span>
               <span className="text-sm leading-6 text-text-primary">expert-led courses</span>
             </div>
 
-            <div
-              className={`absolute right-[-19px] bottom-9 flex items-center gap-2.5 rounded-xl bg-white py-3 pr-4 pl-[18px] ${cardShadow} lg:right-[-57px] @max-[11em]:static @max-[11em]:mt-3 @max-[11em]:flex-wrap`}
-            >
+            <div className="absolute right-[-19px] bottom-9 flex items-center gap-2.5 rounded-xl bg-white py-3 pr-4 pl-[18px] shadow-card lg:right-[-57px] @max-[11em]:static @max-[11em]:mt-3 @max-[11em]:flex-wrap">
               <span aria-hidden="true" className="flex shrink-0 gap-1.5">
                 {stars.map((star) => (
                   <Image key={star} src="/icons/icon-star.svg" alt="" width={14} height={14} className="-mx-[2px] -mt-[1px] -mb-[3px] max-w-none" />
