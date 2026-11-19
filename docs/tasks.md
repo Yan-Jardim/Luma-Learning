@@ -1,6 +1,6 @@
 # Tasks
 
-Last updated: 2026-11-18.
+Last updated: 2026-11-19.
 
 ## Status
 
@@ -21,7 +21,7 @@ Planned → In progress → Ready for review → Validated
 | T-04 | Header and hero | Validated | T-03 (decisions D-23 to D-30) |
 | T-05 | Learning categories, featured course and "How it works" | Validated | T-03 (decisions D-31 to D-38 and D-40 to D-42) |
 | T-06 | Testimonial and community | Validated | T-03 (decisions D-43 to D-49) |
-| T-07 | Contact, final call to action and footer | Planned | T-03, Q-02, Q-03, Q-05, Q-10, Q-17 |
+| T-07 | Contact, final call to action and footer | Validated | T-03 (decisions D-50 to D-56) |
 | T-08 | Integrated review of interactions and accessibility | Planned | T-04 to T-07 |
 | T-09 | Visual check on desktop, mobile and intermediate widths | Planned | T-08; Q-18, Q-21, Q-22 and Q-26 resolved before completion |
 | T-10 | Re-evaluate the security issue (README, "Known security issue") | Planned | |
@@ -41,30 +41,33 @@ T-05 was validated by the owner's explicit approval on 2026-11-18. The approval 
 
 T-06 was validated by the owner's explicit approval on 2026-11-19, including the current use of `icon-quote.png` (D-49). The approval does not resolve the open items below.
 
+T-07 was validated by the owner's explicit approval on 2026-11-19, including the avatars fix ([verification record](#t-07-avatars-image-2026-11-19)). It was implemented with D-50 to D-55 ([verification record](#t-07-contact-call-to-action-and-footer-2026-11-19)); during the review the owner approved D-56 (Q-27), moved Q-28 to T-08 ([review follow-up](#t-07-review-follow-up-2026-11-19)) and approved the desktop visual shown in the captures. The approval does not resolve the open items below: Q-24 and Q-28 stay for T-08, and Q-18, Q-21, Q-22 and Q-26 for before T-09 is completed.
+
 ## Open items
 
-Validating a task does not resolve the open items below. In particular, validating T-04, T-05 and T-06 does not resolve Q-18, Q-21, Q-22, Q-24, Q-26 or the remaining anchor checks.
+Validating a task does not resolve the open items below. In particular, validating T-04 to T-07 does not resolve Q-18, Q-21, Q-22, Q-24, Q-26 or Q-28.
 
 ### Pending corrections
 
 Changes that need owner input or new exports. Details are in [decisions.md](decisions.md#open-questions).
 
-- [Q-18](decisions.md#open-questions): a 2x export (or SVG) of the hero photo, hero avatars, star and menu icon, to remove the softness observed at a device pixel ratio of 2; the featured photo, the testimonial avatar, the community collage and the quote mark are also 1x at their desktop size. Resolve before T-09 is completed.
+- [Q-18](decisions.md#open-questions): a 2x export (or SVG) of the hero photo, hero avatars, star and menu icon, to remove the softness observed at a device pixel ratio of 2; the featured photo, the testimonial avatar, the community collage, the quote mark, the contact icons and the call to action avatars are also 1x at their desktop size. Resolve before T-09 is completed.
 - [Q-21](decisions.md#open-questions): the mobile framing of the hero photo. Resolve before T-09 is completed.
 - [Q-22](decisions.md#open-questions): the 75% opacity of the menu icon in the exported file. Resolve before T-09 is completed.
 - [Q-24](decisions.md#open-questions): with enlarged text, the desktop header when the breakpoints do not scale (1024 px), and the hero button labels at 250%. Found during the D-39 checks. To be corrected and verified in T-08 (owner decision, 2026-11-18).
 - [Q-26](decisions.md#open-questions): the mobile arrangement of the community collage differs from the exported file. Found during T-06. Resolve before T-09 is completed.
+- [Q-28](decisions.md#open-questions): at 250% text and 320 px, beyond the 200% target, the testimonial author name and role leave the window. Found during the T-07 checks, outside T-07. To be corrected and verified in T-08, together with Q-24 (owner decision, 2026-11-19).
 
 ### Final verifications
 
 Checks to run when the related work exists.
 
-- T-07: `#community` stops 178 px below the top of the window at 1280 px (77 px at 402 × 900), because the page currently ends after that section. Check again that it reaches the top once the sections below exist, and that Tab after "Explore teachers and students" reaches the next control; today Tab leaves the page.
-- T-07: the "For Teams" links reach `#contact`, with the same focus check.
-- T-09: the visual check of the header and hero is repeated after Q-18, Q-21 and Q-22 are resolved. The sharpness of the step PNGs, of the arrow mask, of the featured photo, of the testimonial avatar, of the community collage and of the quote mark (all 1x) is checked ([D-34](decisions.md#courses-and-how-it-works)).
+- T-09: the visual check of the header and hero is repeated after Q-18, Q-21 and Q-22 are resolved. The sharpness of the step PNGs, of the arrow mask, of the featured photo, of the testimonial avatar, of the community collage, of the quote mark, of the contact icons and of the call to action avatars (all 1x) is checked ([D-34](decisions.md#courses-and-how-it-works)).
 
 ### Resolved
 
+- 2026-11-19: the T-07 anchor and focus checks. `#community` reaches the top of the window at 1280 and 402 px, and Tab after "Explore teachers and students" reaches "Full name". The "For Teams" links (header, mobile panel and footer) and the footer "Contact" reach `#contact` at the top of the window; from the mobile panel focus moves to `#contact`, and the next Tab reaches "Full name". Checked by the agent ([verification record](#t-07-contact-call-to-action-and-footer-2026-11-19)) and approved with T-07.
+- 2026-11-19: Q-27, the copyright color, by D-56: `#E7E7EC` on both breakpoints, an approved adaptation.
 - 2026-11-18: the T-05 anchor checks. The links to `#categories` ("Courses" and "Start learning" in the header and the mobile panel, "Explore courses" in the hero, "Browse all courses") and to `#how-it-works` ("About" in the header and the mobile panel, "See how it works" in the hero) reach their sections, and from the mobile panel focus moves to the section ([D-25](decisions.md#header-and-hero)). The Tab order was checked separately for each section. Checked by the agent ([verification record](#t-05-follow-up-and-q-23-2026-11-18), [featured section](#t-05-featured-course-and-the-three-sections-together-2026-11-18)) and approved with T-05.
 - 2026-11-19: the T-06 anchor and focus checks. `#how-it-works` reaches the top of the window on desktop and Tab from it reaches "Explore teachers and students"; the "Community" links reach `#community`, focus moves to it from the mobile panel, and the next Tab reaches "Explore teachers and students". The quote mark is in place and the testimonial column keeps the measured positions. Checked by the agent ([verification record](#t-06-testimonial-and-community-2026-11-19), [quote mark](#t-06-quote-mark-2026-11-19)) and approved with T-06.
 - 2026-11-19: the T-06 quote mark (part of Q-18). Received as `icon-quote.png`, checked and copied to `public/icons/`.
@@ -177,3 +180,50 @@ Only the checks affected by the quote mark.
 - Inside the mark box the mean difference is 16.6 (desktop) and 14.9 (mobile) of 765 at 2x, because the PNG is 1x (sharpness check in T-09).
 - Accessibility: the mark has an empty `alt`, and the accessibility tree does not expose it; the quote text is exposed once.
 - Not verified: screen readers, browsers other than Chrome, physical devices.
+
+### T-07 contact, call to action and footer, 2026-11-19
+
+Chrome headless, production build. Form data in the checks is fictitious and was never printed or logged.
+
+- `npm run lint`, `npx next typegen`, `npx tsc --noEmit` and `npm run build`: passed.
+- Assets: the 17 source files became 16 copies (`Container-5.svg` and `Container-6.svg` as one), each identical to its original by SHA-256; the originals were only read. The SVG files contain no scripts and no external references.
+- Comparison with the references at 402 and 1280 px (2x), by text lines and element boxes. Desktop: 51 lines, all within 1 px in position; six are 1.5 to 3.5 px wider, from glyph rendering. Mobile: 49 lines within 1.1 px in position; four form lines differ in width because the mobile reference shows them in Portuguese (divergence 2, D-06). Section heights: contact 796 and 1096 px (reference 796 and 1096), call to action 470 and 469 px (reference 469.5 and 469), footer 394 and 622 px (reference 394.5 and 622). During the comparison, the mobile contact paragraph and form subtitle were corrected to 14 px, the footer list items stopped adding 1 px per link, and the copyright was set to 13 px.
+- Decorations: the 13 shapes are within 1 px of the reference. Q-20: in the reference the top 1.5 px of `Container-2.svg` is visible at x 1064 to 1104; the implementation shows the same part (8x crops compared). The avatars window shows the four avatars at the reference box (136 × 40), without scaling.
+- Raster images: the contact icons match the 2x references (mean difference 8 to 15 of 765; shifted by 6 px, 46 to 50). The call to action avatars are softer (20 to 33), because the file is 1x (Q-18).
+- Anchors, with the mouse: "For Teams" (header and footer) and the footer "Contact" reach `#contact`; "Community" reaches `#community`; "Explore all courses" and the footer "Courses" and "Categories" reach `#categories`; the footer "About" reaches `#how-it-works`. Each target is at the top of the window, at 1280 px and, for the footer "Contact" and "Explore all courses", at 402 px. From the mobile panel ("For Teams", "Community"), focus moves to the section.
+- Keyboard: after the panel link "For Teams", Tab reaches "Full name" and Shift+Tab "Explore teachers and students"; after the panel link "Community", Tab reaches "Explore teachers and students", then "Full name". After Enter on the header "For Teams" or the footer "Contact", Tab reaches "Full name"; after the footer "About", "Explore teachers and students"; after "Explore all courses", "Explore Product Design". From "Explore teachers and students", Tab goes through "Full name", "Email", "Your question", "Send message", "Explore all courses", "Join Luma" and the eleven footer items in order, then leaves the page; the email address is not a Tab stop.
+- Focus indicator: 2 px solid `primary-blue`, 2 px away, on the fields, "Send message", "Explore all courses" and "Join Luma" (on white and `yellow-tint`); 2 px solid white on every footer control. Checked in captures at 402 and 1280 px.
+- Form, at 1280 and 402 px: with empty fields, Enter on "Send message" moves focus to "Full name"; then to "Email" (empty, then without "@"), then to "Your question". With valid fields, Enter on "Send message", Enter inside a field and a mouse click show the demo message in the `role="status"` region; the fields keep their values; typing removes the message. The URL does not change, the page makes no network request and writes nothing to the console (CDP network and console events). One browser warning appeared at 402 px: the hero photo preload was not used, because the test reused the tab after the 1280 px run and the browser took a larger cached image; a fresh load at either width gives no warning.
+- Form message with "Send message" at the bottom edge of the window, at 320, 402 and 1280 px and with text at 200% at 320 and 1280 px: the message is shown in full inside the window (the page scrolls 36 to 172 px), and the button stays visible and is not covered.
+- "Join Luma", at 320, 402 and 1280 px and with text at 200% at 320 and 1280 px, with the button at the top and at the bottom edge of the window: the message "This is a demo. Sign-up is not available." is inside the window, within the button row and in full; it does not cover the focused control; Enter opens it; Escape hides it with focus staying on the button; a click outside closes it. After Tab it stays open, and "Courses" in the footer, now focused, is not covered.
+- Footer buttons ("Instructors", "Careers", "Journal", "Help Center", "Terms", "Privacy"), in the same five configurations and at both edges: Enter shows "This is a demo. This page is not available." inside the window, within its column and in full; the focused button stays visible and uncovered; Tab and Shift+Tab close it, and the next focused control is not covered. With the mouse, a click opens it and a click outside closes it.
+- Every demo message button visible on the page (13 or 14, in the five configurations above): no message is cut by an ancestor that clips its content, and none scrolls one. This check found that the call to action section clipped the "Join Luma" message and scrolled its own content to show it; now only the decorations layer clips.
+- Enlarged text, 48 combinations (default font size 24, 28, 32 and 40 px, root font size 200%, and the normal size; at 320, 360, 375, 402, 768, 1024, 1280 and 1440 px; mobile panel open where it exists): nothing in the T-07 sections is cut, outside the window, wider than its box or covered. Fixed during the checks: the email address left the window at 320 to 375 px with text at 200%; the footer labels and messages did not fit two columns with enlarged text; the footer tagline was squeezed at 1024 px with the root font size at 200%; and some decorations sat behind the text with the root font size at 200% at 1280 and 1440 px, and with the default font size at 32 px at 2560 px. The two remaining findings are outside T-07: the Q-24 items (header at 1024 px with the root font size at 200%, a hero label at 250%) and Q-28 (testimonial at 250% and 320 px).
+- No horizontal scrolling at 320, 360, 375, 402, 768, 1024, 1280 and 1440 px, at the normal size and with text at 200%.
+- The enlarged-text fixes changed nothing at the normal size: the comparison results are identical before and after them.
+- Structure: one `h1` and headings in order; "Get in touch" and "What will you learn next?" are `h2` regions; "Contact us" is an `h3`; the footer is the `contentinfo` landmark, outside `main`, with a navigation named "Footer" and its three headings; no duplicate `id`. Each field has its label, `required` and the `autocomplete` values `name` and `email`; the form has no `action` and no `method`. The contact icons, the avatars and the decorations are not exposed; the footer logo is "Luma".
+- Loaded fonts, unchanged: Inter 400, 600 and 700; Plus Jakarta Sans 600, 700 and 800.
+- Not verified: screen readers, browsers other than Chrome, physical devices, and the text of the browser's own validation messages.
+
+### T-07 review follow-up, 2026-11-19
+
+No code changed, so only the requested footer check was run; the earlier T-07 records still hold.
+
+- D-56 (Q-27): the copyright was already `#E7E7EC` on both breakpoints; only the documentation changed.
+- The question field was already resizable vertically only (`resize-y`); unchanged.
+- Footer messages and the controls they cover, in five configurations (320, 402 and 1280 px at the normal size; 320 and 1280 px with text at 200%) and for the six footer buttons: each message was opened with Enter, and the controls under it were listed. A message covers one to three of the links or buttons above its button ("Help Center" covers none at 1280 px). For each of the 49 cases: with the mouse, the covered point belongs to the control, a click activates it (the link changes the address to its anchor; the button shows its own message) and the open message closes; with the keyboard, Shift+Tab from the open button reaches the control, the message closes at the first focus change, the control is not covered when focused, and Enter activates it. No failure, so nothing was changed.
+- "Join Luma": no change; its overlap with the footer was checked earlier (message not cut, no control under it).
+- Not repeated, because no code changed: lint, type check, build, the reference comparison and the enlarged-text audit.
+
+### T-07 avatars image, 2026-11-19
+
+Only the checks affected by this change.
+
+- Cause: in development, Next.js warned "Image with src `/images/cta-avatars.png` has either width or height modified, but not the other". The image declared 656 × 40 px and was drawn at 136 × 40 with `object-fit: cover`, so only its width changed. The production build does not run this check, so the earlier records did not show it. It appeared at 1280 and 402 px, on clean loads of the development server.
+- Found at the same time: with text at 200% (default font size 32 px), the window was 136 × 80 px, because its height was in rem. `object-fit: cover` then enlarged the image 2× and showed only two avatars, with the faces cut.
+- Change in `src/components/FinalCta.tsx`: the image is drawn at its own size and proportion (656 × 40), centered in a 136 × 40 px window that clips it. The window shows the same part of the file as before (x 260 to 396), without `object-fit` or scaling. The window is in px, so enlarged text no longer changes the crop.
+- Development server: the warning no longer appears, at 1280 and 402 px (two clean loads each) or with text at 200% at 1280 and 320 px. The only other message in these runs, a hydration mismatch, appears only when the test tool sets `loading="eager"` on the images right after load (its diff shows only that attribute); clean loads show no message, before and after the change.
+- Production build, full-page captures at 1280 and 402 px (2x), before and after, in the same browser session: identical except 52 pixels inside the avatars (at most 17 of 255 per channel, the same pattern at both widths), from the browser's drawing path; no visible difference. With text at 200% at 1280 and 320 px, the four avatars are now shown whole, at 136 × 40, as at the normal size.
+- The image keeps `alt=""` and is not exposed to assistive technologies; the window is a plain `div`.
+- No horizontal scrolling at 320, 360, 375, 402, 768, 1024, 1280 and 1440 px, at the normal size and with text at 200%. Enlarged-text audit, 48 combinations: the same two findings outside T-07 (Q-24, Q-28), nothing in T-07.
+- `npm run lint`, `npx tsc --noEmit` and `npm run build`: passed.

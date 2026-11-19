@@ -107,7 +107,7 @@ The texts below are identical on desktop and mobile unless a note says otherwise
 - Eyebrow: CONTACT
 - Heading: Get in touch
 - Paragraph: Have a question? We’re here to help. Whether you’re looking for the right course, learning with your team or interested in teaching with Luma, we’d love to hear from you.
-- Info cards: "Email" with `contact@luma.com` (styled as a link); "Response Time" with "Up to 24 hours on business days".
+- Info cards: "Email" with `contact@luma.com` (styled as a link; shown as plain text, [D-51](decisions.md#contact-call-to-action-and-footer)); "Response Time" with "Up to 24 hours on business days".
 - Form card: "Contact us", "Fill out the fields and we will get in touch."
 - Fields (label, placeholder): "Full name", "Your name" · "Email", `youremail@example.com` · "Your question" (multi-line), "Tell us how we can help..."
 - Button: Send message
@@ -165,14 +165,14 @@ The token column gives the Tailwind color name defined in `src/app/globals.css` 
 | `#FF704D` | `coral` | Step 02 circle |
 | `#E9D659` | `mustard` | Step 03 circle |
 | `#9E9FAA` | `footer-link` | Footer links |
-| `#E7E7EC` | `footer-heading` | Footer headings. The references also use it for "Browse all courses" on the featured section; the implementation uses white there instead, an approved accessibility adaptation ([D-42](decisions.md#courses-and-how-it-works)) |
+| `#E7E7EC` | `footer-heading` | Footer headings and the copyright on both breakpoints; the mobile reference shows the copyright in white (approved adaptation, [D-56](decisions.md#contact-call-to-action-and-footer)). The references also use it for "Browse all courses" on the featured section; the implementation uses white there instead, an approved accessibility adaptation ([D-42](decisions.md#courses-and-how-it-works)) |
 | `#5B5D68` | `footer-divider` | Footer divider |
 | `#FAE4DB` | `peach-tint` | Step 02 square in the mobile reference only (divergence 4). Not used: [D-36](decisions.md#courses-and-how-it-works) keeps `#FFCB9F` |
 
 ## Type styles
 
 - **Figma:** two families: Plus Jakarta Sans for the hero heading and Inter for the paragraph, the overline and the button label. The file has named text styles per breakpoint.
-- **Image:** the section headings, the quote and the metrics look like Plus Jakarta Sans; the card and step titles are bold or semibold; the quote is lighter than the headings. Not confirmed ([Q-10](decisions.md#open-questions)).
+- **Image:** the section headings, the quote and the metrics look like Plus Jakarta Sans; the card and step titles are bold or semibold; the quote is lighter than the headings. Not confirmed; the estimates in use are recorded per task below ([D-31](decisions.md#courses-and-how-it-works), [D-46](decisions.md#testimonial-and-community), [D-54](decisions.md#contact-call-to-action-and-footer)).
 
 Confirmed styles (Figma):
 
@@ -230,6 +230,29 @@ Measured on the references at 2x and approved as estimates ([D-46](decisions.md#
 | Community overline, heading, paragraph, button | As the other sections; paragraph in `text-secondary` ([D-43](decisions.md#testimonial-and-community)) | Same | `Desktop/Overline`, `Desktop/subtitle 1`, `Mobile/subtitle 1`, `Desktop/body 1` |
 
 The quote weight was chosen among 500, 600 and 700: at 20 px, 600 reproduces the four mobile line widths within 0.5 px, while 500 is narrower and 700 wider. On desktop, 30 px with -0.75 px tracking reproduces the three lines, their breaks and their ink height.
+
+### Estimated styles (T-07)
+
+Measured on the references at 2x and used as estimates ([D-54](decisions.md#contact-call-to-action-and-footer)). They are not Figma values. The mobile form texts are compared by size and position only, because the mobile reference shows them in Portuguese (divergence 2).
+
+| Text | Desktop (Estimate) | Mobile (Estimate) | Confirmed style reused |
+| --- | --- | --- | --- |
+| Contact overline and heading | As the other sections | Same | `Desktop/Overline`; section heading (T-05) |
+| Contact paragraph | Inter 400, 18 / 28 px, `text-secondary` | 14 / 24 px | `Desktop/subtitle 1` on desktop |
+| Info card label and value | Inter 400, 14 / 24 px; label `text-primary`; value `primary-blue` (email) or `label-gray` (response time) | Same | — |
+| "Contact us" | Plus Jakarta Sans 700, 20 px | Same | Card title (T-05) |
+| Form subtitle | Inter 400, 14 / 24 px, `text-secondary` | Same | — |
+| Field labels | Inter 700, 14 / 24 px, `text-primary` | Same | `Desktop/body 1` |
+| Field text and placeholders | Inter 400, 14 / 24 px; text `text-primary`, placeholder `label-gray` | Same | — |
+| "Send message", "Explore all courses", "Join Luma" | Inter 700, 14 / 24 px | Same | `Desktop/body 1` |
+| Call to action heading | Plus Jakarta Sans 800, 56 / 64 px, -1.4 px | 36 / 40 px, -0.9 px | — (`type-cta-heading-desktop`, `type-cta-heading-mobile`) |
+| Call to action paragraph | Inter 400, 18 / 28 px | 16 / 26 px | `Desktop/subtitle 1`, `Mobile/subtitle 1` |
+| Footer headings | Inter 600, 12 / 16 px, 1.44 px, uppercase, `footer-heading` | Same | `Desktop/Overline` |
+| Footer links and tagline | Inter 400, 14 / 24 px, `footer-link` | Same | — |
+| Copyright | Inter 400, 13 / 24 px, `footer-heading` ([D-56](decisions.md#contact-call-to-action-and-footer)) | Same, centered | — |
+| Demo messages ("Join Luma", footer) | Inter 400, 14 / 20 px | Same | As the earlier messages |
+
+Origin: the sizes were chosen by matching line widths, line breaks and ink heights. The call to action heading at 56 px with -1.4 px tracking (-0.025 em, as the section headings) gives the reference line width within 1 px. On mobile, the contact paragraph at 14 px reproduces the four reference lines and their breaks; the form subtitle has the ink height of a 14 px line. The copyright needs 13 px: at 14 px it is 153.6 px wide, and the reference 139.5 px.
 
 ## Layout
 
@@ -295,6 +318,52 @@ Measured on the references at 2x and refined in the comparison at 402 and 1280 p
 
 Intermediate widths (implementation choice within [D-37](decisions.md#courses-and-how-it-works) and [D-40](decisions.md#courses-and-how-it-works)): below 1024 px the testimonial and the community are one centered column at most 560 px wide.
 
+### Contact, call to action and footer measurements (Estimate)
+
+Measured on the references at 2x and refined in the comparison at 402 and 1280 px ([D-54](decisions.md#contact-call-to-action-and-footer)).
+
+| Item | Desktop | Mobile |
+| --- | --- | --- |
+| Contact section | 100 px top and bottom; text column and form card in a 480 : 540 grid, 100 px apart, centered vertically; 796 px high, as the reference | 60 px top and bottom; text, info cards, then the form card; 1096 px high, as the reference |
+| Contact rhythm | Overline, 16, heading, 16, paragraph, 40, info cards, 16 px apart | Same, but 32 before the info cards; 40 from the cards to the form card |
+| Info cards | `cream`, radius 12, padding 20, 92 px high; icon 40 × 40, 16 px before the text; label and value 4 px apart | Padding 16, 82 px high; label and value 2 px apart |
+| Form card | 540 × 596; white, 1 px `line` border, radius 16, shadow 0 8 24 px `#171B2C` at 8%; inside the border 39 px on the sides, 41 at the top and 39 at the bottom | 362 × 544; inside the border 19 px on the sides, 25 at the top and 23 at the bottom |
+| Form rhythm | Title, 10, subtitle, 24, label, 8, field, 20 to the next label; the question field at least 120 px; 24, then "Send message", 52 px high and full width; the demo message 16 px below | Same; the question field at least 100 px |
+| Fields | 48 px high, `cream`, 1 px `line` border, radius 8, 16 px side padding; the question field can be resized vertically only | Same |
+| Call to action section | `yellow-tint`; 100 px top and bottom; 470 px high (reference 469.5) | 60 px top and bottom; 469 px high, as the reference; no decorations |
+| Call to action rhythm | Avatars (136 × 40), 32, heading, 15, paragraph, 37, buttons | Avatars, 32, heading, 16, paragraph, 37, buttons |
+| Call to action buttons | Side by side, centered, 12 px apart: 185 × 54 and 128 × 54 | Full width, stacked, 12 px apart |
+| Footer | `text-primary` background; 80 px top, 38 bottom; brand column (logo 54 × 17, 12 px to the tagline, at most 220 px wide) and three link columns of 192 px, 48 px apart; 394 px high (reference 394.5) | 60 px top, 19 bottom; brand, 40, then the groups in two columns 40 px apart: Explore and Company, then Support; 622 px high, as the reference |
+| Link groups | Heading, 16, links on 24 px lines, 12 px apart | Same |
+| Divider and copyright | 1 px `footer-divider`, 66 px below the link columns; copyright 21 px below it, aligned left | 36 px below the groups; copyright centered |
+
+Call to action decorations, placed from the desktop reference (1280 px). Shapes cut by a section edge stay on that edge; the others keep their distance from the page center (x is given at 1280 px, where the center is 640). Every shape is within 1 px of the reference.
+
+| File | Size | x at 1280 px | Vertical position |
+| --- | --- | --- | --- |
+| `cta-square-filled-top.svg` | 136 × 113 | Right edge | Top 0 |
+| `cta-circle-outline-large.svg` | 108 × 108 | 22 | Top 16 |
+| `cta-circle-outline-small.svg` | 32 × 32 | 877 | Top 43 |
+| `cta-square-outline.svg` | 67 × 67 | 317 | Top 42.5 |
+| `cta-icon-drop.svg` | 62 × 62 | 1016.25 | Top 82 |
+| `cta-icon-layers.svg` | 160 × 160 | 1079.75 | Top 180.25 |
+| `cta-icon-chat.svg` | 32 × 32 | 141.25 | Top 214.25 |
+| `cta-square-filled-left.svg` | 34 × 67 | Left edge | Top 230 |
+| `cta-icon-bold.svg` | 102 × 102 | 271.75 | Top 360 |
+| `cta-icon-panels.svg` | 48 × 48 | 962.75 | Top 380.75 |
+| `cta-circle-outline-small.svg` | 32 × 32 | 1208 | Top 429 |
+| `cta-circle-filled.svg` | 120 × 97 | 56 | 0.5 px past the bottom edge (96.5 px visible, as in the reference) |
+| `cta-circle-edge.svg` | 40 × 2 | 1064 | 0.5 px past the bottom edge (the top 1.5 px visible, as in the reference) |
+
+Intermediate widths and enlarged text (implementation choices, [D-54](decisions.md#contact-call-to-action-and-footer)):
+
+- Below 1024 px the contact section is one centered column at most 560 px wide, as the other two-column sections.
+- The decorations are shown when the section is at least 80rem wide (1280 px at the normal text size): below that they would overlap the text, and the mobile reference has none. Their sizes and positions are in rem, and the condition is a container query, which follows the root font size: with enlarged text they grow with the text or are hidden, and never sit behind it.
+- The call to action section does not clip its content; only the decorations layer does. So the "Join Luma" message is never cut. On mobile it extends 4 px into the footer, which has the same color.
+- Below 1024 px the footer groups use two columns while the footer content is at least 17.5rem wide (280 px at the normal size, so from 320 px), and one column with enlarged text. On desktop the link columns shrink down to their longest word when enlarged text leaves no room for the tagline.
+- The info card texts may wrap, so the email address stays inside the window with enlarged text.
+- The avatars image is drawn at its own size (656 × 40) inside a 136 × 40 px window centered on the avatars. The window is in px, so with enlarged text the four avatars keep their size and are not cropped.
+
 ## Interactions and states
 
 - **Image:** only default states appear. Neither reference shows hover, focus, active, disabled, validation, success, error or open-menu states.
@@ -302,6 +371,7 @@ Intermediate widths (implementation choice within [D-37](decisions.md#courses-an
 - **Decided:** the header scrolls with the page, and the mobile menu behavior is defined in [D-25](decisions.md#header-and-hero).
 - **Decided:** every control shows a 2 px `primary-blue` outline, 2 px away, when it receives keyboard focus. When a link in the mobile panel is chosen, the panel content is removed, so focus moves to the target section ([D-25](decisions.md#header-and-hero)). The section can be focused only by script (`tabindex="-1"`) and has no outline: it is not a control, and an outline around a whole section would suggest one. The scroll shows where focus went, screen readers announce the section by its heading, and the next Tab goes to the first control after the start of the section.
 - **Decided:** the "Explore" message is a bubble with the conditions of [D-38](decisions.md#courses-and-how-it-works). The "View course" message follows the same conditions and opens above its button, so it never covers "Browse all courses" ([D-40](decisions.md#courses-and-how-it-works)). Controls on the blue featured section use a white focus outline (5.49:1 on `primary-blue`).
+- **Decided:** the contact form ([D-50](decisions.md#contact-call-to-action-and-footer)), the plain-text email ([D-51](decisions.md#contact-call-to-action-and-footer)), "Join Luma" ([D-52](decisions.md#contact-call-to-action-and-footer)) and the footer items ([D-53](decisions.md#contact-call-to-action-and-footer)). The "Join Luma" message opens below its button. The footer messages open above theirs and also close when focus leaves the button. A footer message may cover the links just above its button: a click goes through it to them and closes it, and moving focus to them closes it first. On the dark footer, controls use a white focus outline.
 - **Pending:** any animation (static images cannot show it).
 
 ## Divergences between the references
@@ -315,6 +385,7 @@ Intermediate widths (implementation choice within [D-37](decisions.md#courses-an
 | 5 | Community paragraph color | `#656770` | `#171B2C` | [D-43](decisions.md#testimonial-and-community): `#656770` on both |
 | 6 | Hero photo framing | Matches `hero-student-photo.png` exactly (mean pixel difference 4.7 of 765) | Different framing of the same photo: the person is smaller and the hair is cut at the top. No crop of the exported file matches it (best mean difference about 32) | Pending ([Q-21](decisions.md#open-questions)). The implementation uses a centered crop of the exported file |
 | 7 | Community collage | Matches `community-collage.png` at 1x | Same photos in a different arrangement: shorter crops; the scaled file is about 10 px taller at the center | Pending ([Q-26](decisions.md#open-questions)). The implementation scales the exported file |
+| 8 | Copyright color | `#E7E7EC` | White | [D-56](decisions.md#contact-call-to-action-and-footer): `#E7E7EC` on both |
 
 The composition differences listed in [Page structure](#page-structure) follow from the layout and are not treated as divergences.
 
@@ -331,19 +402,19 @@ On 2026-11-18, for T-04, the owner added three files and replaced `icon-star.png
 | File | Real format and size | Content (Image) | Status |
 | --- | --- | --- | --- |
 | `logo-dark.svg` | SVG, 54 × 17 | "luma." wordmark, `#171B2C` | OK |
-| `logo-light.svg` | SVG, 54 × 17 | Same wordmark, white | OK |
+| `logo-light.svg` | SVG, 54 × 17 | Same wordmark, white | OK; copied to `public/brand/` (T-07) |
 | `hero-student.png` | PNG, 626 × 524 | Hero photo combined with both floating cards (texts included), the peach shape and the light circle | Re-export needed: texts and shapes baked in |
 | `featured-course.png` | PNG, 550 × 420 | Featured photo with the "FEATURED COURSE" badge | Re-export needed: badge text baked in |
 | `community-collage.png` | PNG, 535 × 530, transparent | Ten photos over the light circle | OK; copied to `public/images/` (T-06) |
-| `cta-avatars.png` | PNG, 656 × 40, transparent | Four avatars with yellow rings. Only 136 × 40 is visible; the rest is transparent | Usable; extra transparent area |
+| `cta-avatars.png` | PNG, 656 × 40, transparent | Four avatars with yellow rings. Only 136 × 40 is visible; the rest is transparent | Usable; copied to `public/images/` (T-07). The page shows only the avatars, by CSS ([D-55](decisions.md#contact-call-to-action-and-footer)) |
 | `testimonial-alex-morgan.png` | PNG, 48 × 48, transparent | Round avatar of the testimonial author | OK; copied to `public/images/` (T-06) |
 | `step-01.png` | PNG, 56 × 56, transparent | Step 01 illustration | OK |
 | `step-02.png` | PNG, 67 × 67, transparent | Step 02 illustration with the desktop colors (`#FFCB9F`, `#FF704D`) | OK |
 | `step-03.png` | PNG, 56 × 56 | Step 03 illustration | OK |
-| `icon-message.png` | PNG, 40 × 40 | Speech bubble icon on its light blue tile | OK, tile included |
-| `icon-clock.png` | PNG, 40 × 40 | Clock icon on its light blue tile | OK, tile included |
+| `icon-message.png` | PNG, 40 × 40 | Speech bubble icon on its light blue tile | OK, tile included; copied to `public/icons/` (T-07) |
+| `icon-clock.png` | PNG, 40 × 40 | Clock icon on its light blue tile | OK, tile included; copied to `public/icons/` (T-07) |
 | `icon-arrow-right.png` | PNG, 14 × 12, transparent | White arrow | Partial: white variant only |
-| `cta-decorations/` | 13 SVG | Final call to action decorations, all `#FFCB9F` | Generic names, see below |
+| `cta-decorations/` | 13 SVG | Final call to action decorations, all `#FFCB9F` | Generic names; copied to `public/images/cta/` with the approved names (T-07), see below |
 | `hero-student-photo.png` (new) | PNG, 500 × 520, transparent rounded corners (radius about 20) | Hero photo alone | OK; copied to `public/images/` |
 | `hero-avatars.png` (new) | PNG, 80 × 32 | The three hero avatars, overlapping, with cream rings | OK; copied to `public/images/` |
 | `icon-menu.png` (new) | PNG, 24 × 24, transparent | Three bars, 20 × 2 px, `#171B2C` at 75% opacity | OK; copied to `public/icons/`. The bars look lighter than in the reference: the opacity comes from the file ([Q-22](decisions.md#open-questions)) |
@@ -354,13 +425,13 @@ On 2026-11-18, for T-04, the owner added three files and replaced `icon-star.png
 
 ### Final call to action decorations
 
-The thirteen files cover every decoration in the desktop reference. They are used as separate SVGs ([D-17](decisions.md#design-assets)), and the project copies take the suggested names while the originals stay unchanged ([D-18](decisions.md#design-assets)). The files carry no position, so placing them needs positions estimated from the desktop reference.
+The thirteen files cover every decoration in the desktop reference. They are used as separate SVGs ([D-17](decisions.md#design-assets)), and the project copies take the suggested names while the originals stay unchanged ([D-18](decisions.md#design-assets)). The files carry no position, so placing them needs positions estimated from the desktop reference. The positions used are in [Contact, call to action and footer measurements](#contact-call-to-action-and-footer-measurements-estimate).
 
 | Current name | Element identified | Position in the desktop reference (Image) | Suggested name |
 | --- | --- | --- | --- |
 | `Container.svg` | Outline circle, 108 px, 2 px stroke | Top left | `cta-circle-outline-large.svg` |
 | `Container-1.svg` | Filled circle, 120 px, cropped to 120 × 97 | Bottom left, cut by the section edge | `cta-circle-filled.svg` |
-| `Container-2.svg` | Filled circle, 40 px, cropped to 40 × 2 | Bottom edge, right of center. About 1 px is visible | `cta-circle-edge.svg`. Kept; whether it is needed is decided in the visual comparison ([Q-20](decisions.md#open-questions)) |
+| `Container-2.svg` | Filled circle, 40 px, cropped to 40 × 2 | Bottom edge, right of center. The top 1.5 px is visible | `cta-circle-edge.svg`. Used: the implementation shows the same part as the reference ([D-55](decisions.md#contact-call-to-action-and-footer)) |
 | `Container-3.svg` | Filled rounded square, rotated, cropped to 136 × 113 | Top right, cut by the section edge | `cta-square-filled-top.svg` |
 | `Container-4.svg` | Filled rounded square, rotated, cropped to 34 × 67 | Left edge, cut by the section edge | `cta-square-filled-left.svg` |
 | `Container-5.svg`, `Container-6.svg` | The same outline circle, 32 px, 2 px stroke. Checked equivalent (see below) | Two small circles: top right of center and bottom right | `cta-circle-outline-small.svg`, one file used twice |
@@ -389,7 +460,7 @@ The owner will provide the remaining assets ([Q-18](decisions.md#open-questions)
 Preferences, not blockers:
 
 - SVG for the step illustrations and for the message and clock icons. The PNGs stay as candidates, subject to the quality check ([D-19](decisions.md#design-assets)).
-- `cta-avatars.png` has transparent space around the avatars. It can be used as is or trimmed in the project copy.
+- `cta-avatars.png` has transparent space around the avatars. The project copy is unchanged, and the page shows only the avatars, by CSS ([D-55](decisions.md#contact-call-to-action-and-footer)).
 
 ### Raster resolution
 
@@ -415,12 +486,13 @@ Display sizes are estimates read from the references at the confirmed 2x scale. 
 
 - **Risk:** at a density near 1.0, screens with a device pixel ratio of 2 or more may show these images softer than the reference. The risk is highest for the large photos and for the hard edges of small icons.
 - **Observed in T-04:** in Chrome at a device pixel ratio of 2, the hero photo, the stars, the hero avatars and the menu icon look softer than the same areas of the 2x references. At a device pixel ratio of 1 they match. The other images have not been rendered yet.
+- **Observed in T-07:** at a device pixel ratio of 2, the contact icons match the 2x references closely (mean difference 8 to 15 of 765; the same comparison shifted by 6 px gives 46 to 50). The call to action avatars are softer (20 to 33), because the file is 1x ([Q-18](decisions.md#open-questions)).
 - **Next step:** for these four files, a 2x export (or SVG for the star and the menu icon) would remove the observed softness ([Q-18](decisions.md#open-questions)). The other images are checked when their sections are built.
 
 ### Not in the references
 
 - Favicon and social preview image ([Q-07](decisions.md#open-questions)).
-- Font files: none in the asset folder ([Q-10](decisions.md#open-questions)).
+- Font files: none in the asset folder. The fonts are loaded with `next/font/google` ([D-20](decisions.md#visual-foundation)).
 
 ### Not needed
 
@@ -439,8 +511,12 @@ Display sizes are estimates read from the references at the confirmed 2x scale. 
 | Testimonial avatar | Empty (decorative) | The author name is next to it. Used in T-06 |
 | Quote mark | Empty (decorative), not exposed to assistive technologies | The quote is marked up as a quotation and read once ([D-49](decisions.md#testimonial-and-community)). Used in T-06 |
 | Community collage | Collage of people reading, working at laptops, talking in a group and holding books. | Approved by the owner ([D-48](decisions.md#testimonial-and-community)). Used in T-06 |
+| Contact icons (message, clock) | Empty (decorative) | The label next to each icon carries the meaning. Used in T-07 |
+| Call to action avatars | Empty (decorative) | Illustrative; no names are given. Used in T-07 |
+| Call to action decorations | Empty, in a layer hidden from assistive technologies | Decorative shapes. Used in T-07 |
+| Footer logo | Luma | The wordmark text (light version). Used in T-07 |
 
-Other images: pending.
+Every image on the page now has a text alternative or is decorative.
 
 ## Checklist
 
@@ -472,7 +548,7 @@ Other images: pending.
 - [x] Images exported: collage, testimonial avatar, final call to action avatars, hero photo, hero avatars and the featured photo without the badge received
 - [ ] Icons and illustrations exported: steps, contact icons, final call to action decorations, star, menu icon and quote mark received. The dark arrow is no longer needed ([D-34](decisions.md#courses-and-how-it-works))
 - [ ] Favicon and social preview image: not in the references
-- [ ] Text alternatives for images: hero photo drafted; featured photo provided by the owner; community collage approved by the owner; avatars, step illustrations and arrows decorative ([Text alternatives](#text-alternatives)); the others pending
+- [ ] Text alternatives for images: hero photo drafted, pending review; featured photo provided by the owner; community collage approved by the owner; avatars, step illustrations, arrows, contact icons and call to action decorations decorative ([Text alternatives](#text-alternatives))
 
 ### Interactive states and menu
 

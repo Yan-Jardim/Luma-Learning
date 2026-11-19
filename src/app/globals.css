@@ -179,6 +179,27 @@
   letter-spacing: -0.046875rem; /* -0.75px */
 }
 
+/*
+ * Estimated text styles for T-07 (D-54): measured on the references, not confirmed in Figma.
+ * The final call to action heading is smaller than the H1 styles; the size and tracking were
+ * chosen by matching the reference line widths (tracking -0.025em, as the section headings).
+ */
+@utility type-cta-heading-mobile {
+  @apply font-display;
+  font-weight: 800;
+  font-size: 2.25rem; /* 36px */
+  line-height: 2.5rem; /* 40px */
+  letter-spacing: -0.05625rem; /* -0.9px */
+}
+
+@utility type-cta-heading-desktop {
+  @apply font-display;
+  font-weight: 800;
+  font-size: 3.5rem; /* 56px */
+  line-height: 4rem; /* 64px */
+  letter-spacing: -0.0875rem; /* -1.4px */
+}
+
 /* Right arrow drawn with the exported white arrow as a mask, so it follows the text color (D-34). */
 @utility icon-arrow-right {
   display: inline-block;
