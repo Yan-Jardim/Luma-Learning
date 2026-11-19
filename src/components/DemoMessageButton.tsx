@@ -10,6 +10,10 @@ type DemoMessageButtonProps = {
   className?: string;
   messageClassName?: string;
   wrapperClassName?: string;
+  // Also hide the message when focus leaves the button (T-07, footer links): with controls packed
+  // around it, the message could otherwise cover the next focused control. Off by default, so the
+  // approved behavior of the other buttons does not change.
+  closeOnFocusOut?: boolean;
 };
 
 // Button that presents an accessible demo message instead of an action that does not exist
@@ -21,6 +25,7 @@ export function DemoMessageButton({
   className = "",
   messageClassName = "",
   wrapperClassName = "",
+  closeOnFocusOut = false,
 }: DemoMessageButtonProps) {
   const [visible, setVisible] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -46,7 +51,17 @@ export function DemoMessageButton({
   }, [visible]);
 
   return (
-    <div ref={wrapperRef} className={`relative ${wrapperClassName}`}>
+    <div
+      ref={wrapperRef}
+      className={`relative ${wrapperClassName}`}
+      onBlur={
+        closeOnFocusOut
+          ? (event) => {
+              if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setVisible(false);
+            }
+          : undefined
+      }
+    >
       <button type="button" aria-label={ariaLabel} className={className} onClick={() => setVisible(true)}>
         {children}
       </button>

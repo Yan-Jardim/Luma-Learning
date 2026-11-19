@@ -16,16 +16,16 @@ The names below are working names. The order, copy and composition observed in t
 
 | Section | Notes |
 | --- | --- |
-| Header and mobile navigation | Link destinations and mobile menu behavior are pending. |
+| Header and mobile navigation | Destinations in [D-23](decisions.md#header-and-hero); mobile menu in [D-25](decisions.md#header-and-hero) and [D-30](decisions.md#header-and-hero). |
 | Hero | |
 | Learning categories | |
-| Featured course | Course actions are pending. |
+| Featured course | Course actions in [D-35](decisions.md#courses-and-how-it-works). |
 | How it works | Steps numbered 01, 02 and 03 ([D-05](decisions.md#approved)). |
 | Testimonial and metrics | |
 | Teacher and student community | |
-| Contact form | In English on desktop and mobile ([D-06](decisions.md#approved)). No real submission, since there is no backend. Form data must not be logged ([CLAUDE.md](../CLAUDE.md)). |
-| Final call to action | |
-| Footer | Link destinations are pending. |
+| Contact form | In English on desktop and mobile ([D-06](decisions.md#approved)). No real submission, since there is no backend. Form data must not be logged ([CLAUDE.md](../CLAUDE.md)). Behavior in [D-50](decisions.md#contact-call-to-action-and-footer), email in [D-51](decisions.md#contact-call-to-action-and-footer). |
+| Final call to action | Actions in [D-52](decisions.md#contact-call-to-action-and-footer). |
+| Footer | Destinations and demo buttons in [D-53](decisions.md#contact-call-to-action-and-footer). |
 
 ## General requirements
 
@@ -57,15 +57,11 @@ The challenge PDF treats publishing as optional and does not mention a video. Th
 
 These are not defined yet. They depend on the design references or on owner decisions. Related questions are tracked in [decisions.md](decisions.md#open-questions).
 
-- Destinations of navigation links, buttons, calls to action and footer links.
-- Login and sign-up actions (there is no real authentication).
-- Course actions.
-- Mobile menu behavior.
-- Contact form validation rules, submit behavior and feedback messages. The fields are known.
-- Header behavior on scroll.
 - Divergences between the references that are not resolved yet ([design.md](design.md#divergences-between-the-references)).
 - Interactive states and animations, if any.
 - Metadata content.
+
+Decided since the first version of this list: link and button destinations ([D-23](decisions.md#header-and-hero), [D-35](decisions.md#courses-and-how-it-works), [D-45](decisions.md#testimonial-and-community), [D-52](decisions.md#contact-call-to-action-and-footer), [D-53](decisions.md#contact-call-to-action-and-footer)), login and sign-up ([D-24](decisions.md#header-and-hero), [D-52](decisions.md#contact-call-to-action-and-footer)), course actions ([D-35](decisions.md#courses-and-how-it-works)), the mobile menu and the header on scroll ([D-25](decisions.md#header-and-hero), [D-30](decisions.md#header-and-hero)), and the contact form ([D-50](decisions.md#contact-call-to-action-and-footer), [D-51](decisions.md#contact-call-to-action-and-footer)).
 
 ## Acceptance criteria
 
@@ -141,16 +137,20 @@ The criteria apply at the desktop and mobile references and at intermediate widt
 - Eyebrow, heading, paragraph, both info cards, and the form card with title, subtitle, three fields and "Send message", in English on desktop and mobile ([D-06](decisions.md#approved)).
 - Each field has a visible, associated label. The email field uses `type="email"` and the question field is multi-line.
 - Desktop: text and info cards left, form card right. Mobile: text, info cards, then the form card.
-- Submitting makes no network request and never writes form data to logs. Validation and feedback follow Q-05.
-- The contact email follows Q-17.
+- Submitting makes no network request, stores nothing and never writes form data to logs. The three fields are required and validated natively; an invalid submit moves focus to the first invalid field. A valid submit shows "This is a demo. Your message was not sent." in a `role="status"` region, keeps the field values, and the message is removed when the user edits again ([D-50](decisions.md#contact-call-to-action-and-footer)).
+- `contact@luma.com` is plain text in the reference color: not a link and not a Tab stop ([D-51](decisions.md#contact-call-to-action-and-footer)). The info card icons are decorative.
 
 ### Final call to action
 
 - Avatars, heading, paragraph and both buttons, centered.
 - Desktop: decorative shapes in the background, buttons side by side. Mobile: no decorative shapes, buttons full width and stacked.
+- "Explore all courses" goes to `#categories`; "Join Luma" presents "This is a demo. Sign-up is not available." with the conditions of [D-38](decisions.md#courses-and-how-it-works) ([D-52](decisions.md#contact-call-to-action-and-footer)).
+- The avatars and the shapes are decorative and hidden from assistive technology. The shapes never sit behind the text, also with enlarged text.
 
 ### Footer
 
 - Logo, tagline, the three link groups (Explore, Company, Support) with their links, the divider and "© 2026 Luma Learning".
 - Desktop: brand column and three link columns, copyright left. Mobile: Explore and Company side by side, Support below, copyright centered.
 - Each link group is a list under its heading, inside the `footer` landmark.
+- Destinations and demo buttons follow [D-53](decisions.md#contact-call-to-action-and-footer). A demo message never covers the next focused control, the controls under it stay usable with the mouse and the keyboard, and every control has a visible focus indicator on the dark background.
+- The copyright uses `footer-heading` on both breakpoints ([D-56](decisions.md#contact-call-to-action-and-footer)).

@@ -1,14 +1,21 @@
-// Button classes shared by the header, the mobile menu, the hero and the featured section.
+// Button classes shared by the header, the mobile menu, the hero, the featured section, the
+// community, the contact form and the final call to action.
 // Radius and padding of the large buttons come from Figma ("Explore courses": radius 8 px,
 // padding 14 px / 28 px). The label style is `Desktop/body 1`, inferred on mobile (D-28).
 
 const shape = "inline-flex items-center justify-center rounded-lg type-desktop-body-1";
 const base = `${shape} whitespace-nowrap`;
 
-export const primaryButton = `${base} bg-primary-blue px-7 py-3.5 text-white`;
+// Labels that may wrap when they do not fit, which happens only with enlarged text on narrow
+// screens; at the normal size they stay on one line.
+const wrapping = `${shape} text-center`;
+const primaryLook = "bg-primary-blue px-7 py-3.5 text-white";
+const secondaryLook = "border border-line bg-white py-3.5 text-text-primary";
+
+export const primaryButton = `${base} ${primaryLook}`;
 
 // The 1 px border makes this button 54 px high, as in both references.
-export const secondaryButton = `${base} border border-line bg-white px-7 py-3.5 text-text-primary`;
+export const secondaryButton = `${base} ${secondaryLook} px-7`;
 
 // Header button: about 134 × 44 px in the desktop reference (estimate).
 export const headerButton = `${base} bg-primary-blue px-5 py-2.5 text-white`;
@@ -17,7 +24,12 @@ export const headerButton = `${base} bg-primary-blue px-5 py-2.5 text-white`;
 // dark label (estimates from the references, T-05).
 export const accentButton = `${base} bg-yellow px-7 py-3.5 text-text-primary`;
 
-// Secondary look for "Explore teachers and students" (T-06): the label may wrap when it does not fit,
-// which happens only with enlarged text on narrow screens; at the normal size it stays on one line.
-// Horizontal padding 29 px, so the button is 268 px wide, as in both references (estimate).
-export const secondaryButtonWrapping = `${shape} border border-line bg-white px-[29px] py-3.5 text-center text-text-primary`;
+// Secondary look for "Explore teachers and students" (T-06), 29 px horizontal padding, so the
+// button is 268 px wide, as in both references (estimate).
+export const secondaryButtonWrapping = `${wrapping} ${secondaryLook} px-[29px]`;
+
+// "Send message" and "Explore all courses" (T-07).
+export const primaryButtonWrapping = `${wrapping} ${primaryLook}`;
+
+// "Join Luma" (T-07): 28 px horizontal padding, 128 px wide in the desktop reference (estimate).
+export const secondaryButtonWrappingCompact = `${wrapping} ${secondaryLook} px-7`;
