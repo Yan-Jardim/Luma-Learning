@@ -36,7 +36,8 @@ export function Testimonial() {
                 height={48}
                 className="size-12 shrink-0 rounded-full"
               />
-              <span>
+              {/* min-w-0: with very large text the name and role wrap instead of leaving the window (D-58). */}
+              <span className="min-w-0">
                 <span className="block text-base leading-6 font-bold text-text-primary">Alex Morgan</span>{" "}
                 <span className="mt-0.5 block type-body-sm text-text-secondary">Product Manager</span>
               </span>

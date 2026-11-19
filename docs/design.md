@@ -155,7 +155,7 @@ The token column gives the Tailwind color name defined in `src/app/globals.css` 
 | `#FFFFFF` | `white` (Tailwind default) | White background (categories, testimonial, contact), cards, secondary buttons, floating cards |
 | `#171B2C` | `text-primary` | Headings and strong text; footer background. **Figma:** variable `text-primary`, seen on the desktop H1 |
 | `#656770` | `text-secondary` | Body paragraphs. **Figma:** variable `text-secondary`, seen on the mobile hero paragraph |
-| `#6D7384` | `label-gray` | Step labels, metric captions |
+| `#6C7283` | `label-gray` | Step labels, metric captions, card descriptions, info card values, placeholders. Sampled `#6D7384`; one level darker per channel for 4.5:1 on `cream`, an accessibility adaptation ([D-59](decisions.md#integrated-review)) |
 | `#3157F6` | `primary-blue` | Primary buttons, eyebrows, links, featured background, metrics, quote mark, icons. **Figma:** variable `primary-blue`, seen on the primary button and the overline |
 | `#E2E8FF` | `blue-tint` | Number badges, icon tiles, light circles (hero, step 01, community collage) |
 | `#DBDFEB` | `line` | Borders and dividers (header, cards, secondary buttons, step connectors, metrics divider) |
@@ -284,6 +284,8 @@ Measured on the references at 2x and used in T-04 ([D-28](decisions.md#header-an
 | Rating card | 208.5 × 48, 57 px past the photo's right edge, 36 px above its bottom; left padding 18, right 16; stars 10 px, 6 px apart, 10 px before the text | 209 × 48, 19 px past the right edge, 36 px above the bottom |
 | Card text | Inter 400, 14 / 24 px, `text-primary`; "120+" in Inter 700, `primary-blue` | Same |
 
+Enlarged text in the header and the hero buttons ([D-57](decisions.md#integrated-review)): the bar heights are minimums with 8 px of vertical padding, the desktop links may wrap onto more lines while "Log in" stays on one line and the logo keeps its 54 px, and the hero button labels may wrap inside their buttons. At the normal size nothing changes.
+
 Enlarged text (implementation choice, [D-39](decisions.md#header-and-hero)): the heading breaks a word only when it does not fit its line, and the card texts may wrap. When the photo column is narrower than 11em, the cards stack below the photo instead of floating over it. The 11em threshold comes from measuring the floating cards with text at 100% to 250% and widths from 320 to 1280 px: below about 10.5em they overlap each other, and from 11em they are at least 65 px apart. At the normal text size the column is at least 16.5em wide, so the composition does not change.
 
 ### Courses and how it works measurements (Estimate)
@@ -311,7 +313,7 @@ Measured on the references at 2x and refined in the comparison at 402 and 1280 p
 | --- | --- | --- |
 | Testimonial section | 100 px top and bottom; two columns centered vertically: the quote column (735 px track) and the metrics column (385 px) | 60 px top and bottom; quote, author, then the metrics |
 | Quote mark | 24 × 22, `primary-blue`, 16 px above the quote (`icon-quote.png`, decorative, [D-49](decisions.md#testimonial-and-community)) | Same |
-| Author | Avatar 48 × 48, round, 32 px below the quote; name and role 16 px to its right | Avatar 33 px below the quote |
+| Author | Avatar 48 × 48, round, 32 px below the quote; name and role 16 px to its right; they wrap with very large text ([D-58](decisions.md#integrated-review)) | Avatar 33 px below the quote |
 | Metrics | Stacked after a 1 px `line` divider (325 px high), 48 px to its right; each number 70 px high, caption 6 px below, 19 px between metrics | One row of three equal columns, 59 px below the author; in one column below 19em ([D-47](decisions.md#testimonial-and-community)) |
 | Community section | 100 px top and bottom; text column (535 px) and collage (535 × 530, right edge at the content edge), 50 px apart, centered vertically; the collage overlaps the bottom padding by 8 px | 60 px top and bottom; text, button, then the collage scaled to the content width, 16 px below the button |
 | Community rhythm | Overline, 8, heading, 32, paragraph, 32, button (268 × 54, horizontal padding 29 px) | Overline, 8, heading, 24, paragraph, 24, button |
@@ -372,6 +374,7 @@ Intermediate widths and enlarged text (implementation choices, [D-54](decisions.
 - **Decided:** every control shows a 2 px `primary-blue` outline, 2 px away, when it receives keyboard focus. When a link in the mobile panel is chosen, the panel content is removed, so focus moves to the target section ([D-25](decisions.md#header-and-hero)). The section can be focused only by script (`tabindex="-1"`) and has no outline: it is not a control, and an outline around a whole section would suggest one. The scroll shows where focus went, screen readers announce the section by its heading, and the next Tab goes to the first control after the start of the section.
 - **Decided:** the "Explore" message is a bubble with the conditions of [D-38](decisions.md#courses-and-how-it-works). The "View course" message follows the same conditions and opens above its button, so it never covers "Browse all courses" ([D-40](decisions.md#courses-and-how-it-works)). Controls on the blue featured section use a white focus outline (5.49:1 on `primary-blue`).
 - **Decided:** the contact form ([D-50](decisions.md#contact-call-to-action-and-footer)), the plain-text email ([D-51](decisions.md#contact-call-to-action-and-footer)), "Join Luma" ([D-52](decisions.md#contact-call-to-action-and-footer)) and the footer items ([D-53](decisions.md#contact-call-to-action-and-footer)). The "Join Luma" message opens below its button. The footer messages open above theirs and also close when focus leaves the button. A footer message may cover the links just above its button: a click goes through it to them and closes it, and moving focus to them closes it first. On the dark footer, controls use a white focus outline.
+- **Checked in T-08:** the page has no animation, transition or smooth scrolling, with or without the reduced-motion preference, so there is nothing to adapt for `prefers-reduced-motion`. The scrolling that shows a demo message is instant.
 - **Pending:** any animation (static images cannot show it).
 
 ## Divergences between the references
