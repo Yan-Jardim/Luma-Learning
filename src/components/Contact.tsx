@@ -30,7 +30,7 @@ export function Contact() {
 
             <ul className="mt-8 space-y-4 lg:mt-10">
               <li className="flex items-center gap-4 rounded-xl bg-cream p-4 lg:p-5">
-                <Image src="/icons/icon-message.png" alt="" width={40} height={40} unoptimized className="shrink-0" />
+                <Image src="/icons/icon-message.svg" alt="" width={40} height={40} className="shrink-0" />
                 {/* min-w-0: with enlarged text the address can wrap instead of leaving the window. */}
                 <div className="min-w-0">
                   <p className="type-body-sm text-text-primary">Email</p>
@@ -38,7 +38,9 @@ export function Contact() {
                 </div>
               </li>
               <li className="flex items-center gap-4 rounded-xl bg-cream p-4 lg:p-5">
-                <Image src="/icons/icon-clock.png" alt="" width={40} height={40} unoptimized className="shrink-0" />
+                <span className="flex size-[40px] shrink-0 items-center justify-center rounded-[8px] bg-blue-tint">
+                  <Image src="/icons/icon-clock.svg" alt="" width={20} height={20} />
+                </span>
                 <div className="min-w-0">
                   <p className="type-body-sm text-text-primary">Response Time</p>
                   <p className="mt-0.5 type-body-sm text-label-gray lg:mt-1">Up to 24 hours on business days</p>

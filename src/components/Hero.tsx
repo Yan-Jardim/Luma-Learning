@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 import { sectionIds } from "@/content/navigation";
 import { primaryButtonWrapping, secondaryButtonWrappingCompact } from "./button-styles";
 
@@ -11,6 +11,26 @@ import { primaryButtonWrapping, secondaryButtonWrappingCompact } from "./button-
 // cards stack below the photo instead of floating over it. At the normal text size the column
 // is at least 16.5em wide, so the composition does not change. The button labels may wrap
 // inside their buttons, which only happens with very large text on narrow screens (D-57).
+// Images (T-09): the photo is the 2x desktop export from 1024 px and the 2x export with the mobile
+// framing below it (D-62), chosen by the browser through <picture> with the srcSet of getImageProps.
+// The avatars are a 2x export and the stars an SVG file, at the same display sizes as before.
+
+const photoAlt =
+  "Smiling person with glasses and a denim shirt working at a laptop, with sticky notes on the wall behind.";
+const {
+  props: { srcSet: photoDesktop },
+} = getImageProps({ alt: photoAlt, src: "/images/hero-student-photo@2x.png", width: 500, height: 520, sizes: "500px" });
+const {
+  props: { srcSet: photoMobile, ...photo },
+} = getImageProps({
+  alt: photoAlt,
+  src: "/images/hero-student-photo-mobile@2x.png",
+  width: 346,
+  height: 380,
+  loading: "eager",
+  fetchPriority: "high",
+  sizes: "(min-width: 616px) 544px, calc(100vw - 56px)",
+});
 
 const cardShadow = "shadow-[0_8px_24px_rgba(23,27,44,0.08)]";
 const stars = [1, 2, 3, 4, 5];
@@ -43,7 +63,7 @@ export function Hero() {
             </div>
 
             <div className="mt-[30px] flex items-center justify-center gap-3 lg:mt-8 lg:justify-start">
-              <Image src="/images/hero-avatars.png" alt="" width={80} height={32} />
+              <Image src="/images/hero-avatars@2x.png" alt="" width={80} height={32} unoptimized />
               <p className="text-sm leading-6 text-text-secondary">
                 <strong className="font-bold text-text-primary">Trusted by 24,000+</strong> learners
               </p>
@@ -63,16 +83,15 @@ export function Hero() {
                 className="absolute bottom-3 left-[-18px] size-[63px] rounded-full bg-blue-tint lg:left-[-44px] lg:size-[104px]"
               />
 
-              <Image
-                src="/images/hero-student-photo.png"
-                alt="Smiling person with glasses and a denim shirt working at a laptop, with sticky notes on the wall behind."
-                width={500}
-                height={520}
-                loading="eager"
-                fetchPriority="high"
-                sizes="(min-width: 1024px) 500px, (min-width: 616px) 544px, calc(100vw - 56px)"
-                className="relative aspect-[346/380] w-full rounded-[20px] object-cover lg:aspect-[500/520]"
-              />
+              <picture>
+                <source media="(min-width: 64rem)" srcSet={photoDesktop} sizes="500px" />
+                <img
+                  {...photo}
+                  srcSet={photoMobile}
+                  alt={photoAlt}
+                  className="relative aspect-[346/380] w-full rounded-[20px] object-cover lg:aspect-[500/520]"
+                />
+              </picture>
             </div>
 
             <div
@@ -89,7 +108,7 @@ export function Hero() {
             >
               <span aria-hidden="true" className="flex shrink-0 gap-1.5">
                 {stars.map((star) => (
-                  <Image key={star} src="/icons/icon-star.png" alt="" width={10} height={10} unoptimized />
+                  <Image key={star} src="/icons/icon-star.svg" alt="" width={14} height={14} className="-mx-[2px] -mt-[1px] -mb-[3px] max-w-none" />
                 ))}
               </span>
               <span className="text-sm leading-6 text-text-primary">4.9 avg rating</span>

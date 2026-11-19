@@ -57,12 +57,12 @@ export function FinalCta() {
       </div>
 
       <div className="page-container relative py-[60px] text-center lg:py-[100px]">
-        {/* The avatars file is 656 × 40 px with the four avatars centered in its middle 136 px. The
+        {/* The avatars file (2x: 1312 × 80) is drawn at 656 × 40 px, with the four avatars centered in its middle 136 px. The
             image keeps its own size and proportion; a 136 × 40 px window centered on it shows only
             the avatars (D-55). The window is in px, so enlarged text does not change the crop. */}
         <div className="relative mx-auto h-[40px] w-[136px] overflow-hidden">
           <Image
-            src="/images/cta-avatars.png"
+            src="/images/cta-avatars@2x.png"
             alt=""
             width={656}
             height={40}
@@ -80,8 +80,9 @@ export function FinalCta() {
           Start with one course. Build from there.
         </p>
 
-        {/* Query container: the "Join Luma" message is never wider than this row. */}
-        <div className="@container mt-[37px] flex flex-col gap-3 lg:flex-row lg:justify-center">
+        {/* Query container: the "Join Luma" message is never wider than this row. Below 1024 px the
+            buttons are full width but at most 560 px, centered, as the other sections (D-54, T-09). */}
+        <div className="@container mx-auto mt-[37px] flex max-w-[560px] flex-col gap-3 lg:max-w-none lg:flex-row lg:justify-center">
           <a href={`#${sectionIds.categories}`} className={`${primaryButtonWrapping} w-full lg:w-auto`}>
             Explore all courses
           </a>

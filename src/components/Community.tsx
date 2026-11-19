@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { getImageProps } from "next/image";
 import { sectionIds } from "@/content/navigation";
 import { secondaryButtonWrapping } from "./button-styles";
 import { DemoMessageButton } from "./DemoMessageButton";
@@ -8,10 +8,26 @@ import { DemoMessageButton } from "./DemoMessageButton";
 // The collage is one image that already includes the light circle (D-44); its text alternative was
 // approved by the owner (D-48).
 // "Explore teachers and students" presents a demo message under the conditions of D-38 (D-45).
-// Sizes and spacing are estimates from the references. The exported collage has transparent
-// margins (11 px on top, 4 px at the bottom), so on desktop it overlaps the bottom padding by 8 px,
-// as the 522 px frame of the reference does. The mobile reference arranges the photos differently
-// (shorter crops); the single exported image is scaled there instead.
+// Sizes and spacing are estimates from the references. The desktop collage has a transparent
+// margin of 11 px on top, and on desktop it overlaps the bottom padding by 8 px,
+// as the 522 px frame of the reference does.
+// Images (T-09): the 2x desktop export from 1024 px, and below it the 2x export of the mobile frame's
+// collage, which arranges the photos differently (D-62). As in the mobile reference, that group is
+// 10 px wider than the content (372 px at 402 px), centered, and it scales with the column.
+
+const collageAlt = "Collage of people reading, working at laptops, talking in a group and holding books.";
+const {
+  props: { srcSet: collageDesktop },
+} = getImageProps({ alt: collageAlt, src: "/images/community-collage@2x.png", width: 535, height: 530, sizes: "535px" });
+const {
+  props: { srcSet: collageMobile, ...collage },
+} = getImageProps({
+  alt: collageAlt,
+  src: "/images/community-collage-mobile@2x.png",
+  width: 372,
+  height: 330,
+  sizes: "(min-width: 600px) 570px, calc(100vw - 30px)",
+});
 
 const message = "This is a demo. Teacher and student profiles are not available.";
 
@@ -45,14 +61,15 @@ export function Community() {
             </DemoMessageButton>
           </div>
 
-          <Image
-            src="/images/community-collage.png"
-            alt="Collage of people reading, working at laptops, talking in a group and holding books."
-            width={535}
-            height={530}
-            sizes="(min-width: 1024px) 535px, (min-width: 600px) 535px, calc(100vw - 40px)"
-            className="mx-auto mt-4 w-full max-w-[535px] lg:mt-0 lg:-mb-2"
-          />
+          <picture className="block">
+            <source media="(min-width: 64rem)" srcSet={collageDesktop} sizes="535px" />
+            <img
+              {...collage}
+              srcSet={collageMobile}
+              alt={collageAlt}
+              className="-mx-[5px] mt-[22px] -mb-[10px] block aspect-[372/330] h-auto w-[calc(100%+10px)] max-w-none lg:mx-auto lg:mt-0 lg:-mb-2 lg:aspect-[535/530] lg:w-full lg:max-w-[535px]"
+            />
+          </picture>
         </div>
       </div>
     </section>
