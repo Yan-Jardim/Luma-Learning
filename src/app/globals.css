@@ -27,7 +27,7 @@
   --color-yellow: #ffee7e;
   --color-yellow-tint: #fff1c2;
   --color-peach: #ffcb9f;
-  --color-peach-tint: #fae4db; /* Step 02 square on mobile only; divergence pending (Q-14). */
+  --color-peach-tint: #fae4db; /* Step 02 square in the mobile reference only; not used (D-36 keeps peach). */
   --color-coral: #ff704d;
   --color-mustard: #e9d659;
   --color-label-gray: #6d7384;
@@ -50,6 +50,15 @@
   :focus-visible {
     outline: 2px solid var(--color-primary-blue);
     outline-offset: 2px;
+  }
+
+  /*
+   * Sections focused only by script (the mobile menu moves focus to the chosen section, D-25)
+   * are not controls, so they get no outline. No control uses tabindex="-1": every control
+   * keeps the :focus-visible outline above.
+   */
+  [tabindex="-1"]:focus {
+    outline: none;
   }
 }
 
@@ -105,6 +114,58 @@
   line-height: 1rem; /* 16px */
   letter-spacing: 0.09rem; /* 1.44px */
   text-transform: uppercase;
+}
+
+/*
+ * Estimated text styles (D-31): measured on the references, not confirmed in Figma.
+ * Values are listed in docs/design.md, "Estimated styles (T-05)", and refined visually.
+ */
+@utility type-section-heading-mobile {
+  @apply font-display;
+  font-weight: 800;
+  font-size: 2rem; /* 32px */
+  line-height: 2.25rem; /* 36px */
+  letter-spacing: -0.05rem; /* -0.8px */
+}
+
+@utility type-section-heading-desktop {
+  @apply font-display;
+  font-weight: 800;
+  font-size: 3rem; /* 48px */
+  line-height: 3.5rem; /* 56px */
+  letter-spacing: -0.075rem; /* -1.2px */
+}
+
+@utility type-card-title {
+  @apply font-display;
+  font-weight: 700;
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.75rem; /* 28px */
+}
+
+@utility type-body-sm {
+  @apply font-sans;
+  font-weight: 400;
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.5rem; /* 24px */
+}
+
+@utility type-body-md {
+  @apply font-sans;
+  font-weight: 400;
+  font-size: 1rem; /* 16px */
+  line-height: 1.75rem; /* 28px */
+}
+
+/* Right arrow drawn with the exported white arrow as a mask, so it follows the text color (D-34). */
+@utility icon-arrow-right {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 14px;
+  height: 12px;
+  background-color: currentColor;
+  -webkit-mask: url("/icons/icon-arrow-right.png") center / contain no-repeat;
+  mask: url("/icons/icon-arrow-right.png") center / contain no-repeat;
 }
 
 /*

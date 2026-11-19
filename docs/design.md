@@ -165,9 +165,9 @@ The token column gives the Tailwind color name defined in `src/app/globals.css` 
 | `#FF704D` | `coral` | Step 02 circle |
 | `#E9D659` | `mustard` | Step 03 circle |
 | `#9E9FAA` | `footer-link` | Footer links |
-| `#E7E7EC` | `footer-heading` | Footer headings |
+| `#E7E7EC` | `footer-heading` | Footer headings. The references also use it for "Browse all courses" on the featured section; the implementation uses white there instead, an approved accessibility adaptation ([D-42](decisions.md#courses-and-how-it-works)) |
 | `#5B5D68` | `footer-divider` | Footer divider |
-| `#FAE4DB` | `peach-tint` | Step 02 square, mobile only (divergence 4) |
+| `#FAE4DB` | `peach-tint` | Step 02 square in the mobile reference only (divergence 4). Not used: [D-36](decisions.md#courses-and-how-it-works) keeps `#FFCB9F` |
 
 ## Type styles
 
@@ -193,11 +193,28 @@ Not confirmed yet (Estimate):
 
 | Text | Desktop | Mobile |
 | --- | --- | --- |
-| Section heading | ≈48 px, line ≈56 px | Pending |
-| Card title | ≈20 px | Pending |
+| Section heading | See [Estimated styles (T-05)](#estimated-styles-t-05) | Same |
+| Card title | See [Estimated styles (T-05)](#estimated-styles-t-05) | Same |
 | Overline and hero button labels | Confirmed styles above | Desktop styles, inferred ([D-28](decisions.md#header-and-hero)) |
 
 The inference for mobile rests on equal pixel boxes in both references (Image, 2x PNG px): the eyebrow 381 × 17, "Explore courses" 217 × 25, "See how it works" 229 × 21, and the bold "Trusted by 24,000+" 270 × 25. Equal boxes do not prove every typographic property. The other small texts of the header and hero (nav links, "Log in", the "Start learning" label, the social proof and the floating cards) are estimated from the references during T-04 and marked as estimates.
+
+### Estimated styles (T-05)
+
+Measured on the references at 2x and approved as estimates ([D-31](decisions.md#courses-and-how-it-works), [D-32](decisions.md#courses-and-how-it-works)). They are refined in the visual comparison and are not Figma values. Where a value coincides with a confirmed style, the confirmed style is used.
+
+| Text | Desktop (Estimate) | Mobile (Estimate) | Confirmed style reused |
+| --- | --- | --- | --- |
+| Section heading | Plus Jakarta Sans 800, 48 / 56 px, letter spacing about -1.2 px | 32 / 36 px, about -0.8 px | — |
+| Card and step titles | Plus Jakarta Sans 700, about 20 px | Same | — |
+| Card description | Inter 400, 14 / 24 px, `label-gray` | Same | — |
+| Step description | Inter 400, 16 / 28 px, `text-secondary` | 14 / 24 px | — |
+| Featured paragraph | Inter 400, 16 / 28 px, white | 14 / 24 px | — |
+| Featured instructor line | Inter 400, 16 px, white | 14 px | — |
+| Section overlines, "STEP 01" labels, number badges | Inter 600, 12 / 16 px, 1.44 px, uppercase | Same | `Desktop/Overline` |
+| Section intro paragraph | Inter 400, 18 / 28 px | 16 / 26 px | `Desktop/subtitle 1`, `Mobile/subtitle 1` |
+| Pills | Inter 400, 14 / 24 px; 38 px high; 1 px `line` border, then padding 6 / 14 (refined in the comparison) | Same | — |
+| "Explore", "View course", "Browse all courses" | Inter 700, 14 / 24 px; "Browse all courses" in `#E7E7EC` in the references, white in the implementation ([D-42](decisions.md#courses-and-how-it-works)) | Same | `Desktop/body 1` |
 
 ## Layout
 
@@ -206,7 +223,7 @@ The inference for mobile rests on equal pixel boxes in both references (Image, 2
 - **Figma:** mobile content width 362 px: the hero heading, paragraph and primary button fill 362 px. With the inferred 402 px frame, that leaves 20 px per side, symmetric in the image.
 - **Estimate, accepted provisionally ([D-22](decisions.md#visual-foundation)):** desktop content width 1120 px with 80 px side margins at the 1280 px reference. The margins are not fixed for every width; the responsive behavior must be checked.
 - **Figma:** primary button "Explore courses": radius 8 px, padding 14 px vertical and 28 px horizontal, fill `primary-blue`. Desktop: 167 × 54 (width hugs the label, height fills its row). Mobile: 362 × 52 (full width, height hugs the content).
-- **Image:** cards, images, inputs and other buttons have rounded corners; their radii are pending, except the ones measured for the header and hero below.
+- **Image:** cards, images, inputs and other buttons have rounded corners; their radii are pending, except the ones measured for the header, hero and T-05 below. The T-05 card and badge radii were checked by comparing their corner pixels with the references.
 
 ### Header and hero measurements (Estimate)
 
@@ -229,11 +246,32 @@ Measured on the references at 2x and used in T-04 ([D-28](decisions.md#header-an
 | Rating card | 208.5 × 48, 57 px past the photo's right edge, 36 px above its bottom; left padding 18, right 16; stars 10 px, 6 px apart, 10 px before the text | 209 × 48, 19 px past the right edge, 36 px above the bottom |
 | Card text | Inter 400, 14 / 24 px, `text-primary`; "120+" in Inter 700, `primary-blue` | Same |
 
+Enlarged text (implementation choice, [D-39](decisions.md#header-and-hero)): the heading breaks a word only when it does not fit its line, and the card texts may wrap. When the photo column is narrower than 11em, the cards stack below the photo instead of floating over it. The 11em threshold comes from measuring the floating cards with text at 100% to 250% and widths from 320 to 1280 px: below about 10.5em they overlap each other, and from 11em they are at least 65 px apart. At the normal text size the column is at least 16.5em wide, so the composition does not change.
+
+### Courses and how it works measurements (Estimate)
+
+Measured on the references at 2x; the initial reference for T-05 ([D-33](decisions.md#courses-and-how-it-works)). Heights follow the content. The values for categories and "How it works" were refined in the comparison with the implementation at 402 and 1280 px (2x): every text line is within 1 px of the reference.
+
+| Item | Desktop | Mobile |
+| --- | --- | --- |
+| Section padding | Categories: 100 px top and bottom. "How it works": 100 px top, about 128 px bottom (about one more 28 px line below the step text) | 60 px top and bottom in both sections |
+| Categories heading block | Overline, 16, heading (wraps after "worth"), 16, intro paragraph, at most 560 px wide | Same rhythm |
+| Category cards | Four in a row, 265 × 264.5 px, 20 px apart; 1 px `line` border, radius 16; padding about 30 top, 26 bottom, 28 sides; 40 px below the intro | One per row, full width, about 227 px high, 16 px apart; padding about 26 top, 21 bottom, 24 sides |
+| Number badge | 32 × 24, radius 6, `blue-tint`, `primary-blue` text | Same |
+| Card content | Badge, 22, title, 14, description, at least 22, "Explore" at the bottom of the card; label and arrow 12 apart, arrow 14 × 12 | Badge, 20, title, 12, description, 22, "Explore" |
+| How it works heading | Centered overline and heading (one line); 105 px to the steps | Centered; the heading wraps to two lines; 40 px to the steps |
+| Steps | Three columns starting 400 px apart (320 px wide, 80 px gaps); icons 56 px (the 67 px step 02 image is centered on the same 56 px box); a 1 px `line` connector through the icon centers; label 24 px below the icon, 10 to the title, 16 to the description | Stacked, 76 px from a description to the next icon; a 1 px vertical connector, 48 px long, starts about 28 px below the previous description and ends at the next icon; label 24 px below the icon, 8 to the title, 15 to the description |
+| Featured course | 100 px top and bottom. Photo 538 × 408, radius 16, centered against the text column (522 px from x 678, 60 px gap). Badge 160 × 28, radius 6, 12 px outside the photo's top left corner, `Desktop/Overline` in `text-primary`. Overline, 16, heading, 20, paragraph, 24, instructor line, 24, pills (93, 93 and 114 × 38, 12 apart, radius 8), 32, buttons row: "View course" 142 × 52, radius 8, then "Browse all courses" 29 px to its right; label and arrow 12 apart, the arrow 2 px higher than in "Explore" | 60 px top and bottom. Photo 362 × 280 (same photo, cropped), radius 16, badge as on desktop; 38 px to the overline; same rhythm; "View course" full width; "Browse all courses" centered in a 48 px tall box, 12 px below the button, its label 3 px below the box center |
+
+Intermediate widths (implementation choice, not shown in the references; [D-33](decisions.md#courses-and-how-it-works), approved by the owner in [D-37](decisions.md#courses-and-how-it-works)): the category cards use one column below 640 px, two from 640 px and four from 1024 px. The steps are stacked below 1024 px, in a centered block at most 560 px wide, and use three columns from 1024 px, 48 px apart, or 80 px from 1280 px. The featured section uses one column, at most 560 px wide, below 1024 px, as the hero does ([D-40](decisions.md#courses-and-how-it-works)). Card padding is in px, so enlarged text keeps its room. Words break only when they do not fit their line, which happens only with very large text on narrow screens.
+
 ## Interactions and states
 
 - **Image:** only default states appear. Neither reference shows hover, focus, active, disabled, validation, success, error or open-menu states.
 - **Image:** visible interactive elements: nav links, "Log in", "Start learning", the menu button (mobile), hero buttons, category "Explore" links, "View course", "Browse all courses", "Explore teachers and students", the contact email, the three form fields and "Send message", the final call to action buttons, and the footer links.
 - **Decided:** the header scrolls with the page, and the mobile menu behavior is defined in [D-25](decisions.md#header-and-hero).
+- **Decided:** every control shows a 2 px `primary-blue` outline, 2 px away, when it receives keyboard focus. When a link in the mobile panel is chosen, the panel content is removed, so focus moves to the target section ([D-25](decisions.md#header-and-hero)). The section can be focused only by script (`tabindex="-1"`) and has no outline: it is not a control, and an outline around a whole section would suggest one. The scroll shows where focus went, screen readers announce the section by its heading, and the next Tab goes to the first control after the start of the section.
+- **Decided:** the "Explore" message is a bubble with the conditions of [D-38](decisions.md#courses-and-how-it-works). The "View course" message follows the same conditions and opens above its button, so it never covers "Browse all courses" ([D-40](decisions.md#courses-and-how-it-works)). Controls on the blue featured section use a white focus outline (5.49:1 on `primary-blue`).
 - **Pending:** any animation (static images cannot show it).
 
 ## Divergences between the references
@@ -242,8 +280,8 @@ Measured on the references at 2x and used in T-04 ([D-28](decisions.md#header-an
 | --- | --- | --- | --- | --- |
 | 1 | Step labels | "STEP 01" on all three steps | STEP 01, 02, 03 | [D-05](decisions.md#approved): 01, 02, 03 |
 | 2 | Contact form language | English | Portuguese, except the "Contact us" title | [D-06](decisions.md#approved): English |
-| 3 | Step 02 description | "…professionals who use these skills." | "…professionals who actually use these skills." | Pending ([Q-13](decisions.md#open-questions)) |
-| 4 | Step 02 square color | `#FFCB9F` | `#FAE4DB` | Pending ([Q-14](decisions.md#open-questions)) |
+| 3 | Step 02 description | "…professionals who use these skills." | "…professionals who actually use these skills." | [D-36](decisions.md#courses-and-how-it-works): the desktop text |
+| 4 | Step 02 square color | `#FFCB9F` | `#FAE4DB` | [D-36](decisions.md#courses-and-how-it-works): `#FFCB9F`, with the circle `#FF704D` |
 | 5 | Community paragraph color | `#656770` | `#171B2C` | Pending ([Q-15](decisions.md#open-questions)) |
 | 6 | Hero photo framing | Matches `hero-student-photo.png` exactly (mean pixel difference 4.7 of 765) | Different framing of the same photo: the person is smaller and the hair is cut at the top. No crop of the exported file matches it (best mean difference about 32) | Pending ([Q-21](decisions.md#open-questions)). The implementation uses a centered crop of the exported file |
 
@@ -257,7 +295,7 @@ The owner exported the assets from Figma on 2026-11-18 into a local folder. The 
 
 27 files: 13 PNG and 14 SVG. No file is empty, no two files are byte-identical, and every real format matches its extension. Pixel sizes compared with the display sizes are in [Raster resolution](#raster-resolution).
 
-On 2026-11-18, for T-04, the owner added three files and replaced `icon-star.png`. Those four files are listed at the end of the table, and the folder now has 30 files.
+On 2026-11-18, for T-04, the owner added three files and replaced `icon-star.png`. Those four files are listed at the end of the table, and the folder now has 30 files. Later that day, for T-05, the owner added `featured-course-photo.png` (last row); the folder has 31 files.
 
 | File | Real format and size | Content (Image) | Status |
 | --- | --- | --- | --- |
@@ -279,6 +317,7 @@ On 2026-11-18, for T-04, the owner added three files and replaced `icon-star.png
 | `hero-avatars.png` (new) | PNG, 80 × 32 | The three hero avatars, overlapping, with cream rings | OK; copied to `public/images/` |
 | `icon-menu.png` (new) | PNG, 24 × 24, transparent | Three bars, 20 × 2 px, `#171B2C` at 75% opacity | OK; copied to `public/icons/`. The bars look lighter than in the reference: the opacity comes from the file ([Q-22](decisions.md#open-questions)) |
 | `icon-star.png` (replaced) | PNG, 10 × 10, transparent | Star alone, `#FFEE7E` | OK; copied to `public/icons/`. The earlier file was the whole rating card |
+| `featured-course-photo.png` (new) | PNG, 538 × 408, RGBA but fully opaque, square corners | Featured photo alone, without the badge. Same framing as the photo inside `featured-course.png` (offset 12 × 12 px, mean difference 4.1 of 765 outside the badge area) | OK; copied to `public/images/` (same SHA-256) |
 | `logo-dark.svg` (reused) | SVG, 54 × 17 | See above | Copied to `public/brand/` |
 
 ### Final call to action decorations
@@ -311,8 +350,8 @@ The owner will provide the remaining assets ([Q-18](decisions.md#open-questions)
 
 | Item | Reason | Suggested file | Needed before |
 | --- | --- | --- | --- |
-| Featured photo alone | `featured-course.png` includes the badge text | `featured-course-photo.jpg` | T-05 |
-| Arrow for dark text | Only a white arrow exists, and the category "Explore" links use a dark arrow | `icon-arrow-right.svg`, one SVG for both colors | T-05 |
+| Featured photo alone | Received on 2026-11-18 as `featured-course-photo.png` ([Inventory](#inventory)) | — | — |
+| Arrow for dark text | No longer needed: the white arrow is used as a CSS mask that follows the text color ([D-34](decisions.md#courses-and-how-it-works)) | — | — |
 | Quote mark | Not in the folder | `icon-quote.svg` | T-06 |
 
 Preferences, not blockers:
@@ -328,6 +367,7 @@ Display sizes are estimates read from the references at the confirmed 2x scale. 
 | --- | --- | --- | --- | --- |
 | `hero-student.png` | 626 × 524 | ≈600 × 520, photo with cards and shapes | ≈383 × 380, with different proportions | ≈1.0 / ≈1.6 |
 | `featured-course.png` | 550 × 420 | ≈538 × 408 photo, plus the badge overhang | ≈362 × 280 photo | ≈1.0 / ≈1.5 |
+| `featured-course-photo.png` | 538 × 408 | 538 × 408 | 362 × 280, cropped | 1.0 / ≈1.5 |
 | `community-collage.png` | 535 × 530 | ≈520 wide | ≈362 wide | ≈1.0 / ≈1.5 |
 | `cta-avatars.png` | 656 × 40, of which 136 × 40 visible | ≈136 × 40 | ≈136 × 40 | ≈1.0 / ≈1.0 |
 | `testimonial-alex-morgan.png` | 48 × 48 | ≈48 × 48 | ≈48 × 48 | ≈1.0 / ≈1.0 |
@@ -361,6 +401,8 @@ Display sizes are estimates read from the references at the confirmed 2x scale. 
 | Hero photo | Smiling person with glasses and a denim shirt working at a laptop, with sticky notes on the wall behind. | Draft by the agent from the visible content ([D-29](decisions.md#header-and-hero)), pending review. Used in T-04 |
 | Logo | Luma | The wordmark text |
 | Hero avatars, rating stars, menu icon, peach shape, light circle | Empty (decorative) | The adjacent text or the button name carries the meaning |
+| Step illustrations (01 to 03), "Explore" and "Browse all courses" arrows | Empty (decorative) | The step title and the button or link name carry the meaning. Used in T-05 |
+| Featured photo | Person working at a table with papers, tools and trays of colored material samples. | Provided by the owner ([D-41](decisions.md#courses-and-how-it-works)). Used in T-05 |
 
 Other images: pending.
 
@@ -391,10 +433,10 @@ Other images: pending.
 ### Images, icons and exports
 
 - [x] Logo exported (SVG, dark and light)
-- [ ] Images exported: collage, testimonial avatar, final call to action avatars, hero photo and hero avatars received; the featured photo needs a clean re-export
-- [ ] Icons and illustrations exported: steps, contact icons, final call to action decorations, star and menu icon received; the dark arrow and the quote are missing
+- [x] Images exported: collage, testimonial avatar, final call to action avatars, hero photo, hero avatars and the featured photo without the badge received
+- [ ] Icons and illustrations exported: steps, contact icons, final call to action decorations, star and menu icon received; the quote is missing. The dark arrow is no longer needed ([D-34](decisions.md#courses-and-how-it-works))
 - [ ] Favicon and social preview image: not in the references
-- [ ] Text alternatives for images: hero photo drafted ([Text alternatives](#text-alternatives)); the others pending
+- [ ] Text alternatives for images: hero photo drafted; step illustrations and arrow decorative ([Text alternatives](#text-alternatives)); the others pending
 
 ### Interactive states and menu
 
@@ -420,3 +462,4 @@ Other images: pending.
 | 2026-11-18 | Four screenshots of the Figma file in view mode, shared by the owner in the conversation | Examined. They give the `Desktop/H1` text style, the `text-primary` color, and the dimensions that confirm the 2x scale. One canvas label (560 × 226) belongs to an unidentified selection and was not used. |
 | 2026-11-18 | Eight more screenshots of the Figma inspect panel, shared by the owner in the conversation | Examined. They give five more text styles, the `text-secondary` and `primary-blue` colors, the mobile content width and the primary button. |
 | 2026-11-18 | T-04 assets in the authorized asset folder: hero photo, hero avatars, menu icon and the replaced star icon | Checked and copied to `public/` with `logo-dark.svg`; the originals are unchanged ([Inventory](#inventory)). |
+| 2026-11-18 | Featured photo without the badge (`featured-course-photo.png`) in the authorized asset folder | Checked and copied to `public/images/`; the original is unchanged ([Inventory](#inventory)). |
