@@ -1,16 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
-
-type DemoMessageButtonProps = {
-  message: string;
-  children: ReactNode;
-  ariaLabel?: string;
-  className: string;
-  messageClassName: string;
-  wrapperClassName?: string;
-  closeOnFocusOut?: boolean;
-};
+import { useEffect, useRef, useState } from "react";
+import type { DemoMessageButtonProps } from "./DemoMessageButton.types";
 
 export function DemoMessageButton({
   message,

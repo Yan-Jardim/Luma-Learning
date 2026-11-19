@@ -1,11 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import { LoginButton } from "@/components/LoginButton/LoginButton";
+import { MobileMenu } from "@/components/MobileMenu/MobileMenu";
 import { navItems, startLearning } from "@/content/navigation";
-import { demoMessage, headerButton } from "./button-styles";
-import { LoginButton } from "./LoginButton";
-import { MobileMenu } from "./MobileMenu";
-
-const navLink = "text-sm leading-6 text-text-secondary";
+import { headerButton } from "@/styles/buttons.styles";
+import { loginMessage, navLink } from "./Header.styles";
 
 export function Header() {
   return (
@@ -28,10 +27,7 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-6 justify-self-end lg:flex">
-          <LoginButton
-            className={`${navLink} whitespace-nowrap`}
-            messageClassName={`${demoMessage} absolute top-full right-0 z-30 mt-3 max-w-60`}
-          />
+          <LoginButton className={`${navLink} whitespace-nowrap`} messageClassName={loginMessage} />
           <a href={startLearning.href} className={headerButton}>
             {startLearning.label}
           </a>

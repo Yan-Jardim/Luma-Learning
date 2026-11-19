@@ -1,13 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import { primaryButtonWrapping } from "./button-styles";
+import { primaryButtonWrapping } from "@/styles/buttons.styles";
+import { formField, formLabel } from "./ContactForm.styles";
 
 const message = "This is a demo. Your message was not sent.";
-
-const labelClass = "block type-desktop-body-1 text-text-primary";
-const fieldClass =
-  "mt-2 block w-full rounded-lg border border-line bg-cream px-4 type-body-sm text-text-primary placeholder:text-label-gray";
 
 export function ContactForm() {
   const [sent, setSent] = useState(false);
@@ -30,7 +27,7 @@ export function ContactForm() {
         if (sent) setSent(false);
       }}
     >
-      <label htmlFor="contact-name" className={labelClass}>
+      <label htmlFor="contact-name" className={formLabel}>
         Full name
       </label>
       <input
@@ -40,10 +37,10 @@ export function ContactForm() {
         autoComplete="name"
         required
         placeholder="Your name"
-        className={`${fieldClass} py-[11px]`}
+        className={`${formField} py-[11px]`}
       />
 
-      <label htmlFor="contact-email" className={`${labelClass} mt-5`}>
+      <label htmlFor="contact-email" className={`${formLabel} mt-5`}>
         Email
       </label>
       <input
@@ -53,10 +50,10 @@ export function ContactForm() {
         autoComplete="email"
         required
         placeholder="youremail@example.com"
-        className={`${fieldClass} py-[11px]`}
+        className={`${formField} py-[11px]`}
       />
 
-      <label htmlFor="contact-question" className={`${labelClass} mt-5`}>
+      <label htmlFor="contact-question" className={`${formLabel} mt-5`}>
         Your question
       </label>
       <textarea
@@ -64,7 +61,7 @@ export function ContactForm() {
         name="question"
         required
         placeholder="Tell us how we can help..."
-        className={`${fieldClass} min-h-[100px] resize-y py-3 lg:min-h-[120px]`}
+        className={`${formField} min-h-[100px] resize-y py-3 lg:min-h-[120px]`}
       />
 
       <button type="submit" className={`${primaryButtonWrapping} mt-6 w-full`}>

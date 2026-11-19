@@ -1,37 +1,15 @@
 import Image from "next/image";
 import { sectionIds } from "@/content/navigation";
-
-const steps = [
-  {
-    number: "01",
-    title: "Choose your focus",
-    description: "Find courses based on the skill you want to build, not endless content categories.",
-    image: { src: "/images/step-01.svg", size: 56 },
-  },
-  {
-    number: "02",
-    title: "Learn from experience",
-    description: "Follow concise lessons created by professionals who use these skills.",
-    image: { src: "/images/step-02.svg", size: 67 },
-  },
-  {
-    number: "03",
-    title: "Put it into practice",
-    description: "Every course includes practical exercises designed to turn knowledge into action.",
-    image: { src: "/images/step-03.svg", size: 56 },
-  },
-];
+import { sectionHeading, sectionOverline } from "@/styles/section.styles";
+import { steps } from "./HowItWorks.data";
 
 export function HowItWorks() {
   return (
     <section id={sectionIds.howItWorks} aria-labelledby="how-it-works-heading" className="bg-cream wrap-break-word">
       <div className="page-container py-[60px] lg:pt-[100px] lg:pb-[128px]">
         <div className="text-center">
-          <p className="type-desktop-overline text-primary-blue">How Luma works</p>
-          <h2
-            id="how-it-works-heading"
-            className="mt-4 type-section-heading-mobile text-text-primary lg:type-section-heading-desktop"
-          >
+          <p className={sectionOverline}>How Luma works</p>
+          <h2 id="how-it-works-heading" className={`mt-4 ${sectionHeading}`}>
             Less browsing. More learning.
           </h2>
         </div>

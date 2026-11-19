@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { sectionContainer } from "@/styles/section.styles";
 
 const metrics = [
   { value: "24K+", caption: "active learners" },
@@ -9,7 +10,7 @@ const metrics = [
 export function Testimonial() {
   return (
     <section className="bg-white wrap-break-word">
-      <div className="page-container py-[60px] lg:py-[100px]">
+      <div className={sectionContainer}>
         <div className="mx-auto max-w-[560px] lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-[minmax(0,735fr)_minmax(0,385fr)] lg:items-center">
           <figure className="max-w-[600px]">
             <Image src="/icons/icon-quote.svg" alt="" width={24} height={22} className="mb-4" />
