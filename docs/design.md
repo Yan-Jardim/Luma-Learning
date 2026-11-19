@@ -162,12 +162,12 @@ The token column gives the Tailwind color name defined in `src/app/globals.css` 
 | `#FFEE7E` | `yellow` | "FEATURED COURSE" badge, "View course" button, rating stars |
 | `#FFF1C2` | `yellow-tint` | Final call to action background, step 03 square |
 | `#FFCB9F` | `peach` | Peach shapes (hero, step 02 on desktop, final call to action) |
-| `#FF704D` | `coral` | Step 02 circle |
-| `#E9D659` | `mustard` | Step 03 circle |
+| `#FF704D` | None | Step 02 circle. Drawn by `step-02.svg` (D-61); no token since T-11 |
+| `#E9D659` | None | Step 03 circle. Drawn by `step-03.svg` (D-61); no token since T-11 |
 | `#9E9FAA` | `footer-link` | Footer links |
 | `#E7E7EC` | `footer-heading` | Footer headings and the copyright on both breakpoints; the mobile reference shows the copyright in white (approved adaptation, [D-56](decisions.md#contact-call-to-action-and-footer)). The references also use it for "Browse all courses" on the featured section; the implementation uses white there instead, an approved accessibility adaptation ([D-42](decisions.md#courses-and-how-it-works)) |
 | `#5B5D68` | `footer-divider` | Footer divider |
-| `#FAE4DB` | `peach-tint` | Step 02 square in the mobile reference only (divergence 4). Not used: [D-36](decisions.md#courses-and-how-it-works) keeps `#FFCB9F` |
+| `#FAE4DB` | None | Step 02 square in the mobile reference only (divergence 4). Not used: [D-36](decisions.md#courses-and-how-it-works) keeps `#FFCB9F`; the unused token was removed in T-11 |
 
 ## Type styles
 
@@ -520,7 +520,7 @@ Display sizes are estimates read from the references at the confirmed 2x scale. 
 
 ### Not in the references
 
-- Favicon and social preview image ([Q-07](decisions.md#open-questions)).
+- Favicon and social preview image: created for T-11 from the logo and the hero ([D-64](decisions.md#delivery)).
 - Font files: none in the asset folder. The fonts are loaded with `next/font/google` ([D-20](decisions.md#visual-foundation)).
 
 ### Not needed
@@ -544,6 +544,7 @@ Display sizes are estimates read from the references at the confirmed 2x scale. 
 | Call to action avatars | Empty (decorative) | Illustrative; no names are given. Used in T-07 |
 | Call to action decorations | Empty, in a layer hidden from assistive technologies | Decorative shapes. Used in T-07 |
 | Footer logo | Luma | The wordmark text (light version). Used in T-07 |
+| Sharing image (`opengraph-image.png`) | Luma Learning hero: the heading “Build skills that actually move you forward.”, the Explore courses and See how it works buttons, and a smiling person with glasses working at a laptop. | Drafted by the agent from the visible content of the image (T-11), pending the owner's review |
 
 Every image on the page now has a text alternative or is decorative.
 
@@ -576,7 +577,7 @@ Every image on the page now has a text alternative or is decorative.
 - [x] Logo exported (SVG, dark and light)
 - [x] Images exported: collage, testimonial avatar, final call to action avatars, hero photo, hero avatars and the featured photo without the badge received
 - [x] Icons and illustrations exported: final call to action decorations (SVG); steps, contact icons, star, menu icon, arrow and quote mark received as SVG in T-09 ([D-61](decisions.md#visual-check))
-- [ ] Favicon and social preview image: not in the references
+- [x] Favicon and social preview image: not in the references; created for T-11 ([D-64](decisions.md#delivery))
 - [ ] Text alternatives for images: hero photo drafted, pending review; featured photo provided by the owner; community collage approved by the owner; avatars, step illustrations, arrows, contact icons and call to action decorations decorative ([Text alternatives](#text-alternatives))
 
 ### Interactive states and menu

@@ -3,15 +3,8 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { primaryButtonWrapping } from "./button-styles";
 
-// Contact form (T-07, D-50). Native validation: the three fields are required and the email field
-// checks the format. Submitting sends nothing, stores nothing and logs nothing: it only shows the
-// demo message. The fields keep their values, and the message is removed when the user edits again.
-// When the message appears partly outside the window, the page scrolls just enough to show it (D-38).
-
 const message = "This is a demo. Your message was not sent.";
 
-// Sizes are estimates from the references (D-54): labels use `Desktop/body 1`; the fields are 48 px
-// high (the question field at least 100 / 120 px) and grow with enlarged text.
 const labelClass = "block type-desktop-body-1 text-text-primary";
 const fieldClass =
   "mt-2 block w-full rounded-lg border border-line bg-cream px-4 type-body-sm text-text-primary placeholder:text-label-gray";
@@ -25,7 +18,6 @@ export function ContactForm() {
   }, [sent]);
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
-    // Reached only after native validation passes. No request, storage or log.
     event.preventDefault();
     setSent(true);
   };
@@ -78,7 +70,6 @@ export function ContactForm() {
       <button type="submit" className={`${primaryButtonWrapping} mt-6 w-full`}>
         Send message
       </button>
-      {/* Always rendered, so screen readers announce the text when it appears. */}
       <p ref={messageRef} role="status" className={sent ? "mt-4 type-body-sm text-text-primary" : "sr-only"}>
         {sent ? message : ""}
       </p>

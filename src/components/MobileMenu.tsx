@@ -6,17 +6,14 @@ import { navItems, startLearning } from "@/content/navigation";
 import { primaryButton } from "./button-styles";
 import { LoginButton } from "./LoginButton";
 
-// Same width as Tailwind's `lg`, where the desktop header starts.
 const desktopQuery = "(min-width: 64rem)";
 const panelId = "mobile-menu";
 
-// Mobile menu (D-25, D-30): a panel below the header, closed at first.
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
 
-  // Escape closes the panel and returns focus to the menu button.
   useEffect(() => {
     if (!open) return;
     const onKeyDown = (event: KeyboardEvent) => {
@@ -28,8 +25,6 @@ export function MobileMenu() {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [open]);
 
-  // Entering the desktop layout closes the panel. The button and the panel are hidden there,
-  // so focus must not stay on them.
   useEffect(() => {
     const media = window.matchMedia(desktopQuery);
     const onChange = (event: MediaQueryListEvent) => {
@@ -45,8 +40,6 @@ export function MobileMenu() {
     return () => media.removeEventListener("change", onChange);
   }, []);
 
-  // Choosing a link closes the panel, so focus must move to a visible element: the link's
-  // target when it exists, otherwise the menu button (some targets are built in later tasks).
   const selectLink = (href: string) => {
     setOpen(false);
     const target = href.startsWith("#") ? document.getElementById(href.slice(1)) : null;
@@ -72,8 +65,6 @@ export function MobileMenu() {
         <Image src="/icons/icon-menu.svg" alt="" width={24} height={24} />
       </button>
 
-      {/* The content is only rendered while the panel is open, so a closed panel holds no
-          focusable element and the "Log in" message starts hidden at every opening. */}
       <div
         ref={panelRef}
         id={panelId}

@@ -1,22 +1,8 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
 import { sectionIds } from "@/content/navigation";
-import { primaryButtonWrapping, secondaryButtonWrappingCompact } from "./button-styles";
+import { demoMessage, primaryButtonWrapping, secondaryButtonWrappingCompact } from "./button-styles";
 import { DemoMessageButton } from "./DemoMessageButton";
-
-// Final call to action (T-07). Copy from docs/design.md. "Explore all courses" goes to #categories
-// and "Join Luma" presents the demo message (D-52). The heading style is an estimate (D-54).
-// Decorations (D-17, D-18): the separate SVG files, placed from the desktop reference, which is 1280 px
-// wide. Shapes cut by the section edges stay on those edges; the others keep their distance from the
-// center, so the composition holds on wider screens. They are shown only when the section is at least
-// 80rem wide (1280 px with normal text): below that they would overlap the text, and the mobile
-// reference has none. Sizes and positions are in rem (the reference px / 16), and the condition is a
-// container query, which also follows the root font size: with enlarged text the decorations grow with
-// the text or are hidden, and never sit behind it. The two shapes cut by the bottom edge show the same
-// part as in the reference, whose section is 0.5 px shorter: `cta-circle-filled` 96.5 px and
-// `cta-circle-edge` the top 1.5 px of its circle (D-55). Only the decorations layer clips its
-// content: the section does not, so the "Join Luma" message, which may extend below the section,
-// is never cut.
 
 type Decoration = { file: string; w: number; h: number; style: CSSProperties };
 
@@ -57,9 +43,6 @@ export function FinalCta() {
       </div>
 
       <div className="page-container relative py-[60px] text-center lg:py-[100px]">
-        {/* The avatars file (2x: 1312 × 80) is drawn at 656 × 40 px, with the four avatars centered in its middle 136 px. The
-            image keeps its own size and proportion; a 136 × 40 px window centered on it shows only
-            the avatars (D-55). The window is in px, so enlarged text does not change the crop. */}
         <div className="relative mx-auto h-[40px] w-[136px] overflow-hidden">
           <Image
             src="/images/cta-avatars@2x.png"
@@ -80,8 +63,6 @@ export function FinalCta() {
           Start with one course. Build from there.
         </p>
 
-        {/* Query container: the "Join Luma" message is never wider than this row. Below 1024 px the
-            buttons are full width but at most 560 px, centered, as the other sections (D-54, T-09). */}
         <div className="@container mx-auto mt-[37px] flex max-w-[560px] flex-col gap-3 lg:max-w-none lg:flex-row lg:justify-center">
           <a href={`#${sectionIds.categories}`} className={`${primaryButtonWrapping} w-full lg:w-auto`}>
             Explore all courses
@@ -90,7 +71,7 @@ export function FinalCta() {
             message="This is a demo. Sign-up is not available."
             wrapperClassName="flex"
             className={`${secondaryButtonWrappingCompact} w-full lg:w-auto`}
-            messageClassName="pointer-events-none absolute top-full left-0 z-10 mt-2 w-max max-w-[min(15rem,100cqw)] rounded-lg bg-text-primary px-3 py-2 text-left text-sm leading-5 text-white"
+            messageClassName={`${demoMessage} pointer-events-none absolute top-full left-0 z-10 mt-2 max-w-[min(15rem,100cqw)] text-left`}
           >
             Join Luma
           </DemoMessageButton>

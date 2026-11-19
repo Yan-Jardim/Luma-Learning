@@ -59,9 +59,8 @@ These are not defined yet. They depend on the design references or on owner deci
 
 - Divergences between the references that are not resolved yet ([design.md](design.md#divergences-between-the-references)).
 - Interactive states and animations, if any.
-- Metadata content.
 
-Decided since the first version of this list: link and button destinations ([D-23](decisions.md#header-and-hero), [D-35](decisions.md#courses-and-how-it-works), [D-45](decisions.md#testimonial-and-community), [D-52](decisions.md#contact-call-to-action-and-footer), [D-53](decisions.md#contact-call-to-action-and-footer)), login and sign-up ([D-24](decisions.md#header-and-hero), [D-52](decisions.md#contact-call-to-action-and-footer)), course actions ([D-35](decisions.md#courses-and-how-it-works)), the mobile menu and the header on scroll ([D-25](decisions.md#header-and-hero), [D-30](decisions.md#header-and-hero)), and the contact form ([D-50](decisions.md#contact-call-to-action-and-footer), [D-51](decisions.md#contact-call-to-action-and-footer)).
+Decided since the first version of this list: link and button destinations ([D-23](decisions.md#header-and-hero), [D-35](decisions.md#courses-and-how-it-works), [D-45](decisions.md#testimonial-and-community), [D-52](decisions.md#contact-call-to-action-and-footer), [D-53](decisions.md#contact-call-to-action-and-footer)), login and sign-up ([D-24](decisions.md#header-and-hero), [D-52](decisions.md#contact-call-to-action-and-footer)), course actions ([D-35](decisions.md#courses-and-how-it-works)), the mobile menu and the header on scroll ([D-25](decisions.md#header-and-hero), [D-30](decisions.md#header-and-hero)), the contact form ([D-50](decisions.md#contact-call-to-action-and-footer), [D-51](decisions.md#contact-call-to-action-and-footer)) and the metadata ([D-64](decisions.md#delivery)).
 
 ## Acceptance criteria
 
