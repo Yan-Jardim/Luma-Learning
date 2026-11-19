@@ -91,7 +91,7 @@ The criteria apply at the desktop and mobile references and at intermediate widt
 - Eyebrow, heading, paragraph, both buttons, social proof, image and both floating cards are present.
 - Desktop: text left, image right. Mobile: image above the text, buttons full width and stacked, social proof centered.
 - The rating card exposes "4.9 avg rating" as text. The stars are decorative.
-- The hero image uses `next/image`, has a text alternative and is not lazy-loaded.
+- The hero image uses the Next.js image optimization (`getImageProps` with `<picture>`: the desktop photo from 1024 px and the mobile framing below it, [D-62](decisions.md#visual-check)), has a text alternative and is not lazy-loaded.
 - "Explore courses" and "See how it works" go to the destinations in [D-23](decisions.md#header-and-hero).
 - With enlarged text, the heading and the cards adapt without cutting text ([D-39](decisions.md#header-and-hero)).
 

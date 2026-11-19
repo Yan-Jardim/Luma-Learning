@@ -69,7 +69,7 @@ export function MobileMenu() {
         onClick={() => setOpen((value) => !value)}
         className="inline-flex size-9 items-center justify-center rounded-lg lg:hidden"
       >
-        <Image src="/icons/icon-menu.png" alt="" width={24} height={24} unoptimized />
+        <Image src="/icons/icon-menu.svg" alt="" width={24} height={24} />
       </button>
 
       {/* The content is only rendered while the panel is open, so a closed panel holds no

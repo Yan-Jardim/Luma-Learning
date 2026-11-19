@@ -28,7 +28,7 @@ export function FeaturedCourse() {
               Featured course
             </p>
             <Image
-              src="/images/featured-course-photo.png"
+              src="/images/featured-course-photo@2x.png"
               alt="Person working at a table with papers, tools and trays of colored material samples."
               width={538}
               height={408}

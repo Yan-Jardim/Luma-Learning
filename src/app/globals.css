@@ -201,15 +201,20 @@
   letter-spacing: -0.0875rem; /* -1.4px */
 }
 
-/* Right arrow drawn with the exported white arrow as a mask, so it follows the text color (D-34). */
+/* Right arrow drawn with the exported arrow as a mask, so it follows the text color (D-34). The SVG (T-09)
+   has a 20 px box with the arrow 3 px from the left and 4 px from the top: positioned so, the arrow keeps
+   the 14 × 12 px place of the former image. It is drawn 1 px further left (relative position, so the
+   layout and the translate of "Browse all courses" are unchanged), where the references have it. */
 @utility icon-arrow-right {
   display: inline-block;
   flex-shrink: 0;
+  position: relative;
+  left: -1px;
   width: 14px;
   height: 12px;
   background-color: currentColor;
-  -webkit-mask: url("/icons/icon-arrow-right.png") center / contain no-repeat;
-  mask: url("/icons/icon-arrow-right.png") center / contain no-repeat;
+  -webkit-mask: url("/icons/icon-arrow-right.svg") -3px -4px / 20px 20px no-repeat;
+  mask: url("/icons/icon-arrow-right.svg") -3px -4px / 20px 20px no-repeat;
 }
 
 /*

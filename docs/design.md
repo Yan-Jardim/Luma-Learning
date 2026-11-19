@@ -23,7 +23,7 @@ Every value in this file comes from one of these sources:
   - Figma: the desktop hero section is 1280 (Fill) × 720; in the PNG it is 2560 × 1440.
   - Figma: the mobile content container between header and footer is 402 (Fill) × 7107.95; in the PNG it is 804 × 14216.
 - **Inferred:** frame widths of 1280 px (desktop) and 402 px (mobile). The frame node's own size panel was not shown. The widths follow from the Fill elements above, because every section background spans the full PNG width.
-- The original PNGs are not stored in the repository. Temporary crops used for the analysis live in `.design-refs/`, which is excluded from Git locally.
+- The original PNGs are not stored in the repository. Temporary crops used for the analysis live in `.design-refs/`, which is excluded from Git locally. The full exports were provided again on 2026-11-19 for the T-09 full-page comparison ([Received](#received)).
 
 ## Page structure
 
@@ -233,7 +233,7 @@ The quote weight was chosen among 500, 600 and 700: at 20 px, 600 reproduces the
 
 ### Estimated styles (T-07)
 
-Measured on the references at 2x and used as estimates ([D-54](decisions.md#contact-call-to-action-and-footer)). They are not Figma values. The mobile form texts are compared by size and position only, because the mobile reference shows them in Portuguese (divergence 2).
+Measured on the references at 2x and used as estimates ([D-54](decisions.md#contact-call-to-action-and-footer)). They are not Figma values. The first mobile reference showed the form in Portuguese (divergence 2); in the export received on 2026-11-19 it is in English, and every mobile form line matches it within 0.5 px, which confirms the 14 px subtitle.
 
 | Text | Desktop (Estimate) | Mobile (Estimate) | Confirmed style reused |
 | --- | --- | --- | --- |
@@ -284,6 +284,8 @@ Measured on the references at 2x and used in T-04 ([D-28](decisions.md#header-an
 | Rating card | 208.5 × 48, 57 px past the photo's right edge, 36 px above its bottom; left padding 18, right 16; stars 10 px, 6 px apart, 10 px before the text | 209 × 48, 19 px past the right edge, 36 px above the bottom |
 | Card text | Inter 400, 14 / 24 px, `text-primary`; "120+" in Inter 700, `primary-blue` | Same |
 
+Images (T-09, [D-61](decisions.md#visual-check), [D-62](decisions.md#visual-check)): the photo is the 2x desktop export from 1024 px and the 2x mobile export below it, with the same box and radius; the avatars are a 2x export and the stars an SVG file, in the same places.
+
 Enlarged text in the header and the hero buttons ([D-57](decisions.md#integrated-review)): the bar heights are minimums with 8 px of vertical padding, the desktop links may wrap onto more lines while "Log in" stays on one line and the logo keeps its 54 px, and the hero button labels may wrap inside their buttons. At the normal size nothing changes.
 
 Enlarged text (implementation choice, [D-39](decisions.md#header-and-hero)): the heading breaks a word only when it does not fit its line, and the card texts may wrap. When the photo column is narrower than 11em, the cards stack below the photo instead of floating over it. The 11em threshold comes from measuring the floating cards with text at 100% to 250% and widths from 320 to 1280 px: below about 10.5em they overlap each other, and from 11em they are at least 65 px apart. At the normal text size the column is at least 16.5em wide, so the composition does not change.
@@ -315,7 +317,7 @@ Measured on the references at 2x and refined in the comparison at 402 and 1280 p
 | Quote mark | 24 × 22, `primary-blue`, 16 px above the quote (`icon-quote.png`, decorative, [D-49](decisions.md#testimonial-and-community)) | Same |
 | Author | Avatar 48 × 48, round, 32 px below the quote; name and role 16 px to its right; they wrap with very large text ([D-58](decisions.md#integrated-review)) | Avatar 33 px below the quote |
 | Metrics | Stacked after a 1 px `line` divider (325 px high), 48 px to its right; each number 70 px high, caption 6 px below, 19 px between metrics | One row of three equal columns, 59 px below the author; in one column below 19em ([D-47](decisions.md#testimonial-and-community)) |
-| Community section | 100 px top and bottom; text column (535 px) and collage (535 × 530, right edge at the content edge), 50 px apart, centered vertically; the collage overlaps the bottom padding by 8 px | 60 px top and bottom; text, button, then the collage scaled to the content width, 16 px below the button |
+| Community section | 100 px top and bottom; text column (535 px) and collage (535 × 530, right edge at the content edge), 50 px apart, centered vertically; the collage overlaps the bottom padding by 8 px | 60 px top and bottom; text, button, then the mobile collage ([D-62](decisions.md#visual-check)), 10 px wider than the column (372 × 330 at 402 px), centered, 22 px below the button and 10 px into the bottom padding; 790 px high, as the reference |
 | Community rhythm | Overline, 8, heading, 32, paragraph, 32, button (268 × 54, horizontal padding 29 px) | Overline, 8, heading, 24, paragraph, 24, button |
 
 Intermediate widths (implementation choice within [D-37](decisions.md#courses-and-how-it-works) and [D-40](decisions.md#courses-and-how-it-works)): below 1024 px the testimonial and the community are one centered column at most 560 px wide.
@@ -364,6 +366,7 @@ Intermediate widths and enlarged text (implementation choices, [D-54](decisions.
 - The call to action section does not clip its content; only the decorations layer does. So the "Join Luma" message is never cut. On mobile it extends 4 px into the footer, which has the same color.
 - Below 1024 px the footer groups use two columns while the footer content is at least 17.5rem wide (280 px at the normal size, so from 320 px), and one column with enlarged text. On desktop the link columns shrink down to their longest word when enlarged text leaves no room for the tagline.
 - The info card texts may wrap, so the email address stays inside the window with enlarged text.
+- Below 1024 px the call to action buttons are full width but at most 560 px, centered, as the other sections (T-09). At 402 px and from 1024 px nothing changes.
 - The avatars image is drawn at its own size (656 × 40) inside a 136 × 40 px window centered on the avatars. The window is in px, so with enlarged text the four avatars keep their size and are not cropped.
 
 ## Interactions and states
@@ -382,12 +385,12 @@ Intermediate widths and enlarged text (implementation choices, [D-54](decisions.
 | # | Topic | Desktop (Image) | Mobile (Image) | Resolution |
 | --- | --- | --- | --- | --- |
 | 1 | Step labels | "STEP 01" on all three steps | STEP 01, 02, 03 | [D-05](decisions.md#approved): 01, 02, 03 |
-| 2 | Contact form language | English | Portuguese, except the "Contact us" title | [D-06](decisions.md#approved): English |
+| 2 | Contact form language | English | Portuguese, except the "Contact us" title. In the export received on 2026-11-19 the form is in English, except the "E-mail" label and the `seuemail@exemplo.com` placeholder | [D-06](decisions.md#approved): English, with "Email" and `youremail@example.com` as on desktop |
 | 3 | Step 02 description | "…professionals who use these skills." | "…professionals who actually use these skills." | [D-36](decisions.md#courses-and-how-it-works): the desktop text |
 | 4 | Step 02 square color | `#FFCB9F` | `#FAE4DB` | [D-36](decisions.md#courses-and-how-it-works): `#FFCB9F`, with the circle `#FF704D` |
 | 5 | Community paragraph color | `#656770` | `#171B2C` | [D-43](decisions.md#testimonial-and-community): `#656770` on both |
-| 6 | Hero photo framing | Matches `hero-student-photo.png` exactly (mean pixel difference 4.7 of 765) | Different framing of the same photo: the person is smaller and the hair is cut at the top. No crop of the exported file matches it (best mean difference about 32) | Pending ([Q-21](decisions.md#open-questions)). The implementation uses a centered crop of the exported file |
-| 7 | Community collage | Matches `community-collage.png` at 1x | Same photos in a different arrangement: shorter crops; the scaled file is about 10 px taller at the center | Pending ([Q-26](decisions.md#open-questions)). The implementation scales the exported file |
+| 6 | Hero photo framing | Matches `hero-student-photo.png` exactly (mean pixel difference 4.7 of 765) | Different framing of the same photo: the person is smaller and the hair is cut at the top. No crop of the exported file matches it (best mean difference about 32) | [D-62](decisions.md#visual-check): the mobile export, which matches the mobile reference (mean difference 3.5 of 765 in the central area of the photo) |
+| 7 | Community collage | Matches `community-collage.png` at 1x | Same photos in a different arrangement: shorter crops; the scaled file is about 10 px taller at the center | [D-62](decisions.md#visual-check): the mobile export of the collage (mean difference 6.5 of 765 against the reference) |
 | 8 | Copyright color | `#E7E7EC` | White | [D-56](decisions.md#contact-call-to-action-and-footer): `#E7E7EC` on both |
 
 The composition differences listed in [Page structure](#page-structure) follow from the layout and are not treated as divergences.
@@ -400,7 +403,7 @@ The owner exported the assets from Figma on 2026-11-18 into a local folder. The 
 
 27 files: 13 PNG and 14 SVG. No file is empty, no two files are byte-identical, and every real format matches its extension. Pixel sizes compared with the display sizes are in [Raster resolution](#raster-resolution).
 
-On 2026-11-18, for T-04, the owner added three files and replaced `icon-star.png`. Those four files are listed at the end of the table, and the folder now has 30 files. Later that day, for T-05, the owner added `featured-course-photo.png`, and on 2026-11-19, for T-06, `icon-quote.png` (last rows); the folder has 32 files.
+On 2026-11-18, for T-04, the owner added three files and replaced `icon-star.png`. Those four files are listed at the end of the table, and the folder now has 30 files. Later that day, for T-05, the owner added `featured-course-photo.png`, and on 2026-11-19, for T-06, `icon-quote.png` (last rows); the folder has 32 files. On 2026-11-19, for T-09, the owner added 17 files, the 2x exports and SVG files listed in [Missing or to re-export](#missing-or-to-re-export), and replaced four 1x PNGs with new exports of the same name (`icon-arrow-right.png`, `icon-menu.png`, `icon-message.png` and `icon-star.png`; the new `icon-menu.png` still draws its bars at 75%). Those four are not used, because SVG files replace them. The folder has 49 files. Since T-09 the project uses the 2x and SVG files, and the 1x copies were removed from `public/` (D-61).
 
 | File | Real format and size | Content (Image) | Status |
 | --- | --- | --- | --- |
@@ -460,9 +463,30 @@ The owner will provide the remaining assets ([Q-18](decisions.md#open-questions)
 | Arrow for dark text | No longer needed: the white arrow is used as a CSS mask that follows the text color ([D-34](decisions.md#courses-and-how-it-works)) | — | — |
 | Quote mark | Received on 2026-11-19 as `icon-quote.png` ([Inventory](#inventory)) | — | — |
 
+Exports requested on 2026-11-19 for T-09, after the sharpness measurement (see [Raster resolution](#raster-resolution)). The SVG logos and decorations are already adequate and are not requested again. Sizes are in image pixels.
+
+| Element in the Figma file | For | Suggested file | Format and size | Needed before |
+| --- | --- | --- | --- | --- |
+| Hero photo, desktop, without the cards and shapes | [Q-18](decisions.md#open-questions) | `hero-student-photo@2x.png` | PNG or JPG, 1000 × 1040 | T-09 is completed |
+| Hero photo with the framing of the mobile frame (person smaller, hair cut at the top) | [Q-21](decisions.md#open-questions), and Q-18 on mobile | `hero-student-photo-mobile@2x.png` | PNG or JPG, 692 × 760 | T-09 is completed, unless the owner accepts the divergence |
+| The three hero avatars next to "Trusted by 24,000+" | Q-18 | `hero-avatars@2x.png` | PNG, transparent, 160 × 64 | T-09 is completed |
+| One rating star | Q-18 | `icon-star.svg` | SVG (or PNG 20 × 20) | T-09 is completed |
+| Menu icon of the mobile header, with its layer and parent opacity checked (the reference shows 100%, the file 75%) | Q-18 and [Q-22](decisions.md#open-questions) | `icon-menu.svg` | SVG (or PNG 48 × 48) | T-09 is completed |
+| Featured course photo, without the badge | Q-18 | `featured-course-photo@2x.png` | PNG or JPG, 1076 × 816 | T-09 is completed |
+| Step illustrations 01, 02 (desktop colors) and 03 | Q-18 | `step-01.svg`, `step-02.svg`, `step-03.svg` | SVG (or PNG 112, 134 and 112 px square) | T-09 is completed |
+| Arrow of "Explore" and "Browse all courses" | Q-18 | `icon-arrow-right.svg` | SVG (or PNG 28 × 24) | T-09 is completed |
+| Testimonial avatar | Q-18 | `testimonial-alex-morgan@2x.png` | PNG, transparent, 96 × 96 | T-09 is completed |
+| Quote mark | Q-18 | `icon-quote.svg` | SVG (or PNG 48 × 44) | T-09 is completed |
+| Community collage, desktop, with the light circle | Q-18 | `community-collage@2x.png` | PNG, transparent, 1070 × 1060 | T-09 is completed |
+| Community collage group of the mobile frame, with its own arrangement | [Q-26](decisions.md#open-questions) | `community-collage-mobile@2x.png` | PNG, transparent, about 734 × 660 (the group bounds; about 367 × 330 in the mobile reference) | T-09 is completed, unless the owner accepts the divergence |
+| Email and clock icons, with their light blue tile | Q-18 | `icon-message.svg`, `icon-clock.svg` | SVG (or PNG 80 × 80) | T-09 is completed |
+| The four call to action avatars, trimmed to the avatars | Q-18 | `cta-avatars@2x.png` | PNG, transparent, 272 × 80 | T-09 is completed |
+
+All received on 2026-11-19 and integrated ([D-61](decisions.md#visual-check), [D-62](decisions.md#visual-check)). Differences from the request: `icon-clock.svg` has no tile, so the tile is drawn in CSS and matches the reference (mean difference 1.2 to 1.3 of 765 over the 40 × 40 tile); `cta-avatars@2x.png` is not trimmed (1312 × 80) and is drawn through the existing window; `community-collage@2x.png` is 1069 px wide, 1 px less than the exact double; `community-collage-mobile@2x.png` is 744 × 660.
+
 Preferences, not blockers:
 
-- SVG for the step illustrations and for the message and clock icons. The PNGs stay as candidates, subject to the quality check ([D-19](decisions.md#design-assets)).
+- SVG for the step illustrations and for the message and clock icons: received in T-09 ([D-61](decisions.md#visual-check)).
 - `cta-avatars.png` has transparent space around the avatars. The project copy is unchanged, and the page shows only the avatars, by CSS ([D-55](decisions.md#contact-call-to-action-and-footer)).
 
 ### Raster resolution
@@ -490,7 +514,9 @@ Display sizes are estimates read from the references at the confirmed 2x scale. 
 - **Risk:** at a density near 1.0, screens with a device pixel ratio of 2 or more may show these images softer than the reference. The risk is highest for the large photos and for the hard edges of small icons.
 - **Observed in T-04:** in Chrome at a device pixel ratio of 2, the hero photo, the stars, the hero avatars and the menu icon look softer than the same areas of the 2x references. At a device pixel ratio of 1 they match. The other images have not been rendered yet.
 - **Observed in T-07:** at a device pixel ratio of 2, the contact icons match the 2x references closely (mean difference 8 to 15 of 765; the same comparison shifted by 6 px gives 46 to 50). The call to action avatars are softer (20 to 33), because the file is 1x ([Q-18](decisions.md#open-questions)).
-- **Next step:** for these four files, a 2x export (or SVG for the star and the menu icon) would remove the observed softness ([Q-18](decisions.md#open-questions)). The other images are checked when their sections are built.
+- **Measured in T-09** (2026-11-19, Chrome, device pixel ratio 2, each image compared with the same area of the 2x reference after aligning it): the edge energy of the render divided by that of the reference is 1.00 for the SVG logos and decorations, and 0.76 to 0.92 for the menu icon, the arrow, the stars, the call to action avatars, the email icon, the collage, the featured photo, the hero photo, the hero avatars and the testimonial avatar. Enlarged side by side, every 1x raster image is visibly softer than the reference, also the clock icon, the quote mark and the step illustrations (0.95 to 1.00 by that measure). At a device pixel ratio of 1 the images are drawn at their size. The exports that would remove the softness are listed in [Missing or to re-export](#missing-or-to-re-export).
+- **After the T-09 exports** (same measurement, [D-61](decisions.md#visual-check), [D-62](decisions.md#visual-check)): edge-energy ratio 0.88 to 1.28 for the 2x images and 0.99 to 1.02 for the SVG files; mean differences, for example, 40 to 7.4 for the mobile hero photo, 34.3 to 0.7 for the menu icon, 20.4 to 4.0 for the call to action avatars, 15.7 to 3.5 for the stars and 63.6 to 5.7 for the arrow. Enlarged side by side, no image is softer than the reference. The mobile step 02 still differs in color on purpose ([D-36](decisions.md#courses-and-how-it-works)).
+- **Next step (T-04 note, resolved in T-09):** for these four files, a 2x export (or SVG for the star and the menu icon) would remove the observed softness ([Q-18](decisions.md#open-questions)). The other images are checked when their sections are built.
 
 ### Not in the references
 
@@ -549,7 +575,7 @@ Every image on the page now has a text alternative or is decorative.
 
 - [x] Logo exported (SVG, dark and light)
 - [x] Images exported: collage, testimonial avatar, final call to action avatars, hero photo, hero avatars and the featured photo without the badge received
-- [ ] Icons and illustrations exported: steps, contact icons, final call to action decorations, star, menu icon and quote mark received. The dark arrow is no longer needed ([D-34](decisions.md#courses-and-how-it-works))
+- [x] Icons and illustrations exported: final call to action decorations (SVG); steps, contact icons, star, menu icon, arrow and quote mark received as SVG in T-09 ([D-61](decisions.md#visual-check))
 - [ ] Favicon and social preview image: not in the references
 - [ ] Text alternatives for images: hero photo drafted, pending review; featured photo provided by the owner; community collage approved by the owner; avatars, step illustrations, arrows, contact icons and call to action decorations decorative ([Text alternatives](#text-alternatives))
 
@@ -579,3 +605,5 @@ Every image on the page now has a text alternative or is decorative.
 | 2026-11-18 | T-04 assets in the authorized asset folder: hero photo, hero avatars, menu icon and the replaced star icon | Checked and copied to `public/` with `logo-dark.svg`; the originals are unchanged ([Inventory](#inventory)). |
 | 2026-11-19 | Quote mark in the authorized asset folder, announced as `icon-quote.svg` and received as `icon-quote.png` | Checked and copied to `public/icons/`; the original is unchanged ([Inventory](#inventory)). |
 | 2026-11-18 | Featured photo without the badge (`featured-course-photo.png`) in the authorized asset folder | Checked and copied to `public/images/`; the original is unchanged ([Inventory](#inventory)). |
+| 2026-11-19 | T-09 exports (2x images and SVG files) in the authorized asset folder | Checked, copied to `public/` and integrated ([D-61](decisions.md#visual-check), [D-62](decisions.md#visual-check)); the originals are unchanged. |
+| 2026-11-19 | Full reference PNGs `FE - Desktop.png` (2560 × 11383) and `FE - Mobile.png` (804 × 15598), 144 dpi, at their recorded location | Examined for the T-09 full-page comparison. The desktop file is identical to the earlier export (every local crop matches it, at most 1 level of difference). The mobile file differs only in the contact form, now in English except the "E-mail" label and the email placeholder (divergence 2). |

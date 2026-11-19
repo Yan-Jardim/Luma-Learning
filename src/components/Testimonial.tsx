@@ -21,7 +21,7 @@ export function Testimonial() {
       <div className="page-container py-[60px] lg:py-[100px]">
         <div className="mx-auto max-w-[560px] lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-[minmax(0,735fr)_minmax(0,385fr)] lg:items-center">
           <figure className="max-w-[600px]">
-            <Image src="/icons/icon-quote.png" alt="" width={24} height={22} unoptimized className="mb-4" />
+            <Image src="/icons/icon-quote.svg" alt="" width={24} height={22} className="mb-4" />
             <blockquote>
               <p className="type-quote-mobile text-text-primary lg:type-quote-desktop">
                 The lessons are short enough to fit into my week, but detailed enough that I actually leave
@@ -30,7 +30,7 @@ export function Testimonial() {
             </blockquote>
             <figcaption className="mt-[33px] flex items-center gap-4 lg:mt-8">
               <Image
-                src="/images/testimonial-alex-morgan.png"
+                src="/images/testimonial-alex-morgan@2x.png"
                 alt=""
                 width={48}
                 height={48}

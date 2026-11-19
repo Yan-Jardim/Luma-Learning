@@ -23,7 +23,7 @@ Planned → In progress → Ready for review → Validated
 | T-06 | Testimonial and community | Validated | T-03 (decisions D-43 to D-49) |
 | T-07 | Contact, final call to action and footer | Validated | T-03 (decisions D-50 to D-56) |
 | T-08 | Integrated review of interactions and accessibility | Validated | T-04 to T-07 (decisions D-57 to D-60) |
-| T-09 | Visual check on desktop, mobile and intermediate widths | Planned | T-08; Q-18, Q-21, Q-22 and Q-26 resolved before completion |
+| T-09 | Visual check on desktop, mobile and intermediate widths | Validated | T-08; Q-18, Q-21, Q-22 and Q-26 resolved by D-61 and D-62 |
 | T-10 | Re-evaluate the security issue (README, "Known security issue") | Planned | |
 | T-11 | Final README (including D-07), publishing and demo video, as listed in [Delivery requirements](spec.md#delivery-requirements) | Planned | T-09, T-10, Q-07, Q-09 |
 
@@ -45,27 +45,40 @@ T-07 was validated by the owner's explicit approval on 2026-11-19, including the
 
 T-08 was validated by the owner's explicit approval on 2026-11-19, including the corrections D-57 to D-60 and the contrast adaptation of D-59 (`label-gray` `#6C7283`) ([verification record](#t-08-integrated-review-2026-11-19)). The approval keeps the limits of the checks recorded there (no screen readers, other browsers, physical devices, forced colors or speech input). It does not resolve Q-18, Q-21, Q-22 and Q-26, which stay for before T-09 is completed; the favicon stays with Q-07 in T-11.
 
+T-09 was validated by the owner's explicit approval on 2026-11-19. The approval covers the visual check on desktop, mobile and intermediate widths, the call to action buttons below 1024 px, the 2x images, SVG files and mobile versions (D-61, D-62) and the full-page comparison with the complete references ([first record](#t-09-in-progress-2026-11-19), [assets record](#t-09-assets-and-pending-questions-2026-11-19), [full-page comparison](#t-09-full-page-comparison-2026-11-19)). No T-09 item remains open: Q-18, Q-21, Q-22 and Q-26 are resolved, and there are no pending corrections or final verifications. The approval keeps the limits of the checks recorded there.
+
 ## Open items
 
-Validating a task does not resolve the open items below. In particular, validating T-04 to T-07 does not resolve Q-18, Q-21, Q-22 or Q-26.
+No item of T-01 to T-09 remains open. The items below belong to the next tasks, and validating a task does not resolve them.
+
+### Next tasks
+
+- T-10: re-evaluate the security issue recorded in the README ("Known security issue").
+- [Q-07](decisions.md#open-questions): metadata content (description, social preview image and favicon; the page has no favicon yet, so `/favicon.ico` returns 404). Needed before T-11.
+- [Q-09](decisions.md#open-questions): publishing target. Needed before T-11.
+- [Q-08](decisions.md#open-questions): test tooling. Needed before any test is written.
+- [Q-01](decisions.md#open-questions): exact values from the Figma file. Not blocking (owner decision, 2026-11-18).
+
+### Limits of the checks
+
+The verification records list what was not verified, and the validations do not change that: screen readers (only the accessibility tree exposed by Chrome was checked), browsers other than Chrome, physical devices and touch, screens with a device pixel ratio of 3, forced colors, speech input, and the text of the browser's own validation messages.
 
 ### Pending corrections
 
 Changes that need owner input or new exports. Details are in [decisions.md](decisions.md#open-questions).
 
-- [Q-18](decisions.md#open-questions): a 2x export (or SVG) of the hero photo, hero avatars, star and menu icon, to remove the softness observed at a device pixel ratio of 2; the featured photo, the testimonial avatar, the community collage, the quote mark, the contact icons and the call to action avatars are also 1x at their desktop size. Resolve before T-09 is completed.
-- [Q-21](decisions.md#open-questions): the mobile framing of the hero photo. Resolve before T-09 is completed.
-- [Q-22](decisions.md#open-questions): the 75% opacity of the menu icon in the exported file. Resolve before T-09 is completed.
-- [Q-26](decisions.md#open-questions): the mobile arrangement of the community collage differs from the exported file. Found during T-06. Resolve before T-09 is completed.
+None at the moment.
 
 ### Final verifications
 
 Checks to run when the related work exists.
 
-- T-09: the visual check of the header and hero is repeated after Q-18, Q-21 and Q-22 are resolved. The sharpness of the step PNGs, of the arrow mask, of the featured photo, of the testimonial avatar, of the community collage, of the quote mark, of the contact icons and of the call to action avatars (all 1x) is checked ([D-34](decisions.md#courses-and-how-it-works)).
+None at the moment.
 
 ### Resolved
 
+- 2026-11-19: the T-09 full-page comparison with the complete references, provided again at their recorded location. Checked by the agent ([record](#t-09-full-page-comparison-2026-11-19)) and approved with T-09.
+- 2026-11-19: Q-18 and Q-22 by D-61, and Q-21 and Q-26 by D-62. The exports were integrated and verified by the agent, including the repeated check of the header and hero images and the sharpness of every image ([assets record](#t-09-assets-and-pending-questions-2026-11-19)), and approved with T-09.
 - 2026-11-19: Q-24 (enlarged text in the header and the hero buttons) by D-57, and Q-28 (testimonial at 250% and 320 px) by D-58. Corrected and verified by the agent in T-08 ([verification record](#t-08-integrated-review-2026-11-19)) and approved with T-08.
 - 2026-11-19: the T-07 anchor and focus checks. `#community` reaches the top of the window at 1280 and 402 px, and Tab after "Explore teachers and students" reaches "Full name". The "For Teams" links (header, mobile panel and footer) and the footer "Contact" reach `#contact` at the top of the window; from the mobile panel focus moves to `#contact`, and the next Tab reaches "Full name". Checked by the agent ([verification record](#t-07-contact-call-to-action-and-footer-2026-11-19)) and approved with T-07.
 - 2026-11-19: Q-27, the copyright color, by D-56: `#E7E7EC` on both breakpoints, an approved adaptation.
@@ -262,3 +275,50 @@ Not verified (not available in this environment):
 - Browsers other than Chrome (Firefox, Safari, Edge) and their own text zoom; physical devices, touch and mobile browsers.
 - Forced colors (Windows high contrast) and speech input.
 - The text of the browser's own validation messages.
+
+### T-09 in progress, 2026-11-19
+
+Chrome headless, production build. Agent checks; not a human review.
+
+- Assets: the authorized folder has the same 32 files as at the last inventory; the newest is `icon-quote.png` (2026-11-19). The 17 files the project uses are identical to their copies in `public/` (SHA-256). No new or replaced file.
+- References: `FE - Desktop.png` and `FE - Mobile.png` are not at their recorded location (`Downloads/Buzzvel FE - Test 2026/`), and `.design-refs/` holds only crops and two reduced overviews. The full-page comparison with the references is pending; the crops are not used as a full-page reference.
+- Sharpness at a device pixel ratio of 2, image by image against the same area of the 2x reference (the local crops, used only for each image's own area): see [Raster resolution](design.md#raster-resolution). Every 1x raster image is softer than the reference; the SVG files are as sharp. The exports are listed in [Missing or to re-export](design.md#missing-or-to-re-export).
+- Intermediate widths at the normal size, 18 widths not checked before (414, 480, 540, 600, 639, 640, 700, 820, 900, 1000, 1023, 1100, 1180, 1279, 1366, 1600, 1920 and 2560 px): no text cut, outside the window, wider than its box or covered, and no horizontal scrolling. The header switches to the desktop layout at 1024 px.
+- Visual review of full-page captures at 640, 820, 1023, 1024, 1180 and 1920 px. Found and corrected: below 1024 px the call to action buttons stretched to the full content width (about 900 px at 1023 px), while the other sections use a centered column of at most 560 px; they now take at most 560 px, centered (D-54). Observation, not changed: at 1024 px the hero rating card keeps its approved offset of 57 px past the photo and ends 5 px from the window edge, without being cut.
+- Same-session A/B for that change (the previous width restored by a test-only override): the full-page captures at 320, 402, 1024, 1280 and 1440 px, at 402 and 1280 px with a device pixel ratio of 2, and with the panel open at 320 and 402 px are pixel-identical; at 768 px only the button area differs. At 402, 640, 820, 1023 and 1024 px the row is centered, and the "Join Luma" message opens with Enter inside the window and within the row. Captures from an earlier browser session differ at glyph edges across the page, so they are not used for this comparison.
+- `npm run lint`, `npx next typegen`, `npx tsc --noEmit` and `npm run build`: passed.
+- Pending: the full-page comparison (original references), and Q-18, Q-21, Q-22 and Q-26 (exports or the owner's acceptance of a divergence). Not verified: screen readers, browsers other than Chrome, physical devices.
+
+### T-09 assets and pending questions, 2026-11-19
+
+Chrome headless, production build unless a check says otherwise. Agent checks; not a human review.
+
+- References: `FE - Desktop.png` and `FE - Mobile.png` are still not in `Downloads/Buzzvel FE - Test 2026/`. The full-page comparison stays pending; the local crops are used only for the comparisons of each area below.
+- Assets: the folder has 49 files, 17 new and 4 replaced (`icon-arrow-right.png`, `icon-menu.png`, `icon-message.png`, `icon-star.png`, not used; the new `icon-menu.png` still has 75% bars). Real format, size and transparency checked for every new file; the SVG files have no script and no external reference. The 17 files used were copied to `public/`, identical to the originals (SHA-256); the originals were only read. Differences from the request, all usable: `icon-clock.svg` without its tile, `cta-avatars@2x.png` not trimmed, `community-collage@2x.png` 1069 px wide.
+- Framing, file against the 2x reference: the mobile hero export matches the mobile reference in the central area of the photo (mean difference 3.5 of 765; the former centered crop gives 41.2), and the darkest band of the face is on the same row (264; the former crop 257). A first side-by-side view was misread by the agent; the measurement decided. Mobile collage export: 6.5 at x 15, y 5232.5 (control shifted 6 px: 103.8). Desktop collage 2x: 5.3.
+- Integration (D-61, D-62): 2x PNGs and SVG files at the approved display sizes; `<picture>` with `getImageProps` for the hero photo and the collage below and from 1024 px; the clock tile in CSS; the 1x copies removed from `public/`.
+- Sharpness at a device pixel ratio of 2, each image against the same area of the reference: see [Raster resolution](design.md#raster-resolution). Every image is now as sharp as the reference; the SVG icons and illustrations are aligned with it within 0.5 px.
+- Found and corrected during the checks: (1) the arrow was 1 px right of the reference (also with the former PNG); it is drawn 1 px further left, and its horizontal alignment is now 0 at 1280 and 402 px. (2) The optimized 2x hero avatars came back with a rounded height that made their box 0.34 px shorter and moved the sections below by 1 px at 640 to 1023 px; served without optimization, the box is exact again.
+- Clock tile in CSS against the reference, whole 40 × 40 tile: mean difference 1.2 to 1.3 of 765 (shifted 6 px: about 50); the email SVG with its own tile gives 1.7 to 1.9.
+- Q-22: the menu icon against the reference, mean difference 0.7 of 765 (34.3 with the 75% PNG).
+- Positions at 402 px: the mobile collage is 372 × 330 at x 15, y 5232 (reference 15, 5232.5); "contact", the call to action and the footer start at 5612, 6708 and 7177 px and the page is 7,799 px tall, as in the reference (before: 32.6 px lower). Text lines of contact, call to action and footer: 47 of 49 within 1 px on mobile (the two exceptions recorded in T-07) and 51 of 51 on desktop.
+- Layout elsewhere at the normal size: the section boxes at 1024, 1180 and 1920 px are identical to the earlier T-09 captures; at 640, 820 and 1023 px only the community section (28 px shorter, the mobile collage) and the sections after it move.
+- Development server (the owner's, port 3000), clean loads only, two each at 1280, 402 and 320 px and with text at 200% at 320 and 1280 px: no image warning, no hydration message, no exception; the only failed request is `/favicon.ico` (Q-07, T-11). The browser picks the desktop photo at 1280 px and the mobile one at 402 and 320 px and with text at 200% (mobile layout). A first run was made against a port where no server had started, because another development server was already running; it was discarded and repeated.
+- Enlarged text, 48 combinations; text spacing (WCAG 1.4.12), 8 widths; 18 intermediate widths at the normal size: no text cut, outside the window, wider than its box or covered, and no horizontal scrolling. axe, six configurations: no violation.
+- `npm run lint`, `npx next typegen`, `npx tsc --noEmit` and `npm run build`: passed.
+- Not verified: screen readers; browsers other than Chrome, including how they choose the `<picture>` source; physical devices and screens with a device pixel ratio of 3.
+
+### T-09 full-page comparison, 2026-11-19
+
+Chrome headless, production build, full-page captures at 1280 and 402 px with a device pixel ratio of 2, compared with `FE - Desktop.png` and `FE - Mobile.png` as provided again on 2026-11-19. Agent checks; not a human review. No code changed in this step.
+
+- Files: 2560 × 11383 and 804 × 15598 px, 144 dpi, as recorded. The desktop file is identical to the earlier export: the 31.4 million pixels covered by the local crops match it, with at most 1 level of difference. The mobile file differs from the earlier export only in the contact form (y 6174 to 6605 px), now in English except the "E-mail" label and the `seuemail@exemplo.com` placeholder (divergence 2, D-06).
+- Page height: 5,691 px on desktop (reference 5,691.5) and 7,799 px on mobile (reference 7,799).
+- Section edges, read along the left edge of both pages: every edge is within 0.5 px of the reference. The reference draws several edges on half-pixel rows (for example 1510.5 and 2156.5 px on desktop); the implementation draws them on whole pixels.
+- Bands (text lines, borders, buttons and fields, with the images masked), each aligned with the reference by the offset that fits it best: on desktop 41 of 49 within 1 px and 47 of 49 within 1.5 px; on mobile 78 of 97 within 1 px and 93 of 97 within 1.5 px. The rest are the step connector lines (a horizontal shift of a line changes nothing), the mobile step 02 text ([D-36](decisions.md#courses-and-how-it-works)), and one desktop line of the Latin placeholder paragraph, whose glyph widths drift along the line (vertical offset 0.5 px). Relative to the section edges, the content is within about 1 px. The differences that remain after alignment on text come from glyph rendering (the references and Chrome draw text differently) and from the approved color divergences ([D-43](decisions.md#testimonial-and-community), [D-56](decisions.md#contact-call-to-action-and-footer)).
+- Mobile contact form against the English reference: every line (title, subtitle, labels, fields, button, card edge) within 0.5 px, with the same widths, except "Email" against "E-mail" and the email placeholder (D-06); the other placeholders are 2 to 3 px wider (rendering).
+- Images, compared after alignment (see [Raster resolution](design.md#raster-resolution)): within 0.5 px, except the mobile featured photo and its badge, 2 px higher in page coordinates and about 1 px relative to the section edge, which the reference draws between two pixel rows. That sub-pixel difference was not changed.
+- Approved adaptations kept: D-05 (steps 01 to 03), D-06 (form in English), D-36 (step 02), D-42 ("Browse all courses" in white), D-43 (paragraph color), D-56 (copyright color), D-59 (`label-gray`), and the layout choices for enlarged text and intermediate widths, which do not show at 1280 and 402 px.
+- No local correction was needed.
+- `npm run lint`, `npx next typegen`, `npx tsc --noEmit` and `npm run build`: passed.
+- Not verified: screen readers, browsers other than Chrome, physical devices.
