@@ -22,7 +22,7 @@ Planned → In progress → Ready for review → Validated
 | T-05 | Learning categories, featured course and "How it works" | Validated | T-03 (decisions D-31 to D-38 and D-40 to D-42) |
 | T-06 | Testimonial and community | Validated | T-03 (decisions D-43 to D-49) |
 | T-07 | Contact, final call to action and footer | Validated | T-03 (decisions D-50 to D-56) |
-| T-08 | Integrated review of interactions and accessibility | Planned | T-04 to T-07 |
+| T-08 | Integrated review of interactions and accessibility | Validated | T-04 to T-07 (decisions D-57 to D-60) |
 | T-09 | Visual check on desktop, mobile and intermediate widths | Planned | T-08; Q-18, Q-21, Q-22 and Q-26 resolved before completion |
 | T-10 | Re-evaluate the security issue (README, "Known security issue") | Planned | |
 | T-11 | Final README (including D-07), publishing and demo video, as listed in [Delivery requirements](spec.md#delivery-requirements) | Planned | T-09, T-10, Q-07, Q-09 |
@@ -43,9 +43,11 @@ T-06 was validated by the owner's explicit approval on 2026-11-19, including the
 
 T-07 was validated by the owner's explicit approval on 2026-11-19, including the avatars fix ([verification record](#t-07-avatars-image-2026-11-19)). It was implemented with D-50 to D-55 ([verification record](#t-07-contact-call-to-action-and-footer-2026-11-19)); during the review the owner approved D-56 (Q-27), moved Q-28 to T-08 ([review follow-up](#t-07-review-follow-up-2026-11-19)) and approved the desktop visual shown in the captures. The approval does not resolve the open items below: Q-24 and Q-28 stay for T-08, and Q-18, Q-21, Q-22 and Q-26 for before T-09 is completed.
 
+T-08 was validated by the owner's explicit approval on 2026-11-19, including the corrections D-57 to D-60 and the contrast adaptation of D-59 (`label-gray` `#6C7283`) ([verification record](#t-08-integrated-review-2026-11-19)). The approval keeps the limits of the checks recorded there (no screen readers, other browsers, physical devices, forced colors or speech input). It does not resolve Q-18, Q-21, Q-22 and Q-26, which stay for before T-09 is completed; the favicon stays with Q-07 in T-11.
+
 ## Open items
 
-Validating a task does not resolve the open items below. In particular, validating T-04 to T-07 does not resolve Q-18, Q-21, Q-22, Q-24, Q-26 or Q-28.
+Validating a task does not resolve the open items below. In particular, validating T-04 to T-07 does not resolve Q-18, Q-21, Q-22 or Q-26.
 
 ### Pending corrections
 
@@ -54,9 +56,7 @@ Changes that need owner input or new exports. Details are in [decisions.md](deci
 - [Q-18](decisions.md#open-questions): a 2x export (or SVG) of the hero photo, hero avatars, star and menu icon, to remove the softness observed at a device pixel ratio of 2; the featured photo, the testimonial avatar, the community collage, the quote mark, the contact icons and the call to action avatars are also 1x at their desktop size. Resolve before T-09 is completed.
 - [Q-21](decisions.md#open-questions): the mobile framing of the hero photo. Resolve before T-09 is completed.
 - [Q-22](decisions.md#open-questions): the 75% opacity of the menu icon in the exported file. Resolve before T-09 is completed.
-- [Q-24](decisions.md#open-questions): with enlarged text, the desktop header when the breakpoints do not scale (1024 px), and the hero button labels at 250%. Found during the D-39 checks. To be corrected and verified in T-08 (owner decision, 2026-11-18).
 - [Q-26](decisions.md#open-questions): the mobile arrangement of the community collage differs from the exported file. Found during T-06. Resolve before T-09 is completed.
-- [Q-28](decisions.md#open-questions): at 250% text and 320 px, beyond the 200% target, the testimonial author name and role leave the window. Found during the T-07 checks, outside T-07. To be corrected and verified in T-08, together with Q-24 (owner decision, 2026-11-19).
 
 ### Final verifications
 
@@ -66,6 +66,7 @@ Checks to run when the related work exists.
 
 ### Resolved
 
+- 2026-11-19: Q-24 (enlarged text in the header and the hero buttons) by D-57, and Q-28 (testimonial at 250% and 320 px) by D-58. Corrected and verified by the agent in T-08 ([verification record](#t-08-integrated-review-2026-11-19)) and approved with T-08.
 - 2026-11-19: the T-07 anchor and focus checks. `#community` reaches the top of the window at 1280 and 402 px, and Tab after "Explore teachers and students" reaches "Full name". The "For Teams" links (header, mobile panel and footer) and the footer "Contact" reach `#contact` at the top of the window; from the mobile panel focus moves to `#contact`, and the next Tab reaches "Full name". Checked by the agent ([verification record](#t-07-contact-call-to-action-and-footer-2026-11-19)) and approved with T-07.
 - 2026-11-19: Q-27, the copyright color, by D-56: `#E7E7EC` on both breakpoints, an approved adaptation.
 - 2026-11-18: the T-05 anchor checks. The links to `#categories` ("Courses" and "Start learning" in the header and the mobile panel, "Explore courses" in the hero, "Browse all courses") and to `#how-it-works` ("About" in the header and the mobile panel, "See how it works" in the hero) reach their sections, and from the mobile panel focus moves to the section ([D-25](decisions.md#header-and-hero)). The Tab order was checked separately for each section. Checked by the agent ([verification record](#t-05-follow-up-and-q-23-2026-11-18), [featured section](#t-05-featured-course-and-the-three-sections-together-2026-11-18)) and approved with T-05.
@@ -227,3 +228,37 @@ Only the checks affected by this change.
 - The image keeps `alt=""` and is not exposed to assistive technologies; the window is a plain `div`.
 - No horizontal scrolling at 320, 360, 375, 402, 768, 1024, 1280 and 1440 px, at the normal size and with text at 200%. Enlarged-text audit, 48 combinations: the same two findings outside T-07 (Q-24, Q-28), nothing in T-07.
 - `npm run lint`, `npx tsc --noEmit` and `npm run build`: passed.
+
+### T-08 integrated review, 2026-11-19
+
+Chrome headless, production build, unless a check says otherwise. Form data is fictitious and was never printed. Automated accessibility rules: `axe-core` 4.14.1, the copy already in `node_modules` as a dependency of `eslint-plugin-jsx-a11y`, injected only into the test page; nothing was installed.
+
+Review and findings:
+
+- Reduced motion: the page has no animation, transition or smooth scrolling on any element, with the `prefers-reduced-motion` preference set to `no-preference` and to `reduce` (computed styles of every element at 1280 and 402 px, panel open at 402 px). The scrolling that shows a demo message is instant. Nothing to adapt.
+- axe (WCAG 2.0, 2.1 and 2.2 A and AA, and best practices) at 1280 and 402 px, at 402 px with the panel open, with text at 200% at 320 and 1280 px, and with the root font size at 200% at 1024 px. Before the corrections: one violation, the contrast of `label-gray` on `cream` (4.45:1) on the step labels and the "Up to 24 hours on business days" value (D-59). After: no violation. Left for manual review by axe: two hero card texts under the open mobile panel, where the panel covers them as intended.
+- Keyboard, from the top of the page through every control, at 1280, 402 and 320 px, with text at 200% (320 and 1280 px) and 250% (320 px), and with the root font size at 200% (1024, 1280 and 1440 px): 33 controls on desktop and 28 on mobile, in the visual order. Every control shows its focus outline (2 px, 2 px away), with a contrast of at least 4.87:1 against the surrounding background; no outline is clipped and no focused control is covered. Before the corrections, with text at 200% the "Menu" button was 2 px above the window, because it was taller than the fixed header (D-57), and with the root font size at 200% at 1024 px "Start learning" was outside the window and the logo was covered (Q-24).
+- Observation, not a page defect: when "Your question" receives focus with Tab from the bottom edge of the window with enlarged text, Chrome scrolls only enough to show the cursor line, so the bottom of the field is below the window. No page element covers it; when the field is reached from other positions it is shown whole.
+- Enlarged text, 48 combinations (default font size 24, 28, 32 and 40 px; root font size 200%; normal; at 320, 360, 375, 402, 768, 1024, 1280 and 1440 px; panel open where it exists): before the corrections, two combinations had findings (Q-24 and Q-28); after, none. With the root font size at 200%, the header links wrap onto two lines at 1024 to 1440 px, the logo keeps its 54 px, and the bar grows to 123 px.
+- Text spacing (WCAG 1.4.12: line height 1.5, paragraph spacing 2em, letter spacing 0.12em, word spacing 0.16em) at the same eight widths, panel open where it exists: no text cut, overlapping or outside the window, before and after the corrections.
+- Anchors: the 14 visible in-page links at 1280 px and the 9 at 402 px reach their sections at the top of the window with the mouse; after Enter, the next Tab reaches the first control after the target. The panel links ("Courses", "For Teams", "Community", "About", "Start learning") at 320 and 402 px and with text at 200% at 320 px close the panel and move focus to the section at the top of the window; the next Tab reaches the first control after it.
+- Demo messages: every message button (14 at 1280 px, 13 at 402 px and with text at 200% at 320 px, and the panel "Log in"): Enter shows its message inside the window, in full and not cut by any ancestor; Escape hides it, with focus staying on the button (in the panel, Escape also closes the panel and returns focus to "Menu", as approved).
+- Mobile menu at 320 and 402 px and with text at 200% at 320 px: the button toggles `aria-expanded` and the panel with the mouse and with Enter; Escape closes it and returns focus to "Menu"; Tab after the last panel control reaches "Explore courses", not covered. Switching from 402 to 1280 px with focus inside the panel closes it, and focus is not left on a hidden element.
+- Form at 1280 and 402 px: an empty submit moves focus to "Full name"; a valid submit shows the demo message, keeps the values, and the message is removed when the user edits again; no network request and no console output.
+- Semantics and names (axe and the accessibility tree): one `h1`, headings in order, landmarks (`banner`, `navigation` "Main", `main`, `contentinfo`, `navigation` "Footer"), every control named, every field labelled, decorative images hidden. The community placeholder paragraph is now marked as Latin (D-60).
+- Hydration and console, development server, clean loads only (navigation, waiting and scrolling; no attribute or DOM change by the tool), two loads each at 1280, 402 and 320 px and with text at 200% at 320 and 1280 px: no hydration message, warning, error or exception. The only failed request is `/favicon.ico` (404): the page has no favicon yet (Q-07, T-11).
+
+Normal size preserved:
+
+- Full-page captures before and after the corrections, in the same browser session, at 320, 402, 768, 1024, 1280 and 1440 px, at 402 and 1280 px with a device pixel ratio of 2, and with the panel open at 320 and 402 px: same sizes, and every changed pixel is at most 1 level darker per channel, which is the `label-gray` change (D-59). At 402 px with a device pixel ratio of 2 there are also 6,380 pixels of ±1 level, mostly in the photos; repeated captures of the same build differ by 197,615 pixels there, the alternating photo rendering already recorded in T-05.
+
+Quality gates:
+
+- `npm run lint`, `npx next typegen`, `npx tsc --noEmit` and `npm run build`: passed.
+
+Not verified (not available in this environment):
+
+- Screen readers (NVDA, JAWS, VoiceOver, TalkBack): only the accessibility tree exposed by Chrome was checked, not what a screen reader announces.
+- Browsers other than Chrome (Firefox, Safari, Edge) and their own text zoom; physical devices, touch and mobile browsers.
+- Forced colors (Windows high contrast) and speech input.
+- The text of the browser's own validation messages.

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { sectionIds } from "@/content/navigation";
-import { primaryButton, secondaryButton } from "./button-styles";
+import { primaryButtonWrapping, secondaryButtonWrappingCompact } from "./button-styles";
 
 // Sources (docs/design.md): heading 560 px and paragraph 480 px wide, the text styles, the
 // primary button and the 500 × 520 photo come from Figma. The mobile overline and button
@@ -9,7 +9,8 @@ import { primaryButton, secondaryButton } from "./button-styles";
 // Enlarged text (D-39): words break only when they do not fit their line, and the card texts may
 // wrap. When the photo column is narrower than 11em, which only happens with enlarged text, the
 // cards stack below the photo instead of floating over it. At the normal text size the column
-// is at least 16.5em wide, so the composition does not change.
+// is at least 16.5em wide, so the composition does not change. The button labels may wrap
+// inside their buttons, which only happens with very large text on narrow screens (D-57).
 
 const cardShadow = "shadow-[0_8px_24px_rgba(23,27,44,0.08)]";
 const stars = [1, 2, 3, 4, 5];
@@ -33,10 +34,10 @@ export function Hero() {
             </p>
 
             <div className="mt-8 flex flex-col gap-3 lg:flex-row">
-              <a href={`#${sectionIds.categories}`} className={primaryButton}>
+              <a href={`#${sectionIds.categories}`} className={primaryButtonWrapping}>
                 Explore courses
               </a>
-              <a href={`#${sectionIds.howItWorks}`} className={secondaryButton}>
+              <a href={`#${sectionIds.howItWorks}`} className={secondaryButtonWrappingCompact}>
                 See how it works
               </a>
             </div>

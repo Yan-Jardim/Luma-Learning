@@ -29,7 +29,8 @@ export function Community() {
             >
               Meet international students &amp; teachers
             </h2>
-            <p className="mt-6 type-mobile-subtitle-1 text-text-secondary lg:mt-8 lg:type-desktop-subtitle-1">
+            {/* Placeholder Latin text (D-43), marked as Latin (D-60) so screen readers do not read it as English. */}
+            <p lang="la" className="mt-6 type-mobile-subtitle-1 text-text-secondary lg:mt-8 lg:type-desktop-subtitle-1">
               Morbi sit egestas dignissim pharetra, sed amet. Tempus justo senectus risus ac vel, velit, nunc.
               Eget commodo eget in aliquam facilisi facilisi nec magna hendrerit. Placerat ipsum sit tellus urna,
               faucibus aenean lorem faucibus integer.

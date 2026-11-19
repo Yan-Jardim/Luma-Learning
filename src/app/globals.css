@@ -30,7 +30,8 @@
   --color-peach-tint: #fae4db; /* Step 02 square in the mobile reference only; not used (D-36 keeps peach). */
   --color-coral: #ff704d;
   --color-mustard: #e9d659;
-  --color-label-gray: #6d7384;
+  /* Sampled #6d7384, one level darker per channel for 4.5:1 on cream (D-59): 4.52:1 on cream, 4.80:1 on white. */
+  --color-label-gray: #6c7283;
   --color-footer-link: #9e9faa;
   --color-footer-heading: #e7e7ec;
   --color-footer-divider: #5b5d68;

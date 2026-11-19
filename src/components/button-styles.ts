@@ -10,12 +10,11 @@ const base = `${shape} whitespace-nowrap`;
 // screens; at the normal size they stay on one line.
 const wrapping = `${shape} text-center`;
 const primaryLook = "bg-primary-blue px-7 py-3.5 text-white";
+// The 1 px border makes the secondary buttons 54 px high, as in both references.
 const secondaryLook = "border border-line bg-white py-3.5 text-text-primary";
 
+// "Start learning" in the mobile menu.
 export const primaryButton = `${base} ${primaryLook}`;
-
-// The 1 px border makes this button 54 px high, as in both references.
-export const secondaryButton = `${base} ${secondaryLook} px-7`;
 
 // Header button: about 134 × 44 px in the desktop reference (estimate).
 export const headerButton = `${base} bg-primary-blue px-5 py-2.5 text-white`;
@@ -28,8 +27,9 @@ export const accentButton = `${base} bg-yellow px-7 py-3.5 text-text-primary`;
 // button is 268 px wide, as in both references (estimate).
 export const secondaryButtonWrapping = `${wrapping} ${secondaryLook} px-[29px]`;
 
-// "Send message" and "Explore all courses" (T-07).
+// "Explore courses" (hero), "Send message" and "Explore all courses" (T-07, T-08).
 export const primaryButtonWrapping = `${wrapping} ${primaryLook}`;
 
-// "Join Luma" (T-07): 28 px horizontal padding, 128 px wide in the desktop reference (estimate).
+// "See how it works" (hero) and "Join Luma": 28 px horizontal padding; "Join Luma" is 128 px wide
+// in the desktop reference (estimate).
 export const secondaryButtonWrappingCompact = `${wrapping} ${secondaryLook} px-7`;
