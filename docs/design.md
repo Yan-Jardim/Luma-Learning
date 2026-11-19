@@ -155,7 +155,7 @@ The token column gives the Tailwind color name defined in `src/app/globals.css` 
 | `#FFFFFF` | `white` (Tailwind default) | White background (categories, testimonial, contact), cards, secondary buttons, floating cards |
 | `#171B2C` | `text-primary` | Headings and strong text; footer background. **Figma:** variable `text-primary`, seen on the desktop H1 |
 | `#656770` | `text-secondary` | Body paragraphs. **Figma:** variable `text-secondary`, seen on the mobile hero paragraph |
-| `#6D7384` | `label-gray` | Step labels |
+| `#6D7384` | `label-gray` | Step labels, metric captions |
 | `#3157F6` | `primary-blue` | Primary buttons, eyebrows, links, featured background, metrics, quote mark, icons. **Figma:** variable `primary-blue`, seen on the primary button and the overline |
 | `#E2E8FF` | `blue-tint` | Number badges, icon tiles, light circles (hero, step 01, community collage) |
 | `#DBDFEB` | `line` | Borders and dividers (header, cards, secondary buttons, step connectors, metrics divider) |
@@ -216,6 +216,21 @@ Measured on the references at 2x and approved as estimates ([D-31](decisions.md#
 | Pills | Inter 400, 14 / 24 px; 38 px high; 1 px `line` border, then padding 6 / 14 (refined in the comparison) | Same | — |
 | "Explore", "View course", "Browse all courses" | Inter 700, 14 / 24 px; "Browse all courses" in `#E7E7EC` in the references, white in the implementation ([D-42](decisions.md#courses-and-how-it-works)) | Same | `Desktop/body 1` |
 
+### Estimated styles (T-06)
+
+Measured on the references at 2x and approved as estimates ([D-46](decisions.md#testimonial-and-community)). They are not Figma values.
+
+| Text | Desktop (Estimate) | Mobile (Estimate) | Confirmed style reused |
+| --- | --- | --- | --- |
+| Quote | Plus Jakarta Sans 600, 30 / 44 px, tracking -0.75 px, `text-primary`, box up to 600 px | 20 / 32 px, no tracking | — |
+| Author name | Inter 700, 16 / 24 px, `text-primary` | Same | — |
+| Author role | Inter 400, 14 / 24 px, `text-secondary`, 2 px below the name | Same | — |
+| Metric numbers | Plus Jakarta Sans 800, 64 / 70 px, -1.6 px, `primary-blue` | 40 / 44 px, -1 px | `Desktop/H1`, `Mobile/H1` values, by inference (equal sizes); not `h1` elements |
+| Metric captions | Inter 400, 14 px, `label-gray`, line height 20 px | 14 / 24 px | — |
+| Community overline, heading, paragraph, button | As the other sections; paragraph in `text-secondary` ([D-43](decisions.md#testimonial-and-community)) | Same | `Desktop/Overline`, `Desktop/subtitle 1`, `Mobile/subtitle 1`, `Desktop/body 1` |
+
+The quote weight was chosen among 500, 600 and 700: at 20 px, 600 reproduces the four mobile line widths within 0.5 px, while 500 is narrower and 700 wider. On desktop, 30 px with -0.75 px tracking reproduces the three lines, their breaks and their ink height.
+
 ## Layout
 
 - **Inferred:** frame width 1280 px desktop and 402 px mobile ([Reference files](#reference-files)).
@@ -265,6 +280,21 @@ Measured on the references at 2x; the initial reference for T-05 ([D-33](decisio
 
 Intermediate widths (implementation choice, not shown in the references; [D-33](decisions.md#courses-and-how-it-works), approved by the owner in [D-37](decisions.md#courses-and-how-it-works)): the category cards use one column below 640 px, two from 640 px and four from 1024 px. The steps are stacked below 1024 px, in a centered block at most 560 px wide, and use three columns from 1024 px, 48 px apart, or 80 px from 1280 px. The featured section uses one column, at most 560 px wide, below 1024 px, as the hero does ([D-40](decisions.md#courses-and-how-it-works)). Card padding is in px, so enlarged text keeps its room. Words break only when they do not fit their line, which happens only with very large text on narrow screens.
 
+### Testimonial and community measurements (Estimate)
+
+Measured on the references at 2x and refined in the comparison at 402 and 1280 px: every text line is within 1.5 px of the reference.
+
+| Item | Desktop | Mobile |
+| --- | --- | --- |
+| Testimonial section | 100 px top and bottom; two columns centered vertically: the quote column (735 px track) and the metrics column (385 px) | 60 px top and bottom; quote, author, then the metrics |
+| Quote mark | 24 × 22, `primary-blue`, 16 px above the quote (`icon-quote.png`, decorative, [D-49](decisions.md#testimonial-and-community)) | Same |
+| Author | Avatar 48 × 48, round, 32 px below the quote; name and role 16 px to its right | Avatar 33 px below the quote |
+| Metrics | Stacked after a 1 px `line` divider (325 px high), 48 px to its right; each number 70 px high, caption 6 px below, 19 px between metrics | One row of three equal columns, 59 px below the author; in one column below 19em ([D-47](decisions.md#testimonial-and-community)) |
+| Community section | 100 px top and bottom; text column (535 px) and collage (535 × 530, right edge at the content edge), 50 px apart, centered vertically; the collage overlaps the bottom padding by 8 px | 60 px top and bottom; text, button, then the collage scaled to the content width, 16 px below the button |
+| Community rhythm | Overline, 8, heading, 32, paragraph, 32, button (268 × 54, horizontal padding 29 px) | Overline, 8, heading, 24, paragraph, 24, button |
+
+Intermediate widths (implementation choice within [D-37](decisions.md#courses-and-how-it-works) and [D-40](decisions.md#courses-and-how-it-works)): below 1024 px the testimonial and the community are one centered column at most 560 px wide.
+
 ## Interactions and states
 
 - **Image:** only default states appear. Neither reference shows hover, focus, active, disabled, validation, success, error or open-menu states.
@@ -282,8 +312,9 @@ Intermediate widths (implementation choice, not shown in the references; [D-33](
 | 2 | Contact form language | English | Portuguese, except the "Contact us" title | [D-06](decisions.md#approved): English |
 | 3 | Step 02 description | "…professionals who use these skills." | "…professionals who actually use these skills." | [D-36](decisions.md#courses-and-how-it-works): the desktop text |
 | 4 | Step 02 square color | `#FFCB9F` | `#FAE4DB` | [D-36](decisions.md#courses-and-how-it-works): `#FFCB9F`, with the circle `#FF704D` |
-| 5 | Community paragraph color | `#656770` | `#171B2C` | Pending ([Q-15](decisions.md#open-questions)) |
+| 5 | Community paragraph color | `#656770` | `#171B2C` | [D-43](decisions.md#testimonial-and-community): `#656770` on both |
 | 6 | Hero photo framing | Matches `hero-student-photo.png` exactly (mean pixel difference 4.7 of 765) | Different framing of the same photo: the person is smaller and the hair is cut at the top. No crop of the exported file matches it (best mean difference about 32) | Pending ([Q-21](decisions.md#open-questions)). The implementation uses a centered crop of the exported file |
+| 7 | Community collage | Matches `community-collage.png` at 1x | Same photos in a different arrangement: shorter crops; the scaled file is about 10 px taller at the center | Pending ([Q-26](decisions.md#open-questions)). The implementation scales the exported file |
 
 The composition differences listed in [Page structure](#page-structure) follow from the layout and are not treated as divergences.
 
@@ -295,7 +326,7 @@ The owner exported the assets from Figma on 2026-11-18 into a local folder. The 
 
 27 files: 13 PNG and 14 SVG. No file is empty, no two files are byte-identical, and every real format matches its extension. Pixel sizes compared with the display sizes are in [Raster resolution](#raster-resolution).
 
-On 2026-11-18, for T-04, the owner added three files and replaced `icon-star.png`. Those four files are listed at the end of the table, and the folder now has 30 files. Later that day, for T-05, the owner added `featured-course-photo.png` (last row); the folder has 31 files.
+On 2026-11-18, for T-04, the owner added three files and replaced `icon-star.png`. Those four files are listed at the end of the table, and the folder now has 30 files. Later that day, for T-05, the owner added `featured-course-photo.png`, and on 2026-11-19, for T-06, `icon-quote.png` (last rows); the folder has 32 files.
 
 | File | Real format and size | Content (Image) | Status |
 | --- | --- | --- | --- |
@@ -303,9 +334,9 @@ On 2026-11-18, for T-04, the owner added three files and replaced `icon-star.png
 | `logo-light.svg` | SVG, 54 × 17 | Same wordmark, white | OK |
 | `hero-student.png` | PNG, 626 × 524 | Hero photo combined with both floating cards (texts included), the peach shape and the light circle | Re-export needed: texts and shapes baked in |
 | `featured-course.png` | PNG, 550 × 420 | Featured photo with the "FEATURED COURSE" badge | Re-export needed: badge text baked in |
-| `community-collage.png` | PNG, 535 × 530, transparent | Ten photos over the light circle | OK |
+| `community-collage.png` | PNG, 535 × 530, transparent | Ten photos over the light circle | OK; copied to `public/images/` (T-06) |
 | `cta-avatars.png` | PNG, 656 × 40, transparent | Four avatars with yellow rings. Only 136 × 40 is visible; the rest is transparent | Usable; extra transparent area |
-| `testimonial-alex-morgan.png` | PNG, 48 × 48, transparent | Round avatar of the testimonial author | OK |
+| `testimonial-alex-morgan.png` | PNG, 48 × 48, transparent | Round avatar of the testimonial author | OK; copied to `public/images/` (T-06) |
 | `step-01.png` | PNG, 56 × 56, transparent | Step 01 illustration | OK |
 | `step-02.png` | PNG, 67 × 67, transparent | Step 02 illustration with the desktop colors (`#FFCB9F`, `#FF704D`) | OK |
 | `step-03.png` | PNG, 56 × 56 | Step 03 illustration | OK |
@@ -318,6 +349,7 @@ On 2026-11-18, for T-04, the owner added three files and replaced `icon-star.png
 | `icon-menu.png` (new) | PNG, 24 × 24, transparent | Three bars, 20 × 2 px, `#171B2C` at 75% opacity | OK; copied to `public/icons/`. The bars look lighter than in the reference: the opacity comes from the file ([Q-22](decisions.md#open-questions)) |
 | `icon-star.png` (replaced) | PNG, 10 × 10, transparent | Star alone, `#FFEE7E` | OK; copied to `public/icons/`. The earlier file was the whole rating card |
 | `featured-course-photo.png` (new) | PNG, 538 × 408, RGBA but fully opaque, square corners | Featured photo alone, without the badge. Same framing as the photo inside `featured-course.png` (offset 12 × 12 px, mean difference 4.1 of 765 outside the badge area) | OK; copied to `public/images/` (same SHA-256) |
+| `icon-quote.png` (new) | PNG, 24 × 22, transparent | Quote mark alone, `#3157F6`. Announced as `icon-quote.svg`; the file received is a PNG. It matches the reference mark (mean difference 1.8 of 765) | OK; copied to `public/icons/` (same SHA-256) |
 | `logo-dark.svg` (reused) | SVG, 54 × 17 | See above | Copied to `public/brand/` |
 
 ### Final call to action decorations
@@ -352,7 +384,7 @@ The owner will provide the remaining assets ([Q-18](decisions.md#open-questions)
 | --- | --- | --- | --- |
 | Featured photo alone | Received on 2026-11-18 as `featured-course-photo.png` ([Inventory](#inventory)) | — | — |
 | Arrow for dark text | No longer needed: the white arrow is used as a CSS mask that follows the text color ([D-34](decisions.md#courses-and-how-it-works)) | — | — |
-| Quote mark | Not in the folder | `icon-quote.svg` | T-06 |
+| Quote mark | Received on 2026-11-19 as `icon-quote.png` ([Inventory](#inventory)) | — | — |
 
 Preferences, not blockers:
 
@@ -375,6 +407,7 @@ Display sizes are estimates read from the references at the confirmed 2x scale. 
 | `step-02.png` | 67 × 67, of which 64 × 64 visible | ≈64 × 64 | ≈64 × 64 | ≈1.0 / ≈1.0 |
 | `icon-message.png`, `icon-clock.png` | 40 × 40 | ≈40 × 40 | ≈40 × 40 | ≈1.0 / ≈1.0 |
 | `icon-arrow-right.png` | 14 × 12 | ≈14 × 12 | ≈14 × 12 | ≈1.0 / ≈1.0 |
+| `icon-quote.png` | 24 × 22 | 24 × 22 | 24 × 22 | 1.0 / 1.0 |
 | `hero-student-photo.png` | 500 × 520 | 500 × 520 | 346 × 380, cropped | 1.0 / ≈1.45 |
 | `hero-avatars.png` | 80 × 32 | 80 × 32 | 80 × 32 | 1.0 / 1.0 |
 | `icon-star.png` (replaced) | 10 × 10 | 10 × 10 | 10 × 10 | 1.0 / 1.0 |
@@ -403,6 +436,9 @@ Display sizes are estimates read from the references at the confirmed 2x scale. 
 | Hero avatars, rating stars, menu icon, peach shape, light circle | Empty (decorative) | The adjacent text or the button name carries the meaning |
 | Step illustrations (01 to 03), "Explore" and "Browse all courses" arrows | Empty (decorative) | The step title and the button or link name carry the meaning. Used in T-05 |
 | Featured photo | Person working at a table with papers, tools and trays of colored material samples. | Provided by the owner ([D-41](decisions.md#courses-and-how-it-works)). Used in T-05 |
+| Testimonial avatar | Empty (decorative) | The author name is next to it. Used in T-06 |
+| Quote mark | Empty (decorative), not exposed to assistive technologies | The quote is marked up as a quotation and read once ([D-49](decisions.md#testimonial-and-community)). Used in T-06 |
+| Community collage | Collage of people reading, working at laptops, talking in a group and holding books. | Approved by the owner ([D-48](decisions.md#testimonial-and-community)). Used in T-06 |
 
 Other images: pending.
 
@@ -434,9 +470,9 @@ Other images: pending.
 
 - [x] Logo exported (SVG, dark and light)
 - [x] Images exported: collage, testimonial avatar, final call to action avatars, hero photo, hero avatars and the featured photo without the badge received
-- [ ] Icons and illustrations exported: steps, contact icons, final call to action decorations, star and menu icon received; the quote is missing. The dark arrow is no longer needed ([D-34](decisions.md#courses-and-how-it-works))
+- [ ] Icons and illustrations exported: steps, contact icons, final call to action decorations, star, menu icon and quote mark received. The dark arrow is no longer needed ([D-34](decisions.md#courses-and-how-it-works))
 - [ ] Favicon and social preview image: not in the references
-- [ ] Text alternatives for images: hero photo drafted; step illustrations and arrow decorative ([Text alternatives](#text-alternatives)); the others pending
+- [ ] Text alternatives for images: hero photo drafted; featured photo provided by the owner; community collage approved by the owner; avatars, step illustrations and arrows decorative ([Text alternatives](#text-alternatives)); the others pending
 
 ### Interactive states and menu
 
@@ -462,4 +498,5 @@ Other images: pending.
 | 2026-11-18 | Four screenshots of the Figma file in view mode, shared by the owner in the conversation | Examined. They give the `Desktop/H1` text style, the `text-primary` color, and the dimensions that confirm the 2x scale. One canvas label (560 × 226) belongs to an unidentified selection and was not used. |
 | 2026-11-18 | Eight more screenshots of the Figma inspect panel, shared by the owner in the conversation | Examined. They give five more text styles, the `text-secondary` and `primary-blue` colors, the mobile content width and the primary button. |
 | 2026-11-18 | T-04 assets in the authorized asset folder: hero photo, hero avatars, menu icon and the replaced star icon | Checked and copied to `public/` with `logo-dark.svg`; the originals are unchanged ([Inventory](#inventory)). |
+| 2026-11-19 | Quote mark in the authorized asset folder, announced as `icon-quote.svg` and received as `icon-quote.png` | Checked and copied to `public/icons/`; the original is unchanged ([Inventory](#inventory)). |
 | 2026-11-18 | Featured photo without the badge (`featured-course-photo.png`) in the authorized asset folder | Checked and copied to `public/images/`; the original is unchanged ([Inventory](#inventory)). |

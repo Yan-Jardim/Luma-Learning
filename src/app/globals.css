@@ -157,6 +157,28 @@
   line-height: 1.75rem; /* 28px */
 }
 
+/*
+ * Estimated text styles for T-06 (D-46): measured on the references, not confirmed in Figma.
+ * The weight 600 was chosen in the visual comparison: at 20 px it reproduces the mobile line
+ * widths, and 500 and 700 do not. The desktop size, line height and tracking (-0.025em, the
+ * ratio of the section headings) reproduce the three reference lines and their ink height.
+ */
+@utility type-quote-mobile {
+  @apply font-display;
+  font-weight: 600;
+  font-size: 1.25rem; /* 20px */
+  line-height: 2rem; /* 32px */
+  letter-spacing: 0;
+}
+
+@utility type-quote-desktop {
+  @apply font-display;
+  font-weight: 600;
+  font-size: 1.875rem; /* 30px */
+  line-height: 2.75rem; /* 44px */
+  letter-spacing: -0.046875rem; /* -0.75px */
+}
+
 /* Right arrow drawn with the exported white arrow as a mask, so it follows the text color (D-34). */
 @utility icon-arrow-right {
   display: inline-block;

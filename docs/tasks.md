@@ -20,10 +20,10 @@ Planned → In progress → Ready for review → Validated
 | T-03 | Visual foundation | Validated | T-02 (inputs decided in D-20, D-21 and D-22) |
 | T-04 | Header and hero | Validated | T-03 (decisions D-23 to D-30) |
 | T-05 | Learning categories, featured course and "How it works" | Validated | T-03 (decisions D-31 to D-38 and D-40 to D-42) |
-| T-06 | Testimonial and community | Planned | T-03, Q-10, Q-15, Q-16, Q-18 |
+| T-06 | Testimonial and community | Validated | T-03 (decisions D-43 to D-49) |
 | T-07 | Contact, final call to action and footer | Planned | T-03, Q-02, Q-03, Q-05, Q-10, Q-17 |
 | T-08 | Integrated review of interactions and accessibility | Planned | T-04 to T-07 |
-| T-09 | Visual check on desktop, mobile and intermediate widths | Planned | T-08; Q-18, Q-21 and Q-22 resolved before completion |
+| T-09 | Visual check on desktop, mobile and intermediate widths | Planned | T-08; Q-18, Q-21, Q-22 and Q-26 resolved before completion |
 | T-10 | Re-evaluate the security issue (README, "Known security issue") | Planned | |
 | T-11 | Final README (including D-07), publishing and demo video, as listed in [Delivery requirements](spec.md#delivery-requirements) | Planned | T-09, T-10, Q-07, Q-09 |
 
@@ -39,31 +39,35 @@ T-04 was validated by the owner's explicit approval on 2026-11-18. Q-18, Q-21, Q
 
 T-05 was validated by the owner's explicit approval on 2026-11-18. The approval covers learning categories, the featured course and "How it works" (D-31 to D-38 and D-40 to D-42), the hero change for Q-23 (D-39) and the shared message behavior (`DemoMessageButton`, used by "Log in", "Explore" and "View course"). It does not resolve the open items below.
 
+T-06 was validated by the owner's explicit approval on 2026-11-19, including the current use of `icon-quote.png` (D-49). The approval does not resolve the open items below.
+
 ## Open items
 
-Validating a task does not resolve the open items below. In particular, validating T-04 and T-05 does not resolve Q-18, Q-21, Q-22, Q-24 or the remaining anchor checks.
+Validating a task does not resolve the open items below. In particular, validating T-04, T-05 and T-06 does not resolve Q-18, Q-21, Q-22, Q-24, Q-26 or the remaining anchor checks.
 
 ### Pending corrections
 
 Changes that need owner input or new exports. Details are in [decisions.md](decisions.md#open-questions).
 
-- [Q-18](decisions.md#open-questions): the remaining asset export, the quote mark (T-06). Separately, a 2x export (or SVG) of the hero photo, hero avatars, star and menu icon, to remove the softness observed at a device pixel ratio of 2; the featured photo is also 1x at its desktop size. Resolve before T-09 is completed.
+- [Q-18](decisions.md#open-questions): a 2x export (or SVG) of the hero photo, hero avatars, star and menu icon, to remove the softness observed at a device pixel ratio of 2; the featured photo, the testimonial avatar, the community collage and the quote mark are also 1x at their desktop size. Resolve before T-09 is completed.
 - [Q-21](decisions.md#open-questions): the mobile framing of the hero photo. Resolve before T-09 is completed.
 - [Q-22](decisions.md#open-questions): the 75% opacity of the menu icon in the exported file. Resolve before T-09 is completed.
 - [Q-24](decisions.md#open-questions): with enlarged text, the desktop header when the breakpoints do not scale (1024 px), and the hero button labels at 250%. Found during the D-39 checks. To be corrected and verified in T-08 (owner decision, 2026-11-18).
+- [Q-26](decisions.md#open-questions): the mobile arrangement of the community collage differs from the exported file. Found during T-06. Resolve before T-09 is completed.
 
 ### Final verifications
 
 Checks to run when the related work exists.
 
-- T-06: on desktop, `#how-it-works` stops 273 px below the top of the window, because the page currently ends after that section. Check again that it reaches the top once the sections below exist. Also check that Tab from `#how-it-works` reaches the next control; today there is none, so Tab leaves the page.
-- T-06: the "Community" links reach `#community`, with the same focus check.
+- T-07: `#community` stops 178 px below the top of the window at 1280 px (77 px at 402 × 900), because the page currently ends after that section. Check again that it reaches the top once the sections below exist, and that Tab after "Explore teachers and students" reaches the next control; today Tab leaves the page.
 - T-07: the "For Teams" links reach `#contact`, with the same focus check.
-- T-09: the visual check of the header and hero is repeated after Q-18, Q-21 and Q-22 are resolved. The sharpness of the step PNGs, of the arrow mask and of the featured photo is checked ([D-34](decisions.md#courses-and-how-it-works)).
+- T-09: the visual check of the header and hero is repeated after Q-18, Q-21 and Q-22 are resolved. The sharpness of the step PNGs, of the arrow mask, of the featured photo, of the testimonial avatar, of the community collage and of the quote mark (all 1x) is checked ([D-34](decisions.md#courses-and-how-it-works)).
 
 ### Resolved
 
 - 2026-11-18: the T-05 anchor checks. The links to `#categories` ("Courses" and "Start learning" in the header and the mobile panel, "Explore courses" in the hero, "Browse all courses") and to `#how-it-works` ("About" in the header and the mobile panel, "See how it works" in the hero) reach their sections, and from the mobile panel focus moves to the section ([D-25](decisions.md#header-and-hero)). The Tab order was checked separately for each section. Checked by the agent ([verification record](#t-05-follow-up-and-q-23-2026-11-18), [featured section](#t-05-featured-course-and-the-three-sections-together-2026-11-18)) and approved with T-05.
+- 2026-11-19: the T-06 anchor and focus checks. `#how-it-works` reaches the top of the window on desktop and Tab from it reaches "Explore teachers and students"; the "Community" links reach `#community`, focus moves to it from the mobile panel, and the next Tab reaches "Explore teachers and students". The quote mark is in place and the testimonial column keeps the measured positions. Checked by the agent ([verification record](#t-06-testimonial-and-community-2026-11-19), [quote mark](#t-06-quote-mark-2026-11-19)) and approved with T-06.
+- 2026-11-19: the T-06 quote mark (part of Q-18). Received as `icon-quote.png`, checked and copied to `public/icons/`.
 - 2026-11-18: Q-25, the contrast of "Browse all courses", by D-42 (white, 5.49:1).
 - 2026-11-18: the T-05 featured photo (part of Q-18). The photo without the badge was received, checked and copied to `public/images/`.
 - 2026-11-18: the T-04 asset blocker. The four T-04 assets were received, checked and copied to `public/`.
@@ -136,4 +140,40 @@ Only the checks affected by these changes. D-40 changed no code: the layout belo
 - Photo text alternative (D-41): the `alt` attribute and the accessibility tree give "Person working at a table with papers, tools and trays of colored material samples."
 - "Browse all courses" (D-42), at 402 and 1280 px: computed color white for the text and for the arrow, which follows it through the mask. Contrast on `primary-blue` 5.49:1 for both (AA asks 4.5:1 for this text and 3:1 for the icon). In the 2x capture the label pixels are `#FFFFFF`; the arrow edges are blended, because the mask image is 1x (sharpness check in T-09). Reached with Tab, the link keeps its 2 px solid white focus outline, 2 px away.
 - Same-session A/B with a test-only override back to `#E7E7EC`: the change affects only the label and the arrow (3,284 pixels at 1280 px and 3,295 at 402 px, 2x). At 1280 px, 205 more pixels differ in the shadows of the hero cards, which were repainted when the test style was injected. A capture of the same build in the same session is pixel-identical. Comparing with a capture from the earlier build and browser session shows small differences at glyph edges across the page, sections without changes included, so that comparison is not used.
+- Not verified: screen readers, browsers other than Chrome, physical devices.
+
+### T-06 testimonial and community, 2026-11-19
+
+The quote mark is not built (Q-18). For the comparison, a test-only empty box of its size (24 × 22, 16 px above the quote) was injected in the browser; nothing is drawn in the code.
+
+- `npm run lint`, `npx next typegen`, `npx tsc --noEmit` and `npm run build`: passed.
+- Assets: `testimonial-alex-morgan.png` and `community-collage.png` copied to `public/images/`, identical to the originals; the originals are unchanged.
+- Quote weight: Plus Jakarta Sans 500, 600 and 700 were compared with a test-only override. At 20 px, 600 reproduces the four mobile line widths within 0.5 px; 500 is narrower and 700 wider. On desktop, 600 at 30 px with -0.75 px tracking in a 600 px box reproduces the three lines, their breaks and their ink height. Only 600 stays loaded.
+- Comparison with the references at 402 and 1280 px (2x): 44 text lines within 1.5 px, all but two within 1 px. Section heights: testimonial 526 and 524 px (reference 525 and 523.5), community 722 px on desktop (reference 722). The divider is 1 px longer and the community button 2 px narrower than in the reference. The desktop collage is placed as in the reference; on mobile the reference arranges the photos differently (Q-26).
+- Anchors: "About" reaches `#how-it-works` at the top of the window on desktop. "Community" in the header reaches `#community`, which stops 178 px from the top because the page ends there for now; from the mobile panel focus moves to `#community`.
+- Keyboard: from `#how-it-works` and from `#community`, Tab reaches "Explore teachers and students" (2 px `primary-blue` outline); Shift+Tab from `#community` reaches "Browse all courses"; after "Explore teachers and students" Tab leaves the page.
+- "Explore teachers and students" at 320, 402 and 1280 px, and at 320 px with text at 200%, with the button at the top and at the bottom edge of the window: the message "This is a demo. Teacher and student profiles are not available." is shown inside the window, within its column and in full; no control lies under it; Enter opens it; Escape hides it with focus staying on the button; a click outside closes it.
+- Structure: one `h1`; the community heading is an `h2`; the metric numbers are paragraphs, not headings; the quote is a `blockquote` in a `figure` with a `figcaption`; no duplicate `id`; the avatar is decorative; the collage has the drafted text alternative; the community paragraph is `#656770`.
+- Metrics layout: one column at 320 px, three columns from 360 px, stacked on desktop. No horizontal scrolling at 320, 360, 402, 768, 1024, 1280 and 1440 px.
+- Text at 200% (default font size 32 px) at 320 and 402 px: no text cut, outside the window or covered. "Explore teachers and students" uses a secondary button whose label may wrap, so it no longer overflows; at the normal size the captures are pixel-identical.
+- Not verified: screen readers, browsers other than Chrome, physical devices.
+
+### T-06 follow-up: D-48 and the community button, 2026-11-19
+
+Only the checks affected by these changes.
+
+- `npm run lint`, `npx next typegen`, `npx tsc --noEmit` and `npm run build`: passed.
+- The collage `alt` is the text approved in D-48.
+- "Explore teachers and students" with 29 px horizontal padding: 268 × 54 px at 402 px (x 20–288) and at 1280 px (x 80–348), the reference boxes. With text at 200% at 320 and 402 px, the label wraps inside the button, the button stays in the window and there is no horizontal scrolling.
+- Loaded fonts, unchanged by these adjustments: Plus Jakarta Sans 600, 700 and 800; Inter 400, 600 and 700.
+
+### T-06 quote mark, 2026-11-19
+
+Only the checks affected by the quote mark.
+
+- `npm run lint`, `npx next typegen`, `npx tsc --noEmit` and `npm run build`: passed.
+- Asset: `icon-quote.svg` was announced, and the folder has `icon-quote.png` instead (the only new file, 24 × 22, `#3157F6`). Its content matches the reference mark: mean difference 1.8 of 765 on desktop and 1.9 on mobile (a control shifted by 6 px gives 250). Copied to `public/icons/`, identical to the original.
+- Position at 402 and 1280 px (2x): x 80–104 and 137–159 px below the section top on desktop (reference 137.5–159.5), x 20–44 and 60–82 px on mobile (reference identical). Every testimonial and community text line keeps the position measured earlier with the test box; section heights are unchanged (526 and 524 px; community 722 px on desktop).
+- Inside the mark box the mean difference is 16.6 (desktop) and 14.9 (mobile) of 765 at 2x, because the PNG is 1x (sharpness check in T-09).
+- Accessibility: the mark has an empty `alt`, and the accessibility tree does not expose it; the quote text is exposed once.
 - Not verified: screen readers, browsers other than Chrome, physical devices.
