@@ -6,10 +6,10 @@ The page presents courses, learning categories, a featured course, how the platf
 
 ## Live project and demo video
 
-- **Live project:** _to be added after publishing._
+- **Live project:** [luma-learning-two.vercel.app](https://luma-learning-two.vercel.app/)
 - **Demo video:** _to be added after recording._
 
-The page will be published on Vercel, from the `main` branch (D-65). The links will be added once the project and the video exist.
+The page is published on Vercel, from the `main` branch (D-65). The video link will be added once the video exists.
 
 ## Tech stack
 
@@ -99,7 +99,8 @@ All checks below were run by the AI agent (see [AI usage](#ai-usage)) in a local
 - **Enlarged text:** 48 combinations (browser text size 150% to 250%, root font size 200%, normal size; 320 to 1440 px), and text spacing (WCAG 1.4.12): no text cut, outside the window or covered.
 - **Contact form:** native validation, no network request and no console output when submitting.
 - **Hydration:** clean loads of the development server show no hydration or image warning.
-- **Metadata:** the production build has the title, the description, the Open Graph and Twitter tags and the three icon links, and their files load; no request fails on page load.
+- **Metadata:** the production build has the title, the description, the canonical URL, the Open Graph and Twitter tags (with absolute image URLs on the production address) and the three icon links, and their files load; no request fails on page load.
+- **Published site:** without signing in, the same clean loads, images, widths, anchors, mobile menu, demo messages and form (no network request when submitting) were checked on the production URL, and the favicon, icons and sharing image served there are identical to the repository files.
 - **Dependencies:** see [Security audit](#security-audit).
 
 Not verified: screen readers (only the accessibility tree exposed by Chrome was checked), browsers other than Chrome, physical devices and touch, screens with a device pixel ratio of 3, forced colors (Windows high contrast), speech input, and the text of the browser's own validation messages. A manual check on real desktop and mobile browsers is still to be done before submission.
@@ -111,7 +112,7 @@ There is no automated test suite in the repository, by decision of the author (D
 - **Demo only:** there is no backend. Sign-in, sign-up, course pages, profiles and the footer pages without a section show a demo message, and the contact form does not send anything.
 - **Community paragraph:** the "Meet international students & teachers" section shows placeholder Latin text ("Morbi sit egestas dignissim pharetra…"). It is kept exactly as in both design references, because no final copy was provided and copy is not invented for this project.
 - **Estimated values:** the Figma file could not be inspected directly. Six text styles and a few colors and sizes are confirmed from screenshots of the file; the rest was measured on the PNG exports and is labelled as an estimate in [docs/design.md](docs/design.md).
-- **Metadata:** until the final URL is known, `metadataBase` is not set. On Vercel the sharing image URL is built from the deployment's address; a local production build uses `localhost` and prints a warning.
+- **Metadata:** `metadataBase`, the canonical URL and `og:url` use the production address, so a deployment on another address (for example a Vercel preview) also points them to production.
 - **Checks:** only the checks listed in [Verification](#verification) were run.
 
 ## Security audit
