@@ -1,5 +1,5 @@
 // Shared navigation data (D-27). Destinations approved in D-23 (docs/decisions.md).
-// The target sections are built in T-05 to T-07; until then these anchors have no target.
+// `#categories` and `#how-it-works` exist since T-05; `#community` and `#contact` come in T-06 and T-07.
 
 export const sectionIds = {
   categories: "categories",

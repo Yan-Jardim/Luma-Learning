@@ -97,26 +97,30 @@ The criteria apply at the desktop and mobile references and at intermediate widt
 - The rating card exposes "4.9 avg rating" as text. The stars are decorative.
 - The hero image uses `next/image`, has a text alternative and is not lazy-loaded.
 - "Explore courses" and "See how it works" go to the destinations in [D-23](decisions.md#header-and-hero).
+- With enlarged text, the heading and the cards adapt without cutting text ([D-39](decisions.md#header-and-hero)).
 
 ### Learning categories
 
-- Four cards in the reference order (01 to 04), each with number, title, description and "Explore" link.
+- Four cards in the reference order (01 to 04), each with number, title, description and an "Explore" button ([D-35](decisions.md#courses-and-how-it-works)).
 - Desktop: four cards in one row. Mobile: one card per row.
 - At intermediate widths, card text is not clipped and does not overflow.
-- The accessible name of each "Explore" link identifies its category.
+- The accessible name of each "Explore" button identifies its category.
+- The "Explore" message meets the conditions of [D-38](decisions.md#courses-and-how-it-works).
 
 ### Featured course
 
 - Blue section with the "FEATURED COURSE" badge over the image, eyebrow, heading, paragraph, instructor line, three pills, "View course" button and "Browse all courses" link.
 - Desktop: image left, content right. Mobile: image first, button full width, link centered below it.
-- Destinations follow Q-04.
+- "View course" presents the demo message and "Browse all courses" goes to `#categories` ([D-35](decisions.md#courses-and-how-it-works)).
+- The "FEATURED COURSE" badge is text over the photo, not part of the image ([D-34](decisions.md#courses-and-how-it-works)).
+- "Browse all courses" is white, text and arrow: an approved accessibility adaptation of the reference color ([D-42](decisions.md#courses-and-how-it-works)).
 
 ### How it works
 
 - Centered eyebrow and heading.
 - Three steps labeled STEP 01, STEP 02 and STEP 03 ([D-05](decisions.md#approved)), each with illustration, title and description, marked up as an ordered list.
 - Desktop: three columns with the icons joined by a horizontal line. Mobile: stacked, with the short vertical line between steps.
-- The step 02 description and square color follow Q-13 and Q-14.
+- The step 02 description and square color follow [D-36](decisions.md#courses-and-how-it-works).
 
 ### Testimonial and metrics
 
