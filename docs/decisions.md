@@ -34,7 +34,7 @@ These were approved by the owner during the project setup.
 | D-13 | `cacheComponents` and `partialPrefetching` are not enabled, since they are not needed in the current scope. | Yes. Both are absent from `next.config.ts`. |
 | D-14 | `agentRules: false` prevents `next dev` from generating `AGENTS.md`. | Yes. Set in `next.config.ts`. |
 | D-15 | Line endings are LF, normalized by `.gitattributes`. `.bat` and `.cmd` files use CRLF. | Yes. `.gitattributes`. |
-| D-16 | No `npm audit fix --force` and no downgrades for the `picomatch` advisory. The issue is documented and must be re-evaluated before delivery. | Yes. "Known security issue" section in `README.md`. |
+| D-16 | No `npm audit fix --force` and no downgrades for the `picomatch` advisory. The issue is documented and must be re-evaluated before delivery. | Yes. Re-evaluated in T-10 (2026-11-19): the advisory was withdrawn on 2026-11-18 (withdrawn, not fixed: no patched release exists), `npm audit` and `npm audit --omit=dev` report 0 vulnerabilities, and no fix, downgrade or override was applied. README, "Security audit". |
 
 ### Design assets
 

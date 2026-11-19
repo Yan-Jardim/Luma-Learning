@@ -24,7 +24,7 @@ Planned → In progress → Ready for review → Validated
 | T-07 | Contact, final call to action and footer | Validated | T-03 (decisions D-50 to D-56) |
 | T-08 | Integrated review of interactions and accessibility | Validated | T-04 to T-07 (decisions D-57 to D-60) |
 | T-09 | Visual check on desktop, mobile and intermediate widths | Validated | T-08; Q-18, Q-21, Q-22 and Q-26 resolved by D-61 and D-62 |
-| T-10 | Re-evaluate the security issue (README, "Known security issue") | Planned | |
+| T-10 | Re-evaluate the security issue (README, now "Security audit") | Validated | |
 | T-11 | Final README (including D-07), publishing and demo video, as listed in [Delivery requirements](spec.md#delivery-requirements) | Planned | T-09, T-10, Q-07, Q-09 |
 
 Question IDs (Q-xx) and decision IDs (D-xx) refer to [decisions.md](decisions.md).
@@ -47,13 +47,14 @@ T-08 was validated by the owner's explicit approval on 2026-11-19, including the
 
 T-09 was validated by the owner's explicit approval on 2026-11-19. The approval covers the visual check on desktop, mobile and intermediate widths, the call to action buttons below 1024 px, the 2x images, SVG files and mobile versions (D-61, D-62) and the full-page comparison with the complete references ([first record](#t-09-in-progress-2026-11-19), [assets record](#t-09-assets-and-pending-questions-2026-11-19), [full-page comparison](#t-09-full-page-comparison-2026-11-19)). No T-09 item remains open: Q-18, Q-21, Q-22 and Q-26 are resolved, and there are no pending corrections or final verifications. The approval keeps the limits of the checks recorded there.
 
+T-10 was validated by the owner's explicit approval on 2026-11-19: the advisory recorded in the README was withdrawn (not fixed), both audits report 0 vulnerabilities, and no dependency was changed ([verification record](#t-10-security-re-evaluation-2026-11-19)). The approval keeps the limits recorded there. `npm audit` must be run again before publishing (T-11).
+
 ## Open items
 
-No item of T-01 to T-09 remains open. The items below belong to the next tasks, and validating a task does not resolve them.
+No item of T-01 to T-10 remains open. The items below belong to the next tasks, and validating a task does not resolve them.
 
 ### Next tasks
 
-- T-10: re-evaluate the security issue recorded in the README ("Known security issue").
 - [Q-07](decisions.md#open-questions): metadata content (description, social preview image and favicon; the page has no favicon yet, so `/favicon.ico` returns 404). Needed before T-11.
 - [Q-09](decisions.md#open-questions): publishing target. Needed before T-11.
 - [Q-08](decisions.md#open-questions): test tooling. Needed before any test is written.
@@ -322,3 +323,16 @@ Chrome headless, production build, full-page captures at 1280 and 402 px with a 
 - No local correction was needed.
 - `npm run lint`, `npx next typegen`, `npx tsc --noEmit` and `npm run build`: passed.
 - Not verified: screen readers, browsers other than Chrome, physical devices.
+
+### T-10 security re-evaluation, 2026-11-19
+
+Agent checks; not a human review.
+
+- Environment: Node.js 22.23.5, npm 10.9.9, `package-lock.json` version 3. Declared dependencies unchanged: `next` 16.4.6, `react` and `react-dom` 19.3.0; development dependencies `eslint` ^9, `eslint-config-next` 16.4.6, `typescript` ^5, `tailwindcss` and `@tailwindcss/turbopack` 4.3.3, `@types/*`. `npm ls --all` exits without errors; it lists 78 optional packages for other platforms as not installed, as expected on Windows, and 2 optional `sharp` packages for WebAssembly (`@img/sharp-wasm32`, `@emnapi/runtime`) as extraneous; both are in the lockfile.
+- `npm audit`: 0 vulnerabilities (432 packages: 17 production, 378 development, 82 optional). `npm audit --omit=dev`: 0 vulnerabilities. On 2026-11-18 the full audit had reported 14 high entries, all from GHSA-fc5q-39xc-vjpf.
+- Official sources, read on 2026-11-19: the GitHub advisory GHSA-fc5q-39xc-vjpf (CVE-2026-112366, CWE-1333, CVSS 7.5) was withdrawn on 2026-11-18 at 15:38 UTC "because it is not a security issue", with a reference to the maintainers' comment in the `picomatch` repository; its affected range was `<= 4.0.7`, with no patched version. The NVD entry still reads "Awaiting Analysis", last modified on 2026-10-19. The npm registry has no `picomatch` release after 4.0.7.
+- Installed copies: `picomatch` 2.3.2 (`eslint-config-next` → `@next/eslint-plugin-next` → `fast-glob` 3.3.1 → `micromatch` 4.0.8) and 4.0.7 (`eslint-config-next` → `eslint-import-resolver-typescript` 3.10.1 → `tinyglobby` 0.2.17, and `fdir` 6.5.0), both development-only in the lockfile. The README had listed `typescript-eslint` among the paths; it no longer appears in `npm ls picomatch`.
+- Exploitation conditions: the withdrawn report needed a glob pattern supplied by an attacker (for example `+(*)`). The npm copies run only in ESLint, on globs from the repository's configuration. Next.js bundles its own `picomatch` (`next/dist/compiled/picomatch`, no version in its `package.json`, without the function named in the report), Path analyzed in Next.js 16.4.6: the modules that load it directly are build modules (`build/collect-build-traces.js`, `build/index.js`, `build/segment-config/middleware/middleware-config.js` and two webpack plugins) and the image matchers called by `server/image-optimizer.js`. `shared/lib/match-local-pattern.js`: `hasLocalMatch` returns before calling it when `images.localPatterns` is not set. `shared/lib/match-remote-pattern.js`: `hasRemoteMatch` calls it once per entry of `images.remotePatterns` (default `[]`). The patterns come from `next.config.ts`, which sets neither option; a visitor only controls the URL tested against them. No input where visitors control glob patterns was identified. Other code paths inside the bundled packages of Next.js were not analyzed, so this does not prove that the copy is never called in production. The project's code does not use `picomatch`.
+- Fix: none. The advisory was withdrawn, not fixed (no patched `picomatch` release exists), and no vulnerability is reported; no update, `npm audit fix`, downgrade or override was applied, and `package.json` and `package-lock.json` are unchanged (D-16).
+- `npm run lint`, `npx next typegen`, `npx tsc --noEmit` and `npm run build`: passed, on the unchanged dependencies.
+- Limits: the audit covers advisories known to the npm registry on 2026-11-19 for the installed packages; it does not inspect code bundled inside packages, and it cannot report unknown issues. The project is not declared free of vulnerabilities. Tools that read the NVD may still report CVE-2026-112366.
