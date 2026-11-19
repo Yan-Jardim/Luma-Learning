@@ -49,7 +49,7 @@ T-09 was validated by the owner's explicit approval on 2026-11-19. The approval 
 
 T-10 was validated by the owner's explicit approval on 2026-11-19: the advisory recorded in the README was withdrawn (not fixed), both audits report 0 vulnerabilities, and no dependency was changed ([verification record](#t-10-security-re-evaluation-2026-11-19)). The approval keeps the limits recorded there. `npm audit` must be run again before publishing (T-11).
 
-T-11 is in progress since 2026-11-19 ([preparation record](#t-11-preparation-2026-11-19)). The README is drafted, and the metadata, icons and sharing image are in place (D-63 to D-65 resolve Q-08, Q-07 and Q-09); the deployment, the final URL, the demo video and the time spent are pending. The delivery is not complete until the page is published and the final checks are run on it.
+T-11 is in progress since 2026-11-19 ([preparation record](#t-11-preparation-2026-11-19)). The README, the metadata, icons and sharing image are in place (D-63 to D-65 resolve Q-08, Q-07 and Q-09). The owner published the page at https://luma-learning-two.vercel.app ([publication record](#publication-and-production-metadata-2026-11-19)), and the production metadata is ready on the branch `chore/production-metadata`. The demo video and the time spent are pending, so the delivery is not complete.
 
 ## Open items
 
@@ -59,12 +59,9 @@ No item of T-01 to T-10 remains open. T-11 is in progress. The items below belon
 
 Pending for T-11, before it can be reviewed:
 
-- Create the Vercel project in the owner's account, connected to the repository, with production from `main` and the name `luma-learning-yan-jardim` if available (D-65); no paid domain.
-- Record the final URL, then decide whether to set `metadataBase` to it (Vercel already builds the image URLs from its own variables).
-- Confirm that the GitHub repository is public.
-- Run `npm audit` and `npm audit --omit=dev` again before publishing (T-10).
-- Check the published page: a manual check on real desktop and mobile browsers, the favicon, and the sharing preview with the final URL.
-- Add the live project and video links and the time spent to the README, provided by the owner.
+- After `chore/production-metadata` is merged and deployed, check on the published site the canonical URL, `og:url` and the sharing image URLs.
+- A manual check on real desktop and mobile browsers.
+- Add the demo video link and the time spent to the README, provided by the owner.
 
 Other open item:
 
@@ -393,3 +390,45 @@ Requested by the owner, on the branch `refactor/component-organization`, created
 - Behavior: each mobile menu link and "Start learning" closes the panel and moves focus to its section; Escape closes the menu and returns focus to the menu button; a footer message closes when Tab moves focus away; a demo message closes with Escape.
 - Development server (started by the agent on port 3107, since the owner's was stopped), clean loads only, 10 of 10: no hydration message, console warning, error, exception or failed request.
 - `npm run lint`, `npx next typegen`, `npx tsc --noEmit` and `npm run build`: passed (with the expected `metadataBase` warning).
+
+### Verification of main after the merges, 2026-11-19
+
+`main` at 9dc94d1: regular merges of PR #11 (`chore/release-preparation`) and PR #12 (`refactor/component-organization`), not squashed; 892722d and 12272bb are ancestors of `main`, and its tree is identical to 12272bb. Local checks by the agent on the production build, Chrome headless; not a human review. No code changed.
+
+- `npm run lint`, `npx next typegen`, `npx tsc --noEmit` and `npm run build`: passed, with the expected `metadataBase` warning.
+- Clean loads only (navigate, wait, scroll), 14 loads in 7 configurations (1280, 1024, 768, 402 and 320 px, and text at 200% at 320 and 1280 px): no console message, exception, browser log entry or failed request.
+- Images: none broken (32 visible at 1280 px, 19 at 1024 px, 20 on mobile); the hero photo and the collage use the desktop exports from 1024 px and the mobile exports below.
+- No horizontal scrolling at 26 widths from 320 to 2560 px.
+- Enlarged text: 24 combinations (normal size, browser text size 200% and root font size 200%, from 320 to 1440 px, with the mobile menu open where shown): no text cut, outside the window or covered.
+- Anchors: the 23 in-page links reach their sections with the mouse and the keyboard; after Enter, Tab reaches the first control after the target.
+- Mobile menu: opens and closes with a click, Enter and Escape, and Escape returns focus to the menu button; each panel link and "Start learning" close the panel and move focus to the section; the panel "Log in" message is shown; switching to the desktop layout with the panel open closes it.
+- Keyboard: the Tab order is unchanged in 7 configurations (33 controls on desktop, 28 on mobile), and every control shows its focus outline (contrast at least 5.16:1). With enlarged text, "Your question" reached with Tab from the bottom edge of the window is the known observation of T-08: Chrome scrolls only to the cursor line; nothing covers the field.
+- Demo messages: all of them (14 on desktop, 13 on mobile and with text at 200% at 320 px) are shown whole inside the window and close with Escape, keeping focus; a footer message closes when Tab moves focus away.
+- Form: with empty fields, submitting moves focus to the first invalid field; with fictitious valid values, the demo message is shown, the values are kept, and editing removes the message; no network request and no console output when submitting.
+- axe-core: no violation in 6 configurations; with the mobile menu open, 2 items are "incomplete" because the panel covers the hero card and axe cannot determine its background.
+- The script's message loop also pressed Enter on "Send message" with an empty form and flagged it, because native validation shows no message there; that is the expected behavior (D-50).
+- Not verified: screen readers, browsers other than Chrome, physical devices and touch, the published URL.
+
+### Checks before publishing, 2026-11-19
+
+- `npm audit` (432 packages: 17 production, 378 development, 82 optional): 0 vulnerabilities. `npm audit --omit=dev`: 0 vulnerabilities. Node.js 22.23.5, npm 10.9.9; `package.json` and `package-lock.json` unchanged.
+- The GitHub repository is public: an unauthenticated request to the GitHub API reports `"visibility": "public"`, and the repository page loads without signing in.
+
+### Publication and production metadata, 2026-11-19
+
+The owner published the page on Vercel at https://luma-learning-two.vercel.app (production from `main`, D-65). Agent checks; not a human review. No commit, push or deploy by the agent.
+
+Checked on the published site, from the agent's environment, without signing in (Chrome headless for the page; plain HTTP requests for the files):
+
+- The address answers 200, served by Vercel; an unknown path answers 404. The deployment is the code of `main` at 9dc94d1: its body markup and visible text are identical to a local build of that code, and its CSS is identical apart from the names of the font files.
+- Head: the approved title and description, the Open Graph and Twitter tags, and `og:image` and `twitter:image` as absolute URLs on the production address, built by Next.js from the Vercel variables because that deployment has no `metadataBase`. It has no canonical URL and no `og:url` yet.
+- `/favicon.ico` (with and without the query of the icon link), `/icon.svg`, `/apple-icon.png` and `/opengraph-image.png` answer 200 with the right content types, and each file is identical, byte for byte, to the one in `src/app/`; the sharing image is 1200 × 630.
+- Clean loads, 14 in 7 configurations (1280, 1024, 768, 402 and 320 px, and text at 200% at 320 and 1280 px): no console message, exception, browser log entry or failed request; no broken image; the desktop hero photo and collage from 1024 px and the mobile ones below. No horizontal scrolling at 26 widths from 320 to 2560 px.
+- Flows on desktop and mobile: the 23 in-page links with the mouse and the keyboard; every demo message (Enter shows it whole in the window, Escape hides it and keeps focus); the mobile menu (click, Enter, Escape, each panel link, "Start learning", the panel "Log in" message, the switch to the desktop layout); the form (native validation, the demo message, values kept, no network request and no console output). The script flags "Send message" with an empty form, as in the local check; that is the expected behavior (D-50).
+- Not checked: how social platforms render the sharing preview (no external validator was used), real browsers and devices, and screen readers.
+
+Changed on the branch `chore/production-metadata`, checked locally only (not yet on the published site):
+
+- `src/app/layout.tsx`: `metadataBase` is the production URL, with `alternates.canonical` and `openGraph.url` set to `/`. The local production build has `<link rel="canonical" href="https://luma-learning-two.vercel.app">`, `og:url` with the same address, and `og:image` and `twitter:image` on that address; the `metadataBase` warning of the build is gone.
+- README: the live project link, and the metadata and published-site lines. decisions.md: D-64 and D-65.
+- `npm run lint`, `npx next typegen`, `npx tsc --noEmit` and `npm run build`: passed.

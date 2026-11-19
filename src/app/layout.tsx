@@ -19,9 +19,11 @@ const description =
   "Practical courses taught by people who do the work every day. Learn design, technology, business and more — one focused lesson at a time.";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://luma-learning-two.vercel.app"),
   title,
   description,
-  openGraph: { title, description, siteName: "Luma Learning", type: "website" },
+  alternates: { canonical: "/" },
+  openGraph: { title, description, url: "/", siteName: "Luma Learning", type: "website" },
   twitter: { card: "summary_large_image", title, description },
 };
 
