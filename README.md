@@ -9,8 +9,6 @@ The page presents courses, learning categories, a featured course, how the platf
 - **Live project:** [luma-learning-two.vercel.app](https://luma-learning-two.vercel.app/)
 - **Demo video:** [Watch the demonstration](https://youtu.be/enAlC6Dqvxc)
 
-The page is published on Vercel, from the `main` branch (D-65). The video link will be added once the video exists.
-
 ## Tech stack
 
 - [Next.js](https://nextjs.org) 16.4.6 (App Router)
